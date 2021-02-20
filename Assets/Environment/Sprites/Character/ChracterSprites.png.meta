@@ -1,0 +1,720 @@
+fileFormatVersion: 2
+guid: deaf88617fa67ca498029a46c6a88fd4
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -1585818341271295204
+    second: ChracterSprites_0
+  - first:
+      213: 4726555968887742056
+    second: ChracterSprites_1
+  - first:
+      213: -1160645672288038344
+    second: ChracterSprites_2
+  - first:
+      213: -7009049328836524957
+    second: ChracterSprites_3
+  - first:
+      213: -3905275698747007519
+    second: ChracterSprites_4
+  - first:
+      213: -171522452232531345
+    second: ChracterSprites_5
+  - first:
+      213: 209515015062136207
+    second: ChracterSprites_7
+  - first:
+      213: -4120119409929499626
+    second: ChracterSprites_8
+  - first:
+      213: 2343382600133879336
+    second: ChracterSprites_9
+  - first:
+      213: 6791923670723658826
+    second: ChracterSprites_10
+  - first:
+      213: -6411654076652872469
+    second: ChracterSprites_11
+  - first:
+      213: -1497206913055611603
+    second: ChracterSprites_12
+  - first:
+      213: -7814554682845533856
+    second: ChracterSprites_13
+  - first:
+      213: 3264242239933365651
+    second: ChracterSprites_14
+  - first:
+      213: -4728486388293316438
+    second: ChracterSprites_15
+  - first:
+      213: 4129489980429341353
+    second: ChracterSprites_16
+  - first:
+      213: -7490683639412518967
+    second: ChracterSprites_17
+  - first:
+      213: -7867795984612696411
+    second: ChracterSprites_18
+  - first:
+      213: 2919818876288829725
+    second: ChracterSprites_20
+  - first:
+      213: 4892150535254832439
+    second: ChracterSprites_21
+  - first:
+      213: 2376685005996751371
+    second: ChracterSprites_22
+  - first:
+      213: -4867512855575969988
+    second: ChracterSprites_23
+  - first:
+      213: 6979194571218086594
+    second: ChracterSprites_24
+  - first:
+      213: 350030322183907816
+    second: ChracterSprites_25
+  - first:
+      213: -5591310822926469719
+    second: ChracterSprites_26
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 1
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 1
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 2
+    aniso: 4
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 255
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 1
+    textureFormat: -1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 1
+    textureFormat: -1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 1
+    textureFormat: -1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: ChracterSprites_0
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 1593
+        width: 231
+        height: 452
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c1ba932ee9a0ef9e0800000000000000
+      internalID: -1585818341271295204
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChracterSprites_1
+      rect:
+        serializedVersion: 2
+        x: 293
+        y: 1573
+        width: 231
+        height: 474
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 86e5e808c99189140800000000000000
+      internalID: 4726555968887742056
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChracterSprites_2
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 1113
+        width: 334
+        height: 450
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8325d2119ee84efe0800000000000000
+      internalID: -1160645672288038344
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChracterSprites_3
+      rect:
+        serializedVersion: 2
+        x: 399
+        y: 1129
+        width: 335
+        height: 443
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 364428d55cadabe90800000000000000
+      internalID: -7009049328836524957
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChracterSprites_4
+      rect:
+        serializedVersion: 2
+        x: 737
+        y: 1458
+        width: 4
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ed183a617cadc9c0800000000000000
+      internalID: -3905275698747007519
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChracterSprites_5
+      rect:
+        serializedVersion: 2
+        x: 796
+        y: 1105
+        width: 346
+        height: 481
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 1, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f621dab0d31ae9df0800000000000000
+      internalID: -171522452232531345
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChracterSprites_7
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 883
+        width: 110
+        height: 191
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f85a3efcbc858e200800000000000000
+      internalID: 209515015062136207
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChracterSprites_8
+      rect:
+        serializedVersion: 2
+        x: 142
+        y: 769
+        width: 179
+        height: 312
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 61cc5fad93562d6c0800000000000000
+      internalID: -4120119409929499626
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChracterSprites_9
+      rect:
+        serializedVersion: 2
+        x: 350
+        y: 793
+        width: 115
+        height: 247
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 826afcd1f0e558020800000000000000
+      internalID: 2343382600133879336
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChracterSprites_10
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 634
+        width: 92
+        height: 221
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a440d07e792c14e50800000000000000
+      internalID: 6791923670723658826
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChracterSprites_11
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 417
+        width: 134
+        height: 301
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bec9b62769a3507a0800000000000000
+      internalID: -6411654076652872469
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChracterSprites_12
+      rect:
+        serializedVersion: 2
+        x: 261
+        y: 695
+        width: 4
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d25af00ce3ad83be0800000000000000
+      internalID: -1497206913055611603
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChracterSprites_13
+      rect:
+        serializedVersion: 2
+        x: 291
+        y: 422
+        width: 165
+        height: 289
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 06960235bef1d8390800000000000000
+      internalID: -7814554682845533856
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChracterSprites_14
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 472
+        width: 66
+        height: 135
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39dbd04c50bec4d20800000000000000
+      internalID: 3264242239933365651
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChracterSprites_15
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 324
+        width: 83
+        height: 124
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa0d184beaa016eb0800000000000000
+      internalID: -4728486388293316438
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChracterSprites_16
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 254
+        width: 148
+        height: 117
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a2960b1245ee4930800000000000000
+      internalID: 4129489980429341353
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChracterSprites_17
+      rect:
+        serializedVersion: 2
+        x: 321
+        y: 259
+        width: 153
+        height: 115
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9cf8cf3daeebb0890800000000000000
+      internalID: -7490683639412518967
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChracterSprites_18
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 253
+        width: 111
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ae5ae3cc39ffc290800000000000000
+      internalID: -7867795984612696411
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChracterSprites_20
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 183
+        width: 71
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d190da15cc7458820800000000000000
+      internalID: 2919818876288829725
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChracterSprites_21
+      rect:
+        serializedVersion: 2
+        x: 166
+        y: 184
+        width: 27
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 735f999fdf864e340800000000000000
+      internalID: 4892150535254832439
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChracterSprites_22
+      rect:
+        serializedVersion: 2
+        x: 246
+        y: 188
+        width: 18
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0afe65bb6eabf020800000000000000
+      internalID: 2376685005996751371
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChracterSprites_23
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 119
+        width: 55
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3f3fb7d8de137cb0800000000000000
+      internalID: -4867512855575969988
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChracterSprites_24
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 34
+        width: 73
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2cae9c33c741bd060800000000000000
+      internalID: 6979194571218086594
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChracterSprites_25
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 39
+        width: 31
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e9236639be8bd400800000000000000
+      internalID: 350030322183907816
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChracterSprites_26
+      rect:
+        serializedVersion: 2
+        x: 221
+        y: 46
+        width: 116
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a5bbaa3e6ca762b0800000000000000
+      internalID: -5591310822926469719
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
