@@ -3,34 +3,44 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class QuestParent : MonoBehaviour
-{
-    public enum QuestProgress {Disabled, Started, Finished, Rewarded,Failed };
-   
+{//Quest Variables
+    public enum QuestProgress { Disabled, Started, Finished, Rewarded, Failed };
+
     public QuestProgress currentState = QuestProgress.Disabled;
-    
+
     public bool ReturntoQuestGiver;
 
     public ObjectSpawner SpawnerRef;
 
-    public enum GoalType
-    {
-        Fetch, Defense, Kill
+    public enum GoalType {
+        Fetch, Defense, Kill, Collect
     }
 
+
+    //Quest Spawning vars
+    [SerializeField]List<GameObject> SpawnPrefabs;
+    [SerializeField] ObjectSpawner.SpawnerType SpawnType;
+    
+
+
+    // Goals variables
     public GoalType goalType;
 
     public int requiredAmount;
     public int currentAmount;
-
+    
     public bool IsReached () {
         return currentAmount >= requiredAmount;
     }
+
+
+    //Additional Quest Variables
     [SerializeField] protected bool isRestartable;
     [SerializeField] protected string title;
     [SerializeField] protected string description;
 
     [SerializeField] protected int coinReward;
-    
+
 
     [SerializeField] protected List<GameObject> Rewards;
 
@@ -38,10 +48,15 @@ public class QuestParent : MonoBehaviour
 
     public bool GetcanRestart () { return isRestartable; }
 
-   // [SerializeField] protected List<GameObject> QuestObjects;
-  //  [SerializeField] protected List<Transform> TargetLocs;
+    // [SerializeField] protected List<GameObject> QuestObjects;
+    //  [SerializeField] protected List<Transform> TargetLocs;
 
-    
+    public virtual void SetSpawnPrefebs ()
+    {
+        SpawnerRef.currentype = SpawnType;
+        SpawnerRef.numObjects = requiredAmount;
+        SpawnerRef.setSpawnPrefabs (SpawnPrefabs);
+    }
 
     public virtual void StartQuest() 
     {
@@ -52,7 +67,7 @@ public class QuestParent : MonoBehaviour
     
     }
 
-    protected void QuestCompleted() 
+    protected virtual void QuestCompleted() 
     {
         currentState = QuestProgress.Finished;
         QuestManager.instance.RemoveCompletedQuest (this);

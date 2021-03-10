@@ -11,7 +11,7 @@ public class ObjectSpawner : MonoBehaviour
 
     public SpawnerType currentype;
 
-    [SerializeField] int numObjects;
+    public int numObjects;
     [SerializeField] List <Transform> spawnPoints;
   
     [SerializeField] List<GameObject> SpawnPrefabs;
@@ -23,7 +23,7 @@ public class ObjectSpawner : MonoBehaviour
     {
 
         isQuestSpawner = !(QuestRef == null);
-        SpawnObjects ();
+       // SpawnObjects ();
 
 
 
@@ -144,7 +144,20 @@ public class ObjectSpawner : MonoBehaviour
 
     }
 
+
+    public void SetQuestRef(QuestParent Quest) 
+    {
+        QuestRef = Quest;
+
+    }
     
+    public void setSpawnPrefabs(List<GameObject> inPrefabs) 
+    {
+        SpawnPrefabs = inPrefabs;
+    
+    
+    }
+
     void Update()
     {
         

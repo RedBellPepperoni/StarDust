@@ -6,10 +6,20 @@ public class Gamemanager : MonoBehaviour
 {
     public static Gamemanager instance;
 
+    [SerializeField] GameObject carryObj;
+    [SerializeField] List<GameObject> HealthObjects;
 
+    [SerializeField] private GameObject HoldInvRef;
+    [SerializeField] private GameObject HealthBAgRef;
+
+    private bool canCarryObj;
 
     [SerializeField] private GameObject UIRef;
     [SerializeField] private GameObject playerAim;
+    [SerializeField] private int Healthbagspace = 3;
+
+    [SerializeField] private GameObject lookatRef;
+
 
    // private WeaponClass curWeaponClass;
     private UIManager uimanagerRef;
@@ -25,10 +35,28 @@ public class Gamemanager : MonoBehaviour
     private GameObject currWeaponref;
     [SerializeField] private GameObject WeaponRootRef;
 
+    public bool IsHealthBagEmpty () { return HealthObjects.Count < Healthbagspace; }
+
+    public void AddHealthObjtoBag (GameObject inHealthObj) 
+    {
+       if(HealthObjects.Count <3) 
+       {
+           
+            GameObject obj =  Instantiate (inHealthObj, HealthBAgRef.transform);
+            HealthObjects.Add (obj);
+        }
+
+
+
+    }
+
     private void Awake()
     {
+
+        Application.targetFrameRate = 120;
+
         if (instance == null) {
-            DontDestroyOnLoad (gameObject);
+           // DontDestroyOnLoad (gameObject);
             instance = this;
         }
 
@@ -129,7 +157,12 @@ public class Gamemanager : MonoBehaviour
                 }
 
                 else if(weaponScriptRef.isEmpty()) 
-                    Debug.Log("Weapon Empty");
+                {
+            StartReload ();
+        }
+                   
+
+        
               //  else
                //     Debug.Log("Weapon Reloading");
 
@@ -142,7 +175,7 @@ public class Gamemanager : MonoBehaviour
     void InstantiateBullet(Vector3 position,Vector3 rotation) 
     {
         GameObject bullet = Instantiate (weaponScriptRef.getBulletPrefab (), position, Quaternion.Euler(rotation));
-        bullet.GetComponent<Weapon_Bullet> ().setDamage (weaponScriptRef.getWeaponDamage ());
+        bullet.GetComponent<Weapon_Bullet> ().setDamage (weaponScriptRef.getWeaponPhyDmg (), weaponScriptRef.getWeaponPlasmaDmg (), weaponScriptRef.getWeaponFireDmg (), weaponScriptRef.getWeaponIceDmg (), weaponScriptRef.getWeaponElecDmg ());
         bullet.GetComponent<Weapon_Bullet> ().setSpeed (weaponScriptRef.GetBulletSpeed ());
         bullet.GetComponent<Weapon_Bullet> ().Move ();
     }
@@ -178,13 +211,42 @@ public class Gamemanager : MonoBehaviour
 
 
       IEnumerator Reload(WeaponParent scriptRef)
-     {
+      {
 
         yield return new WaitForSeconds(scriptRef.GetReloadTime());
 
         scriptRef.Reload();
 
-        Debug.Log("reloaded");
+    //    Debug.Log("reloaded");
         setUIweaponvalues();
-     }
+      }
+
+
+    public bool CanCarryObject() 
+    {
+        return canCarryObj;
+    }
+
+    public void PickupObject(GameObject ObjRef) 
+    {
+        if (carryObj == null) 
+        {
+            carryObj = ObjRef;
+
+            canCarryObj = false;
+        }
+
+       
+
+
+    }
+
+    public void DropObj() 
+    {
+        if (carryObj != null) 
+        {
+            Instantiate (carryObj, transform);
+            canCarryObj = false;
+        }
+    }
 }

@@ -16,6 +16,18 @@ public class Damagable : MonoBehaviour
     [SerializeField]protected float HealModifier;
 
 
+
+
+    [SerializeField] protected float physicalDamReduction = 0;
+    [SerializeField] protected float plasmaDamReduction = 0 ;
+    [SerializeField] protected float fireDamReduction = 0;
+    [SerializeField] protected float iceDamReduction = 0;
+    [SerializeField] protected float electricDamReduction = 0;
+
+    private float ProcChance = 10/100;
+
+
+
     public float Getcurrhealth() { return currentHealth; }
     public float Getmaxhealth() { return maxHealth; }
 
@@ -30,9 +42,11 @@ public class Damagable : MonoBehaviour
 
         isDead = false;
     }
-    public virtual void TakeDamage(int damage)
+    public virtual void TakeDamage(float inphyDmg, float inPlasmaDmg, float infireDmg, float iniceDmg, float inelecDmg)
     {
-        currentHealth -= damage;
+       currentHealth = currentHealth -  CalcDamageReduction (inphyDmg,inPlasmaDmg,infireDmg,iniceDmg,inelecDmg);
+
+
 
 
 
@@ -72,6 +86,138 @@ public class Damagable : MonoBehaviour
             currentHealth = maxHealth;
 
     }
+
+    protected virtual float CalcDamageReduction (float inphyDmg, float inPlasmaDmg, float infireDmg, float iniceDmg, float inelecDmg) 
+    {
+        float finalDamage = 0;
+
+
+
+
+
+        finalDamage = finalDamage + CalcPhyDmg(inphyDmg);
+        finalDamage = finalDamage + CalcPlasmaDmg (inPlasmaDmg);
+        finalDamage = finalDamage + CalcFireDmg (infireDmg);
+        finalDamage = finalDamage + CalcIceDmg (iniceDmg);
+        finalDamage = finalDamage + CalcElecDmg (inelecDmg);
+
+        return finalDamage;
+
+
+    }
+
+    private float CalcPhyDmg(float inDmg) 
+    {
+        float Dmg = 0;
+
+        if (physicalDamReduction > 0 && inDmg > 0) 
+        { 
+        
+            if(physicalDamReduction < 100)
+            {
+                Dmg =  (inDmg / 100) * (100 - physicalDamReduction );
+            }
+            
+        
+        } 
+        else 
+        {
+            Dmg = inDmg;
+         
+        }
+
+        return Dmg;
+
+    }
+
+
+    private float CalcPlasmaDmg (float inDmg) {
+        float Dmg = 0;
+
+        if (plasmaDamReduction > 0 && inDmg > 0) {
+
+            if (plasmaDamReduction < 100) {
+                Dmg =  (inDmg /100)* (100 - plasmaDamReduction);
+            }
+
+
+        } else {
+            Dmg = inDmg;
+        }
+
+        return Dmg;
+
+    }
+
+
+    private float CalcFireDmg (float inDmg) {
+        float Dmg = 0;
+
+        if (fireDamReduction > 0 && inDmg >0) {
+
+            if (fireDamReduction < 100) {
+                Dmg =  (inDmg/100) * (100 - fireDamReduction );
+            }
+
+
+        } else {
+            Dmg = inDmg;
+        }
+
+        return Dmg;
+
+    }
+
+    private float CalcIceDmg (float inDmg) {
+        float Dmg = 0;
+
+        if (iceDamReduction > 0 && inDmg > 0) {
+
+            if (iceDamReduction < 100) {
+                Dmg =  (inDmg /100)* (100 - iceDamReduction );
+            }
+
+
+        } else {
+            Dmg = inDmg;
+        }
+
+        return Dmg;
+
+    }
+
+    private float CalcElecDmg (float inDmg) {
+        float Dmg = 0;
+
+        if (electricDamReduction > 0) {
+
+            if (electricDamReduction < 100) {
+                Dmg = inDmg * (electricDamReduction / 100);
+            }
+
+
+        } else {
+            Dmg = inDmg;
+        }
+
+        return Dmg;
+
+    }
+
+
+    protected virtual void CanProc ()
+    { 
+    
+    
+    }
+
+
+    protected virtual void ProcElement () 
+    { 
+        
+    
+    }
 }
+
 
 

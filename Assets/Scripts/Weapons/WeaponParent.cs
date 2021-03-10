@@ -17,7 +17,18 @@ public class WeaponParent : MonoBehaviour
     private bool weaponEmpty;
 
     [SerializeField] private float bulletSpeed = 10f;
-    [SerializeField] private int weaponDamage = 10;
+
+
+
+   [SerializeField] private float physicalDamage = 10;
+   [SerializeField] private float plasmaDamage = 0;
+   [SerializeField] private float fireDamage = 0;
+   [SerializeField] private float iceDamage = 0;
+   [SerializeField] private float electricDamage = 0;
+
+
+
+
     [SerializeField] private float rateOfFire = 10f;
 
     [SerializeField] private int magazineSize = 10;
@@ -41,8 +52,24 @@ public class WeaponParent : MonoBehaviour
 
 
     public weaponType getWeaponClass() { return currWeaponType; }
-    private void setWeaponDamage(int newDamage) {     weaponDamage = newDamage;} //Setter for WeaponDamage
-    public int getWeaponDamage() {return weaponDamage; } //Getter for currentWeaponDamage
+    private void setWeaponDamage(float inphyDmg, float inPlasmaDmg, float infireDmg, float iniceDmg, float inelecDmg) {
+        physicalDamage = inphyDmg;
+        plasmaDamage = inPlasmaDmg;
+        fireDamage = infireDmg;
+        iceDamage = iniceDmg;
+        electricDamage = inelecDmg; 
+    } //Setter for WeaponDamage
+    public float getWeaponPhyDmg() {return physicalDamage; } //Getter for PhysicalDamage
+
+    public float getWeaponFireDmg () { return fireDamage; } //Getter for PhysicalDamage
+
+    public float getWeaponIceDmg () { return iceDamage; } //Getter for PhysicalDamage
+
+    public float getWeaponPlasmaDmg () { return plasmaDamage; } //Getter for PhysicalDamage
+
+    public float getWeaponElecDmg () { return electricDamage; } //Getter for PhysicalDamage
+
+
     public int getCurrentBullets() { return currentBullets; }//Getter for bullets in the magazine currently
     public int getMagazineSize() { return magazineSize; }//Getter for maximum magazine size of the weapon
     public int getReserveBullets() { return reserveBullets; }//Getter for current amount of Reserve bullets left

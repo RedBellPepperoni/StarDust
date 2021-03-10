@@ -5,10 +5,15 @@ using UnityEngine;
 public class Enemy_Behaviour : AI_BehaviourParent
 {
     // Start is called before the first frame update
+
+    
+
+
     protected override void Start () {
         base.Start ();
 
         findTarget (getroamPosition (transform.position));
+        SetAIBehaviour ();
     }
 
     protected override void Awake () {
@@ -19,10 +24,17 @@ public class Enemy_Behaviour : AI_BehaviourParent
 
     // Update is called once per frame
     void Update () {
+      
 
     }
 
-    
+
+    protected override void FixedUpdate () {
+
+
+       SetAIBehaviour ();
+       // if (canSeetarget) 
+    }
 
 
     public override void SetDead () {
@@ -33,13 +45,23 @@ public class Enemy_Behaviour : AI_BehaviourParent
     }
 
     protected override void SetAIBehaviour () {
-        base.SetAIBehaviour ();
+
+
+
+
+       
+
 
         switch (currentBehaviour) {
+
             case AIState.Idle:
-                Invoke ("MovetorandomLocation", 0.7f);
+
+
+                MovetorandomLocation ();
 
                 currentBehaviour = AIState.Roaming;
+                
+
 
                 break;
 
@@ -53,17 +75,26 @@ public class Enemy_Behaviour : AI_BehaviourParent
 
 
             case AIState.Chase:
-                if (PlayerController.instance.GetPlayerState () != PlayerController.PlayerState.Dead) {
-                    AimAtTarget (PlayerController.instance.getAimposition());
 
-                    chaseTarget (getroamPosition (PlayerController.instance.getposition ()));
+                if (PlayerController.instance.GetPlayerState () != PlayerController.PlayerState.Dead) {
+
+                   
+
+                    canSeetarget = true;
+                    
+                    AimAtTarget (PlayerController.instance.getAimposition ());
+        
+                    chaseTarget (PlayerController.instance.getposition ());
+
+
+                   
 
                     if (inAttackrange ()) {
 
                         ai.isStopped = true;
-                        // ai.SetPath (null);
+                        ai.SetPath (null);
                         Shoot ();
-
+                        
 
                     } else {
                         ai.isStopped = false;
@@ -71,8 +102,10 @@ public class Enemy_Behaviour : AI_BehaviourParent
 
                     }
 
-                } else
-                    currentBehaviour = AIState.Idle;
+                } 
+                else { currentBehaviour = AIState.Roaming;
+                   
+                }
 
                 break;
 
@@ -91,49 +124,77 @@ public class Enemy_Behaviour : AI_BehaviourParent
     }
 
 
-    protected void findTarget (Vector3 targetPosi) {
+    protected void findTarget (Vector2 targetPosi) {
 
-        if (Vector3.Distance (transform.position, targetPosi) <= targetRange) {
+
+       
+;
+        if (Vector2.Distance (transform.position, targetPosi) <= targetRange) {
             //Player WithinRange
+
+
+          
+
+
             if (!targetFound) {
-                ai.destination = getroamPosition (targetPosi, 10, attackRange);
+
+
+                ai.destination = getroamPosition (targetPosi, 5f, attackRange);
+
+
+                if (ai.hasPath)
+                    ai.SetPath (null);
+
+
                 ai.SearchPath ();
 
+
+
             }
+
             targetFound = true;
 
-            currentBehaviour = AIState.Chase;
 
+        
 
+           currentBehaviour = AIState.Chase;
+           
 
-        } else {
-            currentBehaviour = AIState.Idle;
+        } 
+        
+        else 
+        
+        {
+            
+            canSeetarget = false;
             targetFound = false;
+            currentBehaviour = AIState.Idle;
+
+           
+
         }
     }
 
     void chaseTarget (Vector3 targetPosi) {
 
-        if (Vector3.Distance (transform.position, targetPosi) < targetRange) {
+        if (Vector2.Distance (transform.position, targetPosi) <= targetRange) {
 
 
-            ai.destination = getroamPosition (targetPosi, 10, attackRange);
+            ai.destination = getroamPosition (targetPosi, 5, attackRange);
 
 
 
         } else
+            
             currentBehaviour = AIState.Idle;
+        
     }
 
-    void HuntPlayer () {
-        ai.isStopped = false;
-        chaseTarget (getroamPosition (PlayerController.instance.getposition ()));
-
-    }
+    
 
     protected bool inAttackrange () {
 
-        return (Vector3.Distance (transform.position, PlayerController.instance.getposition ()) < attackRange);
+        return (Vector2.Distance (transform.position, PlayerController.instance.getposition ()) <= attackRange);
     }
 
     public void SetWeaponReference () {
@@ -146,6 +207,9 @@ public class Enemy_Behaviour : AI_BehaviourParent
 
     public void Shoot () {
         RaycastHit2D hit;
+
+        
+
         //  Vector3 rayDirection = PlayerController.instance.transform.position - endpointTransform.posi;
 
         if (!weaponScriptRef.isEmpty () && !weaponScriptRef.isReloading () && Time.time > nextFire) {
@@ -153,8 +217,8 @@ public class Enemy_Behaviour : AI_BehaviourParent
 
 
             hit = Physics2D.Raycast (endpointTransform.position, endpointTransform.right, 100, layerMask);
-            Debug.LogWarning (hit.collider);
-            Debug.DrawRay (endpointTransform.position, endpointTransform.right, Color.white, 0.1f, true);
+          
+          //  Debug.DrawRay (endpointTransform.position, endpointTransform.right, Color.white, 0.1f, true);
             if (hit.collider.gameObject.tag == "Player") {
 
 
@@ -181,7 +245,7 @@ public class Enemy_Behaviour : AI_BehaviourParent
 
     void InstatiateBullet (Transform aimGunEndPointTrasform) {
         GameObject bullet = Instantiate (weaponScriptRef.getBulletPrefab (), aimGunEndPointTrasform.position, aimGunEndPointTrasform.rotation);
-        bullet.GetComponent<Weapon_Bullet> ().setDamage (weaponScriptRef.getWeaponDamage ());
+        bullet.GetComponent<Weapon_Bullet> ().setDamage (weaponScriptRef.getWeaponPhyDmg (), weaponScriptRef.getWeaponPlasmaDmg (), weaponScriptRef.getWeaponFireDmg (), weaponScriptRef.getWeaponIceDmg (), weaponScriptRef.getWeaponElecDmg ());
         bullet.GetComponent<Weapon_Bullet> ().setSpeed (weaponScriptRef.GetBulletSpeed ());
         bullet.GetComponent<Weapon_Bullet> ().Move ();
     }
@@ -207,7 +271,7 @@ public class Enemy_Behaviour : AI_BehaviourParent
             aimTransform.position = AimRootLeft.position;
         }
         aimTransform.localScale = aimLocalScale;
-
+       
     }
 
     void SetWeapon () 

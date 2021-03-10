@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour
     Rigidbody2D rb;
     public enum PlayerState { Idle, Moving, Interacting, Dead, onehandedWeapon, twohandedWeapon };
 
-    private PlayerState CurrentState;
+    private PlayerState CurrentState = PlayerState.Idle;
 
     public void SetPlayerState(PlayerState state) { CurrentState = state; }
     public PlayerState GetPlayerState() {return CurrentState; }
@@ -46,7 +46,7 @@ public class PlayerController : MonoBehaviour
        
         if (instance == null)
         {
-            DontDestroyOnLoad(gameObject);
+          //  DontDestroyOnLoad(gameObject);
             instance = this;
         }
     }
@@ -74,7 +74,7 @@ public class PlayerController : MonoBehaviour
 
         
 
-            rb.MovePosition (rb.position + movement.normalized * moveSpeed * Time.fixedDeltaTime);
+            rb.MovePosition (rb.position + movement * moveSpeed * Time.fixedDeltaTime);
 
             //checking state for animation
             if (movement.magnitude > 0) {

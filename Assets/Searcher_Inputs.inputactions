@@ -267,7 +267,7 @@
                 },
                 {
                     "name": "Submit",
-                    "type": "Button",
+                    "type": "PassThrough",
                     "id": "c677af22-0002-49db-b39d-75d837e81613",
                     "expectedControlType": "Button",
                     "processors": "",
@@ -293,7 +293,7 @@
                     "name": "Click",
                     "type": "PassThrough",
                     "id": "3c02caff-f2cc-48dc-aff6-d0cbde2e9a6f",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": ""
                 },

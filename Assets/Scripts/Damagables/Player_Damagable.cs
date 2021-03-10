@@ -12,8 +12,8 @@ public class Player_Damagable : Damagable
 
 
     }
-    public override void TakeDamage (int damage) {
-        base.TakeDamage (damage);
+    public override void TakeDamage (float inphyDmg, float inPlasmaDmg, float infireDmg, float iniceDmg, float inelecDmg) {
+        base.TakeDamage (inphyDmg, inPlasmaDmg, infireDmg, iniceDmg, inelecDmg);
 
 
         Gamemanager.instance.setUIPlayervalues (currentHealth , maxHealth);

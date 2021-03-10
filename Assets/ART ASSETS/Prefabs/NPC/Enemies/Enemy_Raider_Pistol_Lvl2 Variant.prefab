@@ -69,8 +69,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 755794785149379733, guid: 89dc3aeca794d1d40b71b76db5d68d46,
         type: 3}
+      propertyPath: npcLevel
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 755794785149379733, guid: 89dc3aeca794d1d40b71b76db5d68d46,
+        type: 3}
       propertyPath: enemyLevel
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 755794785149379733, guid: 89dc3aeca794d1d40b71b76db5d68d46,
+        type: 3}
+      propertyPath: physicalDamReduction
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 89dc3aeca794d1d40b71b76db5d68d46, type: 3}

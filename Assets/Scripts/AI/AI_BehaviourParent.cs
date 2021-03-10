@@ -10,6 +10,7 @@ public class AI_BehaviourParent : MonoBehaviour
     public enum AIState { Idle, Roaming, Interacting , Chase, RunningtoCover, Dead };
     protected AIState currentBehaviour;
 
+    protected bool canSeetarget = false;
     
     public enum subState { Reloading, Chatting, Doingtask, Atacking }
     protected subState currentState;
@@ -58,11 +59,11 @@ public class AI_BehaviourParent : MonoBehaviour
 
 
 
-    protected  Vector3 GetRandomDir()
-    { return new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized; }
+    protected  Vector2 GetRandomDir()
+    { return new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized; }
 
 
-    protected Vector3 getroamPosition(Vector3 startPosi,float min = 5f, float max = 80f)
+    protected Vector2 getroamPosition(Vector2 startPosi,float min = 5f, float max = 150f)
     {
         return startPosi + GetRandomDir() * Random.Range(min, max);
     }
@@ -88,7 +89,7 @@ public class AI_BehaviourParent : MonoBehaviour
     }
     
 
-    private void FixedUpdate()
+    protected virtual void FixedUpdate()
     {
         SetAIBehaviour();
 

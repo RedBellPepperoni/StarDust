@@ -266,14 +266,14 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Android
-    maxTextureSize: 2048
+    maxTextureSize: 512
     resizeAlgorithm: 0
-    textureFormat: -1
+    textureFormat: 50
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
-    overridden: 0
+    overridden: 1
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
@@ -558,8 +558,8 @@ TextureImporter:
         serializedVersion: 2
         x: 782
         y: 1083
-        width: 198
-        height: 481
+        width: 346
+        height: 482
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -569,27 +569,6 @@ TextureImporter:
       bones: []
       spriteID: d2c0fcdf50ccf5c00800000000000000
       internalID: 891655577347755053
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: CharacterSprites_15
-      rect:
-        serializedVersion: 2
-        x: 1001
-        y: 1090
-        width: 128
-        height: 480
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e094f5ecc860cefe0800000000000000
-      internalID: -1158543802313520882
       vertices: []
       indices: 
       edges: []
@@ -1104,8 +1083,8 @@ TextureImporter:
         serializedVersion: 2
         x: 18
         y: 253
-        width: 50
-        height: 29
+        width: 113
+        height: 30
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1115,27 +1094,6 @@ TextureImporter:
       bones: []
       spriteID: ba1c55a2c6b4f46e0800000000000000
       internalID: -1851177993887170133
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: CharacterSprites_41
-      rect:
-        serializedVersion: 2
-        x: 103
-        y: 259
-        width: 27
-        height: 23
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c9a52b706608f4a80800000000000000
-      internalID: -8480418397611205988
       vertices: []
       indices: 
       edges: []
@@ -1377,7 +1335,7 @@ TextureImporter:
         serializedVersion: 2
         x: 361
         y: 36
-        width: 48
+        width: 111
         height: 37
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -1388,27 +1346,6 @@ TextureImporter:
       bones: []
       spriteID: 6aa942983d844c4e0800000000000000
       internalID: -1962363464250516826
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: CharacterSprites_54
-      rect:
-        serializedVersion: 2
-        x: 449
-        y: 45
-        width: 28
-        height: 29
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3e93b2b803d96fed0800000000000000
-      internalID: -2380542521199871517
       vertices: []
       indices: 
       edges: []
@@ -1461,8 +1398,8 @@ TextureImporter:
         serializedVersion: 2
         x: 221
         y: 46
-        width: 44
-        height: 23
+        width: 114
+        height: 26
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1472,27 +1409,6 @@ TextureImporter:
       bones: []
       spriteID: d61e306e9fbd64d00800000000000000
       internalID: 956693837215162733
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: CharacterSprites_58
-      rect:
-        serializedVersion: 2
-        x: 310
-        y: 53
-        width: 26
-        height: 19
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4b3329e37c21079b0800000000000000
-      internalID: -5084543332343729228
       vertices: []
       indices: 
       edges: []
