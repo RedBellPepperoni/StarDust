@@ -12,6 +12,16 @@ PrefabInstance:
       propertyPath: m_FlipX
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 92690979431814234, guid: 154c3e7782644774ba8a54e4fff2efb1,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.014
+      objectReference: {fileID: 0}
+    - target: {fileID: 92690979431814234, guid: 154c3e7782644774ba8a54e4fff2efb1,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.13
+      objectReference: {fileID: 0}
     - target: {fileID: 1023124844944412627, guid: 154c3e7782644774ba8a54e4fff2efb1,
         type: 3}
       propertyPath: m_Name

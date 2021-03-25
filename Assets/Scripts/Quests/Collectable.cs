@@ -7,7 +7,7 @@ using UnityEngine;
 public class Collectable : MonoBehaviour
 {
     
-     public enum Type {Collectable, Pickable }
+     public enum Type {Collectable, Pickable, Consumable }
     [SerializeField]protected Type pickableType = Type.Collectable;
 
     protected bool canBePicked = false;
@@ -15,10 +15,23 @@ public class Collectable : MonoBehaviour
     protected virtual void OnTriggerEnter2D (Collider2D collision)     
     {
        if(collision.gameObject.tag == "Player" && collision.gameObject.layer == 11) 
-       {
-            canBePicked = true;
-        
-       }
+       { switch(pickableType) 
+         {
+
+                case Type.Collectable:
+                    canBePicked = true;
+                    break;
+
+
+                case Type.Consumable:
+                    ObjPicked ();
+
+                    
+                    break;
+            
+            
+        }
+    }
     }
 
     protected void OnTriggerExit2D (Collider2D collision) 

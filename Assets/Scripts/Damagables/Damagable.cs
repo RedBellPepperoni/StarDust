@@ -12,7 +12,7 @@ public class Damagable : MonoBehaviour
 
    
     public GameObject deathEffect;
-    [SerializeField] GameObject Parent;
+    [SerializeField] protected GameObject Parent;
     [SerializeField]protected float HealModifier;
 
 
@@ -31,7 +31,7 @@ public class Damagable : MonoBehaviour
     public float Getcurrhealth() { return currentHealth; }
     public float Getmaxhealth() { return maxHealth; }
 
-    public void SetMaxHealth (int health) { maxHealth = health; }
+    public void SetMaxHealth (float health) { maxHealth = health; }
 
      void Awake()
     {

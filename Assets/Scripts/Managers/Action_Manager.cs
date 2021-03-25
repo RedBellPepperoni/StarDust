@@ -11,7 +11,7 @@ public class Action_Manager : MonoBehaviour
 
     Vector2 movement;
 
-    [SerializeField] FixedJoystick MovejoystickRef;
+    [SerializeField] FloatingJoystick MovejoystickRef;
     
     private Camera cam;
     CinemachineVirtualCamera vcam;
@@ -43,6 +43,7 @@ public class Action_Manager : MonoBehaviour
     [SerializeField] float delayCheck = 0.2f;
     GameObject closestEnemy;
     Vector3 enemyPos;
+    bool lowergun;
 
     LayerMask layer = 1 << 6;
 
@@ -86,6 +87,7 @@ public class Action_Manager : MonoBehaviour
 
         }
 
+        if(Input.GetKeyDown("space")) { handleShooting (); }
        
     }
 
@@ -184,43 +186,53 @@ public class Action_Manager : MonoBehaviour
     {
         
         CheckNearbyEnemies ();
-        
-           // Vector3 mousePosition = cam.ScreenToWorldPoint (Input.mousePosition);
 
        
 
 
-      
+        Vector3 aimLocalScale = Vector3.one;
+        float angle;
 
+        if (!lowergun) {
             Vector2 aimDirection = (enemyPos - aimTransform.position).normalized;
 
-       
-
-            float angle = Mathf.Atan2 (aimDirection.y,aimDirection.x) * Mathf.Rad2Deg;
 
 
-            aimTransform.eulerAngles = new Vector3 (0, 0, angle);
+             angle = Mathf.Atan2 (aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;
+
+
+            
 
 
             //Flip Gun if aiming at the other side
 
-            Vector3 aimLocalScale = Vector3.one;
-            if (angle > 90 || angle < -90) {
-                flip (-1);
+           
+          
+        } 
+        else 
+        {
+             angle = Mathf.Atan2 (movement.y, movement.x) * Mathf.Rad2Deg;
 
-                aimLocalScale.y = -1f;
+        }
 
 
-                aimTransform.position = AimRootRight.position;
-            } else {
-                flip (1);
-                aimLocalScale.y = 1f;
+        if (angle > 90 || angle < -90) {
+            flip (-1);
 
-                aimTransform.position = AimRootLeft.position;
-            }
-            aimTransform.localScale = aimLocalScale;
+            aimLocalScale.y = -1f;
 
-        
+
+            aimTransform.position = AimRootRight.position;
+        } else {
+            flip (1);
+            aimLocalScale.y = 1f;
+
+            aimTransform.position = AimRootLeft.position;
+        }
+
+        aimTransform.localScale = aimLocalScale;
+
+        aimTransform.eulerAngles = new Vector3 (0, 0, angle);
     }
 
 
@@ -236,6 +248,10 @@ public class Action_Manager : MonoBehaviour
 
 
 
+    }
+
+    private void OnDrawGizmos () {
+        Gizmos.DrawWireSphere (PlayerScriptRef.transform.position, aimRange);
     }
 
     public void HideWeaponhand() 
@@ -295,11 +311,15 @@ public class Action_Manager : MonoBehaviour
                 }
             }
 
-            enemyPos = closestEnemy.transform.position;
+            if (closestEnemy != null) {
+                enemyPos = closestEnemy.transform.position;
+
+                lowergun = false;
+            } else lowergun = true;
         }
 
         else {
-            enemyPos = Vector3.zero; 
+            lowergun = true;
         }
 
         

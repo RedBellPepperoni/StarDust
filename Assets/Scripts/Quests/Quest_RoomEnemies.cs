@@ -11,6 +11,9 @@ public class Quest_RoomEnemies : QuestParent
 
     public override void StartQuest () {
 
+
+        SetSpawnPrefebs ();
+
         currentState = QuestProgress.Started;
 
 
@@ -23,8 +26,10 @@ public class Quest_RoomEnemies : QuestParent
     }
 
     protected override void QuestCompleted () {
-        currentState = QuestProgress.Finished;
 
+        currentState = QuestProgress.Finished;
+        Debug.LogWarning ("WAveFinished");
         RoomRef.BeginnexttWave ();
+
     }
 }

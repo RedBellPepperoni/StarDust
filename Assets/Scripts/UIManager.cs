@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI currHealthRef;
     [SerializeField] private TextMeshProUGUI maxHealthRef;
+    [SerializeField] private Slider healthbar;
 
 
     private TextMeshProUGUI currentBullets;
@@ -54,9 +56,10 @@ public class UIManager : MonoBehaviour
 
     public void setPlayerUIvalues(float curHealth,float maxHealth) 
     {
-        currHealthRef.text = curHealth.ToString();
-        maxHealthRef.text = maxHealth.ToString();
-    
+
+        float healthpercent = curHealth / maxHealth;
+        healthbar.value = healthpercent;
+
     }
 }
 

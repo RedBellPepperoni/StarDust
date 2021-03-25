@@ -135,6 +135,10 @@ public class DynamicCover : Damagable
                 }
 
                 break;
+
+
+
+
         }
     
     

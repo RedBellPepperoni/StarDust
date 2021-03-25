@@ -18,7 +18,7 @@ public class Enemy_Behaviour : AI_BehaviourParent
 
     protected override void Awake () {
         base.Awake ();
-
+        SetRandomPathTime ();
         SetWeapon ();
     }
 
@@ -28,6 +28,13 @@ public class Enemy_Behaviour : AI_BehaviourParent
 
     }
 
+
+    void SetRandomPathTime () 
+    {
+        newPathTime = Random.Range (3, 10);
+       
+    
+    }
 
     protected override void FixedUpdate () {
 
@@ -92,7 +99,11 @@ public class Enemy_Behaviour : AI_BehaviourParent
                     if (inAttackrange ()) {
 
                         ai.isStopped = true;
+
+
                         ai.SetPath (null);
+
+                       
                         Shoot ();
                         
 
@@ -229,6 +240,7 @@ public class Enemy_Behaviour : AI_BehaviourParent
             }
 
             nextFire = Time.time + (weaponScriptRef.GetEffectiveFireRate ());
+            SetRandomPathTime ();
             // else nextFire = 0f;
 
 

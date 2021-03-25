@@ -53,8 +53,11 @@ public class QuestParent : MonoBehaviour
 
     public virtual void SetSpawnPrefebs ()
     {
-        SpawnerRef.currentype = SpawnType;
         SpawnerRef.numObjects = requiredAmount;
+        SpawnerRef.currentype = SpawnType;
+        
+        SpawnerRef.QuestRef = this;
+        SpawnerRef.isQuestSpawner = true;
         SpawnerRef.setSpawnPrefabs (SpawnPrefabs);
     }
 
@@ -71,7 +74,7 @@ public class QuestParent : MonoBehaviour
     {
         currentState = QuestProgress.Finished;
         QuestManager.instance.RemoveCompletedQuest (this);
-    
+        SpawnerRef.isQuestSpawner = false;
     }
 
 /*    protected void SetQuest_Fetch() 
@@ -109,6 +112,7 @@ public class QuestParent : MonoBehaviour
         if (currentAmount >= requiredAmount) 
         {
             currentState = QuestProgress.Finished;
+            QuestCompleted ();
             Debug.LogError ("Q U E S T Completed");
         }
 

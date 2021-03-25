@@ -22,7 +22,8 @@ public class EnemyRoomManager : MonoBehaviour
 
     private void Start () 
     {
-       
+        colliderRef = GetComponent<BoxCollider2D> ();
+        Totalwaves = EnemyWaveQuest.Count;
     }
 
     private void OnTriggerEnter2D (Collider2D collision) {
@@ -59,8 +60,16 @@ public class EnemyRoomManager : MonoBehaviour
 
     public void BeginnexttWave() 
     {
+        Debug.LogWarning (currentWave);
+
+
         if (currentWave <= Totalwaves) {
-            EnemyWaveQuest[currentWave - 1].StartQuest ();
+
+            EnemyWaveQuest[0].StartQuest ();
+            EnemyWaveQuest.RemoveAt(0);
+
+
+            foreach(QuestParent g in EnemyWaveQuest) { Debug.LogWarning (g); }
 
             currentWave++;
 

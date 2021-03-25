@@ -2057,6 +2057,7 @@ GameObject:
   - component: {fileID: 755794784766831477}
   - component: {fileID: -4896927953540775538}
   - component: {fileID: -1311679352306139692}
+  - component: {fileID: 8679684717107266974}
   m_Layer: 7
   m_Name: Enemy_Raider
   m_TagString: Enemy
@@ -2197,11 +2198,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerRef: {fileID: 0}
-  attackRange: 30
+  attackRange: 10
   aimTransform: {fileID: 755794785826865378}
   targetRange: 100
   pathgen: {fileID: 755794784766831472}
-  newPathTime: 7
+  newPathTime: 2
   weaponRootRef: {fileID: 755794785224612101}
   ObjectSprite: {fileID: 755794785149379737}
   endpointTransform: {fileID: 755794785592942334}
@@ -2218,6 +2219,48 @@ SortingGroup:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 4
+--- !u!114 &8679684717107266974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 755794784766831482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab4a50b367ac2124db98c78d66471880, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rend:
+  - {fileID: 755794783942551751}
+  - {fileID: 755794785301106534}
+  - {fileID: 755794784589295782}
+  - {fileID: 755794784509916681}
+  - {fileID: 755794784386865150}
+  - {fileID: 755794784204131700}
+  - {fileID: 755794784316738605}
+  - {fileID: 755794784350994604}
+  - {fileID: 755794784945917359}
+  - {fileID: 755794785356168096}
+  - {fileID: 755794784979097509}
+  - {fileID: 755794784580081402}
+  - {fileID: 755794785757520334}
+  - {fileID: 755794785738076832}
+  - {fileID: 755794784958063188}
+  - {fileID: 755794784954756424}
+  - {fileID: 755794784920998545}
+  - {fileID: 755794784396525883}
+  - {fileID: 755794784059272939}
+  - {fileID: 755794785809956476}
+  - {fileID: 755794784640472073}
+  - {fileID: 755794784533690507}
+  - {fileID: 755794784559749905}
+  - {fileID: 755794784320490802}
+  - {fileID: 755794784019573606}
+  - {fileID: 755794784707641456}
+  - {fileID: 755794785836059850}
+  - {fileID: 755794785672300547}
+  shader: {fileID: -6465566751694194690, guid: ea37d2a52ce4f54439b82b32479f5c06, type: 3}
 --- !u!1 &755794784771202740
 GameObject:
   m_ObjectHideFlags: 0

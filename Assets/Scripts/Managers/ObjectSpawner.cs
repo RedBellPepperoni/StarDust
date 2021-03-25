@@ -12,11 +12,11 @@ public class ObjectSpawner : MonoBehaviour
     public SpawnerType currentype;
 
     public int numObjects;
-    [SerializeField] List <Transform> spawnPoints;
+    public List <Transform> spawnPoints;
   
-    [SerializeField] List<GameObject> SpawnPrefabs;
+    public List<GameObject> SpawnPrefabs;
 
-   
+    List<Transform> TempPoints = new List<Transform> ();
 
 
     void Start()
@@ -35,10 +35,15 @@ public class ObjectSpawner : MonoBehaviour
         int numSpawn;
 
         int Randomspawn;
-        
+
 
         //Declaring Temporary list to allow for popping out of elements so that enemies dont spawn on the same spawnPoint
-        List<Transform> TempPoints = spawnPoints;
+
+        if (TempPoints.Count != 0)
+            TempPoints.Clear ();
+
+        foreach(Transform t in spawnPoints) 
+        { TempPoints.Add (t); }
 
 
         numSpawn = numObjects;
@@ -48,7 +53,7 @@ public class ObjectSpawner : MonoBehaviour
 
                 for (int i = 0; i < TempPoints.Count; i++) {
 
-                    if (spawnPoints.Count == SpawnPrefabs.Count) 
+                    if (spawnPoints.Count == SpawnPrefabs.Count-1) 
                     {
                         GameObject obj = Instantiate (SpawnPrefabs[i], TempPoints[i]);
 
@@ -74,7 +79,7 @@ public class ObjectSpawner : MonoBehaviour
 
                 foreach (Transform t in spawnPoints) 
                 {
-                    Randomspawn = Random.Range (0, SpawnPrefabs.Count);
+                    Randomspawn = Random.Range (0, SpawnPrefabs.Count-1);
                     GameObject obj = Instantiate (SpawnPrefabs [Randomspawn] , t);
 
                     if (isQuestSpawner) {
@@ -90,7 +95,7 @@ public class ObjectSpawner : MonoBehaviour
             case SpawnerType.ranLocfixObj:
 
                 foreach (GameObject g in SpawnPrefabs) {
-                    int tempPointIndex = Random.Range (0, TempPoints.Count);
+                    int tempPointIndex = Random.Range (0, TempPoints.Count - 1);
                     GameObject obj = Instantiate (g, TempPoints[tempPointIndex]);
 
                     TempPoints.RemoveAt (tempPointIndex);
@@ -106,13 +111,21 @@ public class ObjectSpawner : MonoBehaviour
 
             case SpawnerType.ranLocranObj:
 
+                Debug.LogWarning (numSpawn);
+                Debug.LogWarning (spawnPoints.Count);
+                Debug.LogWarning (SpawnPrefabs.Count);
+
                 for (int i = 1; i <= numSpawn; i++) {
-                    Randomspawn = Random.Range (0, SpawnPrefabs.Count);
-                    int tempPointIndex = Random.Range (0, TempPoints.Count);
+                    Randomspawn = Random.Range (0, SpawnPrefabs.Count-1);
+
+
+                    int tempPointIndex = Random.Range (0, TempPoints.Count-1);
+
+                   
 
                     GameObject obj = Instantiate (SpawnPrefabs[Randomspawn], TempPoints[tempPointIndex]);
 
-
+                    
                     TempPoints.RemoveAt (tempPointIndex);
 
 
@@ -123,6 +136,8 @@ public class ObjectSpawner : MonoBehaviour
                 }
 
                 break;
+
+           
 
 
 
@@ -153,7 +168,11 @@ public class ObjectSpawner : MonoBehaviour
     
     public void setSpawnPrefabs(List<GameObject> inPrefabs) 
     {
-        SpawnPrefabs = inPrefabs;
+        if (SpawnPrefabs.Count != 0)
+        SpawnPrefabs.Clear ();
+
+        foreach(GameObject g in inPrefabs) 
+        { SpawnPrefabs.Add (g); }
     
     
     }

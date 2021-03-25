@@ -44,6 +44,8 @@ public class Weapon_Bullet : MonoBehaviour
 
     private void Start()
     {
+        transform.parent = null;
+
         Invoke ("Delete", 5);
     }
 

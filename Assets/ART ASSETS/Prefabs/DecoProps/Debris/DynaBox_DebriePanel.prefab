@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5844655358725401164}
   - component: {fileID: 7779487120343014934}
   - component: {fileID: 3779436050982254232}
+  - component: {fileID: -4942537380759747133}
   m_Layer: 0
   m_Name: DynaBox_DebriePanel
   m_TagString: Untagged
@@ -69,9 +70,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1752682665
-  m_SortingLayer: -1
-  m_SortingOrder: 2
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 3
   m_Sprite: {fileID: -683965783811021112, guid: 330c13fff3b5cee47a4c3b3c2c92d27b,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -101,7 +102,19 @@ Rigidbody2D:
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &-4942537380759747133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1660962381832120238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78bac14e097cfe643a029c0936716e32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
