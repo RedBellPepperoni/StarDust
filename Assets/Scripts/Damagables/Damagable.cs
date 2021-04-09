@@ -31,7 +31,7 @@ public class Damagable : MonoBehaviour
     public float Getcurrhealth() { return currentHealth; }
     public float Getmaxhealth() { return maxHealth; }
 
-    public void SetMaxHealth (float health) { maxHealth = health; }
+    public virtual void SetMaxHealth (float health) { maxHealth = health; }
 
      void Awake()
     {
@@ -41,6 +41,8 @@ public class Damagable : MonoBehaviour
         currentHealth = maxHealth;
 
         isDead = false;
+
+       
     }
     public virtual void TakeDamage(float inphyDmg, float inPlasmaDmg, float infireDmg, float iniceDmg, float inelecDmg)
     {
@@ -76,14 +78,16 @@ public class Damagable : MonoBehaviour
     }
 
 
-    public virtual void heal()
+    public virtual void heal(float health)
     {
-        float healHealth =  maxHealth * (HealModifier /100);
+      //  float healHealth =  maxHealth * (HealModifier /100);
 
-        currentHealth += healHealth;
+        currentHealth += health;
 
         if (currentHealth >= maxHealth)
             currentHealth = maxHealth;
+
+
 
     }
 

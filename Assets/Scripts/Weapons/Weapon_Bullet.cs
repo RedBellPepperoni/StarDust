@@ -17,6 +17,7 @@ public class Weapon_Bullet : MonoBehaviour
    
 
     [SerializeField] private GameObject classicImpactprefab;
+    [SerializeField] private GameObject BloodEffect;
     [SerializeField] private GameObject energyImpactprefab;
     [SerializeField] private GameObject explosiveImpactprefab;
     
@@ -54,21 +55,22 @@ public class Weapon_Bullet : MonoBehaviour
     {
         
        
-       if (collision.gameObject.layer == LayerMask.NameToLayer ("Damagable")&& !isEnemybullet && collision.gameObject.tag != "Player") //&& collision.gameObject.tag == "Enemy"
-       {
-                collision.GetComponent<Damagable> ().TakeDamage (physicalDamage,plasmaDamage,fireDamage,iceDamage,electricDamage);
+      
 
-            ShowImpact ();
+
+       if (collision.gameObject.layer == LayerMask.NameToLayer ("Damagable") && !isEnemybullet && collision.gameObject.tag == "Enemy") //&& collision.gameObject.tag == "Enemy"
+        {
+            collision.GetComponent<Damagable> ().TakeDamage (physicalDamage, plasmaDamage, fireDamage, iceDamage, electricDamage);
+
+            ShowImpact (2);
             Delete ();
-        }
-
-          
-
-
+        } 
+        
+        
         else if (collision.gameObject.tag == "Player" && isEnemybullet && collision.gameObject.layer == 11) {
 
             collision.GetComponent<Damagable> ().TakeDamage (physicalDamage, plasmaDamage, fireDamage, iceDamage, electricDamage);
-            ShowImpact ();
+            ShowImpact (2);
             Delete ();
         }
 
@@ -80,13 +82,19 @@ public class Weapon_Bullet : MonoBehaviour
             return;
        }
 
-
-
+       else if(collision.gameObject.tag == "Shield" && isEnemybullet)
+            { return; } 
+       
+       
+       
+       
+       
+       
        else if (collision.gameObject.layer == LayerMask.NameToLayer ("Damagable")  ) //&& collision.gameObject.tag == "Enemy"
        {
             collision.GetComponent<Damagable> ().TakeDamage (physicalDamage, plasmaDamage, fireDamage, iceDamage, electricDamage);
 
-            ShowImpact ();
+            ShowImpact (1);
             Delete ();
         }
 
@@ -96,7 +104,7 @@ public class Weapon_Bullet : MonoBehaviour
 
        if(collision.gameObject.layer == LayerMask.NameToLayer("Obstacle")) 
        {
-            ShowImpact ();
+            ShowImpact (1);
             Delete ();
         }
 
@@ -104,15 +112,25 @@ public class Weapon_Bullet : MonoBehaviour
     }
 
 
-    private void ShowImpact() 
+    private void ShowImpact(int incase) 
     {
         GameObject effect;
 
         Quaternion Rot = Quaternion.identity;
         Rot.eulerAngles = new Vector3(0f, 0f, Random.Range(0, 360f));
 
+        switch(incase) 
+        {
+            case 1: effect = Instantiate(classicImpactprefab, transform.position, Rot);
+                break;
+            case 2: effect = Instantiate (BloodEffect, transform.position, Rot);
 
-        effect = Instantiate(classicImpactprefab, transform.position, Rot);
+                break;
+
+            default: effect = Instantiate (classicImpactprefab, transform.position, Rot);
+                break;
+        }
+        
 
 
         Destroy(effect, 3f);

@@ -2,18 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Quest_Collectable : Collectable
+public class Quest_Collectable : Interactable
 {
     QuestParent QuestRef;
 
-    protected override void ObjPicked () 
+    public override void ObjPicked () 
     {
 
         base.ObjPicked ();
 
         if (canBePicked) 
         {
-            if (pickableType == Type.Collectable) 
+            if (pickableType == Type.Interactable) 
             {
                 QuestRef.ProgressQuest ();
 

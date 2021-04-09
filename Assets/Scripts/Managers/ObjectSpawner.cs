@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ObjectSpawner : MonoBehaviour
 {
-
+   
     public enum SpawnerType { fixLocfixObj, fixLocranObj, ranLocfixObj, ranLocranObj };
     public bool isQuestSpawner;
     public QuestParent QuestRef;

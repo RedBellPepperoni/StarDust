@@ -4,39 +4,30 @@ using UnityEngine;
 
 public class TeleportEffect : MonoBehaviour
 {
-    [SerializeField] Renderer[] rend;
-    [SerializeField] private Shader shader;
-     private Material mat;
     
-    private float dissolveAmt;
-    // private bool isDisolving;
-    float time = 1;
+   
 
-
-
-
+    public GameObject SpawnEffect;
+    [SerializeField] List<GameObject> ObjectRef;
+    
     private void Start () 
     {
-        mat = new Material (shader);
+        GameObject obj = Instantiate (SpawnEffect, transform);
 
-        foreach (Renderer r in rend) { r.material = mat; }
-        
+        foreach (GameObject g in ObjectRef) {
+            g.SetActive (false);
+        }
 
-        StartCoroutine ("Countdown");
+
+        Invoke ("ShowObject", 2f);
     }
 
 
-    IEnumerator Countdown () {
-        float counter = time;
-        while (counter > 0) {
-
-            yield return new WaitForSeconds (0.05f);
-
-
-            counter-=0.05f;
-            mat.SetFloat ("_DissolveAmt",counter);
+    private void ShowObject() 
+    {
+        foreach (GameObject g in ObjectRef) {
+            g.SetActive (true);
         }
-        
     }
 
 }

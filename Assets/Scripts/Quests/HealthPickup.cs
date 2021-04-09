@@ -2,20 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HealthPickup : Collectable
+public class HealthPickup : Interactable
 {
     // Start is called before the first frame update
     [SerializeField] float HealthValue = 20f;
 
-    
+    public bool healthFull;
 
-    protected override void ObjPicked () {
+
+
+    public override void ObjPicked () {
         base.ObjPicked ();
 
-        Gamemanager.instance.AddHealthObjtoBag (this.gameObject);
-
        
-        Delete (); 
+        if ((Player_Damagable.instance.Getcurrhealth()< Player_Damagable.instance.Getmaxhealth()) && canBePicked) {
+
+            Gamemanager.instance.AddHealth (HealthValue);
+            Delete ();
+
+        }
+
+
     }
 
 }

@@ -12,13 +12,13 @@ public class PlayerController : MonoBehaviour
     public static PlayerController instance;
 
     [SerializeField] GameObject PlayerSprite;
-
+    public float maxVelocityChange = 10.0f;
     [SerializeField] List<GameObject> currWeaponList;
    
     [SerializeField] float moveSpeed = 8f;
 
 
-
+    [SerializeField] private GameObject Gunarm;
 
     [SerializeField] private GameObject PlayerCamRef;
     [SerializeField] private GameObject BodyRootRef;
@@ -49,6 +49,8 @@ public class PlayerController : MonoBehaviour
           //  DontDestroyOnLoad(gameObject);
             instance = this;
         }
+
+
     }
 
     void Start()
@@ -71,13 +73,26 @@ public class PlayerController : MonoBehaviour
 
     public void MovePlayer(Vector2 movement)
    {
+        //calculating the speed and direction of motion
+        Vector2 targetvelocity = movement;
 
-        
+        targetvelocity = transform.TransformDirection (targetvelocity);
+        targetvelocity *= moveSpeed;
 
-            rb.MovePosition (rb.position + movement * moveSpeed * Time.fixedDeltaTime);
+        //   rb.MovePosition (rb.position + movement * moveSpeed * Time.fixedDeltaTime);
 
-            //checking state for animation
-            if (movement.magnitude > 0) {
+
+        //adding required forces to move
+        Vector2 velocity = rb.velocity;
+        Vector2 velocityChange = (targetvelocity - velocity);
+
+        velocityChange.x = Mathf.Clamp (velocityChange.x, -maxVelocityChange, maxVelocityChange);
+        velocityChange.y = Mathf.Clamp (velocityChange.y, -maxVelocityChange, maxVelocityChange);
+
+        rb.AddForce (velocityChange, ForceMode2D.Impulse);
+
+        //checking state for animation
+        if (movement.magnitude > 0) {
                 CurrentState = PlayerState.Moving;
               
             } else if (movement.magnitude == 0) {
@@ -121,6 +136,7 @@ public class PlayerController : MonoBehaviour
     public void Death() 
     {
         SetAnim ();
+      //  Gunarm.SetActive (true);
         Action_Manager.instance.HideWeaponhand ();
     
     }

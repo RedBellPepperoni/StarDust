@@ -94,6 +94,7 @@ GameObject:
   - component: {fileID: 8783558852240233046}
   - component: {fileID: 7725457713258302236}
   - component: {fileID: 899105091728623408}
+  - component: {fileID: 7089748451535076415}
   m_Layer: 7
   m_Name: EnemyBullet_pistol
   m_TagString: Untagged
@@ -132,6 +133,8 @@ MonoBehaviour:
   rb: {fileID: 7725457713258302236}
   isEnemybullet: 1
   classicImpactprefab: {fileID: 4660804707886290431, guid: 50db3a8c291c52e40bf467104daf01b2,
+    type: 3}
+  BloodEffect: {fileID: 3912854181260219953, guid: 2dbf6aa459393d84d883df00dc1f7537,
     type: 3}
   energyImpactprefab: {fileID: 0}
   explosiveImpactprefab: {fileID: 0}
@@ -172,6 +175,17 @@ CircleCollider2D:
   m_Offset: {x: 0.041776717, y: 0}
   serializedVersion: 2
   m_Radius: 0.0648488
+--- !u!210 &7089748451535076415
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6221161495908124953}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 5
 --- !u!1 &6265835855144512276
 GameObject:
   m_ObjectHideFlags: 0
@@ -222,7 +236,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

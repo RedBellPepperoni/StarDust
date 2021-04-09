@@ -75,6 +75,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pickableType: 2
   HealthValue: 60
+  healthFull: 0
 --- !u!95 &3326633097192911211
 Animator:
   serializedVersion: 3

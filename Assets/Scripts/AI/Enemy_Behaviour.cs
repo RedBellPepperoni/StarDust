@@ -6,15 +6,20 @@ public class Enemy_Behaviour : AI_BehaviourParent
 {
     // Start is called before the first frame update
 
-    
 
+    private bool isStopped = true;
 
     protected override void Start () {
         base.Start ();
 
         findTarget (getroamPosition (transform.position));
-        SetAIBehaviour ();
+        Invoke("SetAIBehaviour",2.2f);
+        Invoke ("setStart", 2.2f);
+
     }
+
+    private void setStart() 
+    { isStopped = false; }
 
     protected override void Awake () {
         base.Awake ();
@@ -38,8 +43,7 @@ public class Enemy_Behaviour : AI_BehaviourParent
 
     protected override void FixedUpdate () {
 
-
-       SetAIBehaviour ();
+        if (!isStopped) { SetAIBehaviour (); }
        // if (canSeetarget) 
     }
 
@@ -56,7 +60,7 @@ public class Enemy_Behaviour : AI_BehaviourParent
 
 
 
-       
+        
 
 
         switch (currentBehaviour) {

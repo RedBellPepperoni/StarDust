@@ -79,8 +79,43 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 755794785149379733, guid: 89dc3aeca794d1d40b71b76db5d68d46,
         type: 3}
+      propertyPath: iceDamReduction
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 755794785149379733, guid: 89dc3aeca794d1d40b71b76db5d68d46,
+        type: 3}
+      propertyPath: fireDamReduction
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 755794785149379733, guid: 89dc3aeca794d1d40b71b76db5d68d46,
+        type: 3}
+      propertyPath: plasmaDamReduction
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 755794785149379733, guid: 89dc3aeca794d1d40b71b76db5d68d46,
+        type: 3}
+      propertyPath: electricDamReduction
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 755794785149379733, guid: 89dc3aeca794d1d40b71b76db5d68d46,
+        type: 3}
       propertyPath: physicalDamReduction
-      value: 100
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 755794785224612101, guid: 89dc3aeca794d1d40b71b76db5d68d46,
+        type: 3}
+      propertyPath: m_Name
+      value: Weapon_RaiderPistol
+      objectReference: {fileID: 0}
+    - target: {fileID: 8103413731096540361, guid: 89dc3aeca794d1d40b71b76db5d68d46,
+        type: 3}
+      propertyPath: rateOfFire
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8103413731096540361, guid: 89dc3aeca794d1d40b71b76db5d68d46,
+        type: 3}
+      propertyPath: hasInfiniteAmmo
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 89dc3aeca794d1d40b71b76db5d68d46, type: 3}

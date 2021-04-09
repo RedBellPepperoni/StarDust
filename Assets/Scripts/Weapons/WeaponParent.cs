@@ -13,6 +13,13 @@ public class WeaponParent : MonoBehaviour
 
     public Transform Endpoint;
 
+    [SerializeField] float AimRange = 13f;
+
+    public float GetAimRange () 
+    {
+        return AimRange;
+    }
+  
   
     private bool weaponEmpty;
 
@@ -127,7 +134,10 @@ public class WeaponParent : MonoBehaviour
                     } 
                     else 
 
-                    { LowerCurrentBulletCount (bulletUse); }
+                    { 
+                    LowerCurrentBulletCount (bulletUse);
+                    weaponAnimator.SetTrigger ("Shoot");
+                    }
                
              break;
 

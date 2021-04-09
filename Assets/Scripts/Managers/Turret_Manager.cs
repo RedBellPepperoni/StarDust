@@ -89,27 +89,20 @@ public class Turret_Manager : MonoBehaviour
 
     }
 
-    public void eatup () {
-
-
-    }
-    public void coolDown () {
-
-
-
-    }
+   
 
     public void Shoot () {
 
-
+        StopAllCoroutines ();
         anim.SetBool ("canShoot", true);
 
         StartCoroutine ("Heatup");
 
+
     }
 
     void StopShoot () {
-
+        StopAllCoroutines ();
 
         anim.SetBool ("canShoot", false);
 

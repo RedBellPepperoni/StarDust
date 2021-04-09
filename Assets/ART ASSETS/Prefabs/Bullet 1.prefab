@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8783558852240233046}
   - component: {fileID: 7725457713258302236}
   - component: {fileID: 899105091728623408}
+  - component: {fileID: 7126815439149184940}
   m_Layer: 7
   m_Name: Bullet 1
   m_TagString: Untagged
@@ -49,6 +50,8 @@ MonoBehaviour:
   rb: {fileID: 7725457713258302236}
   isEnemybullet: 0
   classicImpactprefab: {fileID: 4660804707886290431, guid: 50db3a8c291c52e40bf467104daf01b2,
+    type: 3}
+  BloodEffect: {fileID: 3912854181260219953, guid: 2dbf6aa459393d84d883df00dc1f7537,
     type: 3}
   energyImpactprefab: {fileID: 0}
   explosiveImpactprefab: {fileID: 0}
@@ -89,6 +92,17 @@ CircleCollider2D:
   m_Offset: {x: 0.041776717, y: 0}
   serializedVersion: 2
   m_Radius: 0.0648488
+--- !u!210 &7126815439149184940
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6221161495908124953}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 5
 --- !u!1 &6265835855144512276
 GameObject:
   m_ObjectHideFlags: 0
@@ -140,7 +154,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -163,7 +177,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 5775410667342098198, guid: d306b6b1f445e8044a182df06c37171d,
     type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.97272664, b: 0.8820755, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -245,7 +259,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 48b2fbfe82dfc364e9e224b077f98d7f, type: 3}
-  m_Color: {r: 1, g: 0.560187, b: 0.051886797, a: 0.28235295}
+  m_Color: {r: 1, g: 0.72753763, b: 0.05098039, a: 0.41960785}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

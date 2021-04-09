@@ -77,6 +77,16 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8103413731096540361, guid: 89dc3aeca794d1d40b71b76db5d68d46,
+        type: 3}
+      propertyPath: rateOfFire
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8103413731096540361, guid: 89dc3aeca794d1d40b71b76db5d68d46,
+        type: 3}
+      propertyPath: hasInfiniteAmmo
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 755794784766831479, guid: 89dc3aeca794d1d40b71b76db5d68d46, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 89dc3aeca794d1d40b71b76db5d68d46, type: 3}

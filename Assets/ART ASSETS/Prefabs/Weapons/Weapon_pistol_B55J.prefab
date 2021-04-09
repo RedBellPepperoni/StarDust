@@ -322,6 +322,7 @@ GameObject:
   - component: {fileID: 4080594546907436827}
   - component: {fileID: 4080594546907436820}
   - component: {fileID: 4080594546907436821}
+  - component: {fileID: 1120287175}
   m_Layer: 7
   m_Name: Weapon_pistol_B55J
   m_TagString: Untagged
@@ -375,16 +376,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06e746bdc89c1fa4b8afe07ad87c2ce2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hasInfiniteAmmo: 0
   BulletPrefab: {fileID: 6221161495908124953, guid: 15a45906b1f23c944a34696443459cca,
     type: 3}
   currWeaponType: 0
+  Endpoint: {fileID: 0}
+  AimRange: 20
   bulletSpeed: 80
-  weaponDamage: 40
-  rateOfFire: 2
+  physicalDamage: 20
+  plasmaDamage: 0
+  fireDamage: 0
+  iceDamage: 0
+  electricDamage: 0
+  rateOfFire: 3
   magazineSize: 10
   totalBullets: 300
   reloadTime: 2
-  isChargable: 0
+  bulletUse: 1
+  shotSpreadangle: 30
+  burstCount: 5
+  isBurst: 0
+--- !u!210 &1120287175
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4080594546907436826}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 4
 --- !u!1 &4080594546980182551
 GameObject:
   m_ObjectHideFlags: 0
@@ -409,8 +431,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4080594546980182551}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0.12, y: 0.11, z: 0.0036621}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_Children:
   - {fileID: 4080594546840000617}
   - {fileID: 4080594546056126415}

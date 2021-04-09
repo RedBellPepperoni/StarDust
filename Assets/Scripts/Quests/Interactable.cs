@@ -4,11 +4,11 @@ using UnityEngine;
 
 
 [RequireComponent (typeof (Collider2D))]
-public class Collectable : MonoBehaviour
+public class Interactable : MonoBehaviour
 {
     
-     public enum Type {Collectable, Pickable, Consumable }
-    [SerializeField]protected Type pickableType = Type.Collectable;
+     public enum Type {Interactable, Pickable, Consumable }
+    [SerializeField]protected Type pickableType = Type.Interactable;
 
     protected bool canBePicked = false;
 
@@ -18,8 +18,12 @@ public class Collectable : MonoBehaviour
        { switch(pickableType) 
          {
 
-                case Type.Collectable:
+                case Type.Interactable:
                     canBePicked = true;
+
+                    Gamemanager.instance.SetintObjRef (this.gameObject);
+                    Action_Manager.instance.SetMultiButtonFunc (Action_Manager.MultibtnState.Interact);
+                   
                     break;
 
 
@@ -38,11 +42,14 @@ public class Collectable : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player" && collision.gameObject.layer == 11) {
             canBePicked = false;
+            Gamemanager.instance.SetintObjRef (null);
+            Action_Manager.instance.SetMultiButtonFunc (Action_Manager.MultibtnState.Interact);
+
 
         }
     }
 
-    protected virtual void ObjPicked() 
+    public virtual void ObjPicked() 
     { 
     
 

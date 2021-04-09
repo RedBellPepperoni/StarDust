@@ -7,16 +7,20 @@ public class Action_Manager : MonoBehaviour
 {
 
     public static Action_Manager instance;
-    
+
 
     Vector2 movement;
-
+    //button related varables
     [SerializeField] FloatingJoystick MovejoystickRef;
-    
+    bool AtkbtnisPressed = false;
+    public enum MultibtnState {Shoot,Interact,Charge };
+    MultibtnState btnState = MultibtnState.Shoot;
+
     private Camera cam;
     CinemachineVirtualCamera vcam;
     private float zoom = 6f;
-    
+
+
     /// <summary>
     /// Player Related variables
     /// </summary>
@@ -39,7 +43,7 @@ public class Action_Manager : MonoBehaviour
     /// AutoAim_Variables
     /// </summary>
     [SerializeField] private float aimRange;
-    List<GameObject> enemyinRange = new List<GameObject>();
+    List<GameObject> enemyinRange = new List<GameObject> ();
     [SerializeField] float delayCheck = 0.2f;
     GameObject closestEnemy;
     Vector3 enemyPos;
@@ -47,147 +51,192 @@ public class Action_Manager : MonoBehaviour
 
     LayerMask layer = 1 << 6;
 
-    private void Awake() {
+    private void Awake () {
         if (instance == null) {
-          //  DontDestroyOnLoad (gameObject);
+            //  DontDestroyOnLoad (gameObject);
             instance = this;
         }
         initializeDependables ();
     }
 
-    void initializeDependables()
-    {
+    public void SetAimRange (float inAimRange) {
+        aimRange = inAimRange;
 
-        Manager = gameObject.GetComponent<Gamemanager>();
+    }
+
+    void initializeDependables () {
+
+        Manager = gameObject.GetComponent<Gamemanager> ();
         cam = Camera.main;
 
-        vcam = PlayerCamRef.GetComponent<CinemachineVirtualCamera>();
+        vcam = PlayerCamRef.GetComponent<CinemachineVirtualCamera> ();
 
-       
 
-        Debug.Log(vcam);
+
+        Debug.Log (vcam);
     }
 
 
 
 
 
-    void Update()
-    {
+    void Update () {
         if (PlayerController.instance.GetPlayerState () != PlayerController.PlayerState.Dead)
-            //handle Input here
+        //handle Input here
         {
             HandleMovement ();
 
             handleAiming ();
-           // handleShooting ();
+            // handleShooting ();
             //  Reload ();
 
-            
+
 
         }
 
-        if(Input.GetKeyDown("space")) { handleShooting (); }
+        if (AtkbtnisPressed) { handleShooting (); }
+
+        if (Input.GetKey ("space")) { handleShooting (); }
+
+    }
+
+    public void SetMultiButtonFunc(MultibtnState state) 
+    {
+        btnState = state;
+    
+    }
+
+    public void MultibtnkPress () {
+
+        switch(btnState) 
+        {
+            case MultibtnState.Shoot:
+
+                AtkbtnisPressed = true;
+                break;
+           
+        }
+        
+    }
+    public void MultibtnRelease () {
+        switch (btnState) {
+            case MultibtnState.Shoot:
+
+                AtkbtnisPressed = false;
+                break;
+
+           
+        }
+
        
     }
 
-    private void FixedUpdate()
-    {
-        if (PlayerController.instance.GetPlayerState () != PlayerController.PlayerState.Dead) 
-        {  //moving the physics body using the movement speed
+    public void MultibtnClick() 
+    { 
+        if(btnState == MultibtnState.Interact) 
+        {
+           GameObject intObj =  Gamemanager.instance.getInteObj ();
+
+            if(intObj.GetComponent<Interactable>() !=null) 
+            {
+                intObj.GetComponent<Interactable> ().ObjPicked ();
+            }
+        }
+    
+    }
+
+
+
+    private void FixedUpdate () {
+        if (PlayerController.instance.GetPlayerState () != PlayerController.PlayerState.Dead) {  //moving the physics body using the movement speed
             PlayerScriptRef.MovePlayer (movement);
         }
 
-       // handleShooting ();
+
+        if(Gamemanager.instance.getInteObj() ==null) 
+          { btnState = MultibtnState.Shoot; }
+        // handleShooting ();
     }
 
 
-    private void HandleMovement()
-    {
+    private void HandleMovement () {
         // movement.x = Input.GetAxisRaw("Horizontal");
         // movement.y = Input.GetAxisRaw("Vertical");
 
-       // if (Input.touchCount > 0)
-       // { 
-            
-            movement = MovejoystickRef.Direction ;
-/*
-        Vector3 aimLocalScale = Vector3.one;
-        if (movement.x < 0) {
-            flip (-1);
+        // if (Input.touchCount > 0)
+        // { 
 
-            aimLocalScale.y = -1f;
+        movement = MovejoystickRef.Direction;
+        /*
+                Vector3 aimLocalScale = Vector3.one;
+                if (movement.x < 0) {
+                    flip (-1);
+
+                    aimLocalScale.y = -1f;
 
 
-            aimTransform.position = AimRootRight.position;
-        } else if(movement.x > 0) {
-            flip (1);
-            aimLocalScale.y = 1f;
+                    aimTransform.position = AimRootRight.position;
+                } else if(movement.x > 0) {
+                    flip (1);
+                    aimLocalScale.y = 1f;
 
-            aimTransform.position = AimRootLeft.position;
-        }
-        aimTransform.localScale = aimLocalScale;
+                    aimTransform.position = AimRootLeft.position;
+                }
+                aimTransform.localScale = aimLocalScale;
 
-        */
+                */
 
-        
 
-           // setZoom ();
-       // }
+
+        // setZoom ();
+        // }
     }
 
-    public void setZoom()
-    {
+    public void setZoom () {
 
         float zoomChange = 10f;
 
-        
-       
-            zoom -= zoomChange * Time.deltaTime * 20f;
-       
-        
-            zoom += zoomChange * Time.deltaTime * 20f;
-        
 
 
-        zoom = Mathf.Clamp(zoom, 10f, 18f);
+        zoom -= zoomChange * Time.deltaTime * 20f;
+
+
+        zoom += zoomChange * Time.deltaTime * 20f;
+
+
+
+        zoom = Mathf.Clamp (zoom, 10f, 18f);
         vcam.m_Lens.OrthographicSize = zoom;
     }
 
 
-    public void flip(float horizontal)
-    {
+    public void flip (float horizontal) {
         Vector3 playerScale = PlayerSprite.transform.localScale;
-        if (horizontal < 0)
-        {
+        if (horizontal < 0) {
 
             playerScale.x = -1;
 
 
 
-        }
-
-        else
+        } else
             playerScale.x = 1;
         PlayerSprite.transform.localScale = playerScale;
 
 
     }
-    void Reload()
-    {
-        
-            Manager.StartReload();
+    void Reload () {
 
-        
+        Manager.StartReload ();
+
+
 
     }
 
-    private void handleAiming()
-    {
-        
+    private void handleAiming () {
+
         CheckNearbyEnemies ();
 
-       
+
 
 
         Vector3 aimLocalScale = Vector3.one;
@@ -198,20 +247,18 @@ public class Action_Manager : MonoBehaviour
 
 
 
-             angle = Mathf.Atan2 (aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;
+            angle = Mathf.Atan2 (aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;
 
 
-            
+
 
 
             //Flip Gun if aiming at the other side
 
-           
-          
-        } 
-        else 
-        {
-             angle = Mathf.Atan2 (movement.y, movement.x) * Mathf.Rad2Deg;
+
+
+        } else {
+            angle = Mathf.Atan2 (movement.y, movement.x) * Mathf.Rad2Deg;
 
         }
 
@@ -236,13 +283,12 @@ public class Action_Manager : MonoBehaviour
     }
 
 
-    public void handleShooting()
-    {
+    public void handleShooting () {
 
 
 
         if (PlayerController.instance.GetPlayerState () != PlayerController.PlayerState.Dead)
-            Manager.Onshoot();
+            Manager.Onshoot ();
 
 
 
@@ -254,19 +300,18 @@ public class Action_Manager : MonoBehaviour
         Gizmos.DrawWireSphere (PlayerScriptRef.transform.position, aimRange);
     }
 
-    public void HideWeaponhand() 
-    {
+    public void HideWeaponhand () {
         aimTransform.gameObject.SetActive (false);
 
     }
 
-    
 
-    
+
+
 
     void CheckNearbyEnemies () {
-        if(enemyinRange.Count!=0)
-        enemyinRange.Clear ();
+        if (enemyinRange.Count != 0)
+            enemyinRange.Clear ();
 
         Collider2D[] result = new Collider2D[10];
         Physics2D.OverlapCircleNonAlloc (PlayerScriptRef.transform.position, aimRange, result, layer);
@@ -274,7 +319,7 @@ public class Action_Manager : MonoBehaviour
 
 
         foreach (Collider2D c in result) {
-            if (c != null && c.tag == "Enemy") {
+            if (c != null && (c.tag == "Enemy" || c.tag == "Aimable")) {
                 enemyinRange.Add (c.gameObject);
 
 
@@ -284,27 +329,26 @@ public class Action_Manager : MonoBehaviour
 
         }
 
-      
 
-            ClosestEnemy ();
-      
+
+        ClosestEnemy ();
+
     }
 
-   
+
 
     void ClosestEnemy () {
         float range = aimRange;
 
-         enemyPos = Vector3.zero; ;
+        enemyPos = Vector3.zero; ;
 
         if (enemyinRange.Count != 0) {
-            foreach (GameObject enemyGameObject in enemyinRange) 
-            {
+            foreach (GameObject enemyGameObject in enemyinRange) {
 
 
                 float dist = Vector2.Distance (enemyGameObject.transform.position, PlayerController.instance.transform.position);
 
-                
+
                 if (dist < range) {
                     range = dist;
                     closestEnemy = enemyGameObject;
@@ -316,22 +360,21 @@ public class Action_Manager : MonoBehaviour
 
                 lowergun = false;
             } else lowergun = true;
-        }
-
-        else {
+        } else {
             lowergun = true;
         }
 
-        
-                    
 
-                 
-                
-        
-                
-        
+
+
+
+
+
+
+
     }
 
+   
 }
 
 

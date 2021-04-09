@@ -6,17 +6,19 @@ public class Gamemanager : MonoBehaviour
 {
     public static Gamemanager instance;
 
+
+    [SerializeField] GameObject InteractobjRef;
     [SerializeField] GameObject carryObj;
     [SerializeField] List<GameObject> HealthObjects;
 
     [SerializeField] private GameObject HoldInvRef;
-    [SerializeField] private GameObject HealthBAgRef;
+    
 
     private bool canCarryObj;
 
     [SerializeField] private GameObject UIRef;
     [SerializeField] private GameObject playerAim;
-    [SerializeField] private int Healthbagspace = 3;
+    
 
     [SerializeField] private GameObject lookatRef;
 
@@ -35,20 +37,11 @@ public class Gamemanager : MonoBehaviour
     private GameObject currWeaponref;
     [SerializeField] private GameObject WeaponRootRef;
 
-    public bool IsHealthBagEmpty () { return HealthObjects.Count < Healthbagspace; }
+   
+   
 
-    public void AddHealthObjtoBag (GameObject inHealthObj) 
-    {
-       if(HealthObjects.Count <3) 
-       {
-           
-            GameObject obj =  Instantiate (inHealthObj, HealthBAgRef.transform);
-            HealthObjects.Add (obj);
-        }
+    
 
-
-
-    }
 
     private void Awake()
     {
@@ -85,7 +78,8 @@ public class Gamemanager : MonoBehaviour
         aimGunEndPointTrasform = weaponScriptRef.Endpoint;
 
         bulletPrefab = weaponScriptRef.getBulletPrefab();
-      
+
+        Action_Manager.instance.SetAimRange (weaponScriptRef.GetAimRange());
 
         setUIweaponvalues();
     }
@@ -189,7 +183,7 @@ public class Gamemanager : MonoBehaviour
 
                     StartCoroutine(Reload(weaponScriptRef));
            
-                   Debug.Log("startedReload");
+                   
                 }
 
                 else Debug.Log("AlreadyFull");
@@ -249,4 +243,23 @@ public class Gamemanager : MonoBehaviour
             canCarryObj = false;
         }
     }
+
+
+    public void AddHealth(float inhealthvalue) 
+    {
+        Player_Damagable.instance.heal (inhealthvalue);
+    }
+
+    public void SetintObjRef(GameObject inObject) 
+    {
+        InteractobjRef = inObject;
+    }
+
+    public void UnSetintObjRef () 
+    {
+        InteractobjRef = null;
+    }
+
+    public GameObject getInteObj () 
+    { return InteractobjRef; }
 }

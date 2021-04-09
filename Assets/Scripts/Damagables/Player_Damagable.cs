@@ -4,9 +4,26 @@ using UnityEngine;
 
 public class Player_Damagable : Damagable
 {
+    public static Player_Damagable instance;
+   
+    
+    private void Awake () {
+
+       
+
+        if (instance == null) {
+            // DontDestroyOnLoad (gameObject);
+            instance = this;
 
 
-    private void Start () {
+        }
+
+        currentHealth = maxHealth;
+
+        isDead = false;
+    }
+
+        private void Start () {
 
         Gamemanager.instance.setUIPlayervalues (currentHealth, maxHealth);
 
@@ -27,5 +44,17 @@ public class Player_Damagable : Damagable
         PlayerController.instance.Death ();
 
 
+    }
+
+    public override void heal (float health) {
+        //  float healHealth =  maxHealth * (HealModifier /100);
+
+        currentHealth += health;
+
+        if (currentHealth >= maxHealth)
+            currentHealth = maxHealth;
+
+
+        Gamemanager.instance.setUIPlayervalues (currentHealth, maxHealth);
     }
 }

@@ -9,12 +9,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7535121436325617821}
-  m_Layer: 0
+  - component: {fileID: 8219238353032870514}
+  - component: {fileID: 8802423805551334084}
+  m_Layer: 6
   m_Name: Root
-  m_TagString: Untagged
+  m_TagString: Aimable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &7535121436325617821
 Transform:
@@ -32,6 +34,46 @@ Transform:
   m_Father: {fileID: 4607235686362810005}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8219238353032870514
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1087397962153121015}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd876eb4db549f842a62c6511c2fa6e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  deathEffect: {fileID: 0}
+  Parent: {fileID: 1087397962153121015}
+  HealModifier: 0
+  physicalDamReduction: 0
+  plasmaDamReduction: 0
+  fireDamReduction: 0
+  iceDamReduction: 0
+  electricDamReduction: 0
+  timetoRespawn: 3
+  shieldHealth: 200
+  shieldRef: {fileID: 0}
+--- !u!70 &8802423805551334084
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1087397962153121015}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.19537227}
+  m_Size: {x: 0.44688916, y: 0.76858777}
+  m_Direction: 0
 --- !u!1 &3714679171500821558
 GameObject:
   m_ObjectHideFlags: 0
@@ -42,12 +84,12 @@ GameObject:
   m_Component:
   - component: {fileID: 3180334110405958409}
   - component: {fileID: 3427522677208010895}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ShieldGenTop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &3180334110405958409
 Transform:
@@ -125,12 +167,13 @@ GameObject:
   m_Component:
   - component: {fileID: 5779583404211780394}
   - component: {fileID: 34739599408528098}
-  m_Layer: 0
+  - component: {fileID: 282722094586103279}
+  m_Layer: 7
   m_Name: ShieldGenMain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &5779583404211780394
 Transform:
@@ -198,6 +241,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!58 &282722094586103279
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8309103956572103380}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.0000009271833, y: -0.11199433}
+  serializedVersion: 2
+  m_Radius: 0.35286948
 --- !u!1 &8876170977414328372
 GameObject:
   m_ObjectHideFlags: 0
@@ -209,13 +268,12 @@ GameObject:
   - component: {fileID: 4607235686362810005}
   - component: {fileID: 6556650756299166820}
   - component: {fileID: 3091031885770164912}
-  - component: {fileID: 22794461048000502}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ShieldGenBase
-  m_TagString: Untagged
+  m_TagString: Aimable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &4607235686362810005
 Transform:
@@ -295,24 +353,3 @@ SortingGroup:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 4
---- !u!114 &22794461048000502
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8876170977414328372}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ae2dbfcc10947940a3438d9c1f5ab83, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 100
-  deathEffect: {fileID: 0}
-  Parent: {fileID: 0}
-  HealModifier: 0
-  physicalDamReduction: 0
-  plasmaDamReduction: 0
-  fireDamReduction: 0
-  iceDamReduction: 0
-  electricDamReduction: 0
