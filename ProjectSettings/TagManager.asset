@@ -7,11 +7,12 @@ TagManager:
   - Enemy
   - Aimable
   - Shield
+  - QuestItem
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Enemy
   - Water
   - UI
   - Damagable

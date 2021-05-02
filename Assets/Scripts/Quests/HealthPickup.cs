@@ -14,8 +14,9 @@ public class HealthPickup : Interactable
     public override void ObjPicked () {
         base.ObjPicked ();
 
-       
-        if ((Player_Damagable.instance.Getcurrhealth()< Player_Damagable.instance.Getmaxhealth()) && canBePicked) {
+
+        if ((Player_Damagable.instance.Getcurrhealth () < Player_Damagable.instance.Getmaxhealth ()) && canBePicked) {
+
 
             Gamemanager.instance.AddHealth (HealthValue);
             Delete ();
@@ -24,5 +25,7 @@ public class HealthPickup : Interactable
 
 
     }
-
 }
+
+
+    

@@ -6,7 +6,7 @@ public class EnemyRoomManager : MonoBehaviour
 {
     
 
-    public int Totalwaves = 1;
+    int Totalwaves = 1;
     int currentWave = 1;
     bool battlestarted = false;
 
@@ -102,7 +102,7 @@ public class EnemyRoomManager : MonoBehaviour
     { 
         foreach(Terminal_GateUnlocker g in GateTerminals) 
         {
-            g.PlayerUnlock ();
+            g.AutoUnlock ();
         }
     
     }

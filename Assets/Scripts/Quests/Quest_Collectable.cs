@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Quest_Collectable : Interactable
 {
-    QuestParent QuestRef;
+    public QuestParent QuestRef;
 
     public override void ObjPicked () 
     {
@@ -24,9 +24,12 @@ public class Quest_Collectable : Interactable
             {
                 if (Gamemanager.instance.CanCarryObject ()) 
                 {
+
+                    GetComponent<BoxCollider2D> ().enabled = false;
                     Gamemanager.instance.PickupObject (this.gameObject);
 
-                    Delete ();
+
+                    //Delete ();
                 }
 
                 else 
@@ -35,6 +38,18 @@ public class Quest_Collectable : Interactable
                 }
 
             }
+        }
+    }
+
+
+    public override void Dropped () {
+        base.Dropped ();
+
+        if(isPicked) {
+            isPicked = false;
+            GetComponent<BoxCollider2D> ().enabled = true;
+           
+
         }
     }
 }

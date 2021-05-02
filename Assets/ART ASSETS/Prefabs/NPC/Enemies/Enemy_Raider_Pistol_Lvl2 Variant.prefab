@@ -102,6 +102,36 @@ PrefabInstance:
       propertyPath: physicalDamReduction
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 755794785149379733, guid: 89dc3aeca794d1d40b71b76db5d68d46,
+        type: 3}
+      propertyPath: SkinColor.Array.data[3].b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 755794785149379733, guid: 89dc3aeca794d1d40b71b76db5d68d46,
+        type: 3}
+      propertyPath: SkinColor.Array.data[3].g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 755794785149379733, guid: 89dc3aeca794d1d40b71b76db5d68d46,
+        type: 3}
+      propertyPath: SkinColor.Array.data[3].r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 755794785149379733, guid: 89dc3aeca794d1d40b71b76db5d68d46,
+        type: 3}
+      propertyPath: SkinColor.Array.data[4].b
+      value: 0.5754717
+      objectReference: {fileID: 0}
+    - target: {fileID: 755794785149379733, guid: 89dc3aeca794d1d40b71b76db5d68d46,
+        type: 3}
+      propertyPath: SkinColor.Array.data[4].g
+      value: 0.5754717
+      objectReference: {fileID: 0}
+    - target: {fileID: 755794785149379733, guid: 89dc3aeca794d1d40b71b76db5d68d46,
+        type: 3}
+      propertyPath: SkinColor.Array.data[4].r
+      value: 0.5754717
+      objectReference: {fileID: 0}
     - target: {fileID: 755794785224612101, guid: 89dc3aeca794d1d40b71b76db5d68d46,
         type: 3}
       propertyPath: m_Name

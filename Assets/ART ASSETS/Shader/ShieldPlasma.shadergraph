@@ -387,6 +387,8 @@
         "m_GuidSerialized": "33c77e14-b703-4c6a-ac88-0cb170313e62"
     },
     "m_Name": "Color",
+    "m_DefaultRefNameVersion": 0,
+    "m_RefNameGeneratedByDisplayName": "",
     "m_DefaultReferenceName": "Color_00ddc3b8a31d4a809ad82c88962263b3",
     "m_OverrideReferenceName": "",
     "m_GeneratePropertyBlock": true,
@@ -426,6 +428,8 @@
         "m_GuidSerialized": "ac37aff7-84c5-4771-96f5-8807f80e48aa"
     },
     "m_Name": "Texture2D",
+    "m_DefaultRefNameVersion": 0,
+    "m_RefNameGeneratedByDisplayName": "",
     "m_DefaultReferenceName": "Texture2D_0d3d0062487741e592a0e0e35bc0b444",
     "m_OverrideReferenceName": "_MainTex",
     "m_GeneratePropertyBlock": true,
@@ -449,6 +453,8 @@
         "m_GuidSerialized": "76502bdd-5e27-497e-8c4d-29233fc55e48"
     },
     "m_Name": "LightColor",
+    "m_DefaultRefNameVersion": 0,
+    "m_RefNameGeneratedByDisplayName": "",
     "m_DefaultReferenceName": "Color_0dc68a2a05854ebe859f07650bae4a45",
     "m_OverrideReferenceName": "",
     "m_GeneratePropertyBlock": true,

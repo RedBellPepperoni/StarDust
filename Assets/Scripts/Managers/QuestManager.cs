@@ -11,6 +11,8 @@ public class QuestManager : MonoBehaviour
 
     public List<QuestParent> ActiveQuests;
 
+    QuestParent currentQuest;
+
 
     private void Awake () {
 
@@ -33,5 +35,17 @@ public class QuestManager : MonoBehaviour
         ActiveQuests.Remove (Quest);
     }
 
+    public void SetCurrentQuest(QuestParent quest)
+    {
+        currentQuest = quest;
+        SetQuestUI ();
+
+    }
+
+    private void SetQuestUI() 
+    {
+       
+      
+    }
 }
 

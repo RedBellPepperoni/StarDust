@@ -225,20 +225,23 @@ public class Bovem_Behaviour : AI_BehaviourParent
     public void Shoot () {
         RaycastHit2D hit;
 
-        Debug.LogWarning ("BNovemShoot");
+       
+
 
         //  Vector3 rayDirection = PlayerController.instance.transform.position - endpointTransform.posi;
 
         if (!weaponScriptRef.isEmpty () && !weaponScriptRef.isReloading () && Time.time > nextFire) {
-            LayerMask layerMask = ~1 << 7 | ~1 << 6;
-
+            LayerMask layerMask = 1 << 11;
+            
 
             hit = Physics2D.Raycast (endpointTransform.position, endpointTransform.right, 100, layerMask);
-          
-          //  Debug.DrawRay (endpointTransform.position, endpointTransform.right, Color.white, 0.1f, true);
-            if (hit.collider.gameObject.tag == "Player") {
 
 
+            Debug.LogWarning (hit.collider.tag);
+
+            if (hit.collider.gameObject.CompareTag ("Player")) {
+
+                
 
                 weaponScriptRef.OnShoot ();
 
@@ -346,11 +349,11 @@ public class Bovem_Behaviour : AI_BehaviourParent
             GroundAttack ();
     }
 
-    private void OnTriggerEnter2D (Collider2D collision) 
-    {
-        if(collision.tag == "Player")
+    private void OnTriggerEnter2D (Collider2D collision) {
+       
+        if (collision.tag == "Player")
         {
-
+          
             inGndAtckRange  = true;
 
             if (canGndAtk)

@@ -5,10 +5,13 @@ using UnityEngine;
 public class Gate_Controller : MonoBehaviour
 {
     Animator Gateanim;
-    bool islocked = true;
+    bool islocked = false;
+
+
+    [SerializeField]bool isSingle = false;
 
     bool Open;
-
+    [SerializeField]bool PlayerDetection = true; 
     
     [SerializeField] Color LockedColor;
     [SerializeField]Color UnlockedColor;
@@ -28,7 +31,8 @@ public class Gate_Controller : MonoBehaviour
     {
         islocked = false;
         RightIndicator.color = UnlockedColor;
-        LeftIndicator.color = UnlockedColor;
+
+        if (!isSingle) { LeftIndicator.color = UnlockedColor; }
 
     }
 
@@ -36,7 +40,7 @@ public class Gate_Controller : MonoBehaviour
     {
         islocked = true;
         RightIndicator.color = LockedColor;
-        LeftIndicator.color = LockedColor;
+        if (!isSingle) { LeftIndicator.color = LockedColor; }
 
         CloseSesame ();
     }
@@ -49,7 +53,8 @@ public class Gate_Controller : MonoBehaviour
         {
 
              Gateanim.SetBool ("Open",true); 
-           
+              Open = true;
+
         }
        
 
@@ -60,17 +65,18 @@ public class Gate_Controller : MonoBehaviour
     public void CloseSesame() 
     {
          Gateanim.SetBool ("Open",false);
-        
+        Open = false;
+
     }
 
     private void OnTriggerEnter2D (Collider2D collision) {
 
 
-        if (collision.gameObject.layer == LayerMask.NameToLayer ("Player")&& !Open) 
+        if (collision.gameObject.layer == LayerMask.NameToLayer ("Player")&& !Open && PlayerDetection) 
         {
            
                 OpenSesame ();
-            Open = true;
+          
            
         }
     }
@@ -81,13 +87,15 @@ public class Gate_Controller : MonoBehaviour
 
 
 
-        if (collision.gameObject.layer == LayerMask.NameToLayer ("Player")&& Open) 
+        if (collision.gameObject.layer == LayerMask.NameToLayer ("Player")&& Open && PlayerDetection) 
         {
             
                 CloseSesame ();
-            Open = false;
+           
                
             
         }
     }
+
+
 }

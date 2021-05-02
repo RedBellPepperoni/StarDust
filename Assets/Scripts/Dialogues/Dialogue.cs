@@ -2,17 +2,37 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Dialogue_Parent : MonoBehaviour
+
+
+[System.Serializable]
+
+public class Dialogue : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+
+
+   
+    public string[] randomsentences;
+    public string[] questSentences;
+    public string[] reQuestSentences;
+   
+
+
+
+
+    public string SayDialoguebyindex(int index)
     {
-        
+
+        return questSentences[index];
     }
 
-    // Update is called once per frame
-    void Update()
+    public string SayRandomDialogue() 
     {
-        
+        return randomsentences[Random.Range (0, randomsentences.Length)];
     }
+
+
+
+    public string ReQuestDialogue(int index) 
+    { return reQuestSentences[index]; }
+
 }

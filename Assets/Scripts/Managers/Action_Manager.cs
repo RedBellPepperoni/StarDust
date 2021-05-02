@@ -13,7 +13,7 @@ public class Action_Manager : MonoBehaviour
     //button related varables
     [SerializeField] FloatingJoystick MovejoystickRef;
     bool AtkbtnisPressed = false;
-    public enum MultibtnState {Shoot,Interact,Charge };
+    public enum MultibtnState {Shoot,Interact,Charge,Drop };
     MultibtnState btnState = MultibtnState.Shoot;
 
     private Camera cam;
@@ -36,6 +36,8 @@ public class Action_Manager : MonoBehaviour
     [SerializeField] private Transform AimRootLeft;
     [SerializeField] private Transform aimTransform;
     public Transform aimGunEndPointTrasform;
+
+    float savedAngle = 0;
 
 
 
@@ -70,14 +72,16 @@ public class Action_Manager : MonoBehaviour
         cam = Camera.main;
 
         vcam = PlayerCamRef.GetComponent<CinemachineVirtualCamera> ();
-
+        
 
 
         Debug.Log (vcam);
     }
 
 
-
+    private void Start () {
+        ShowWeaponHand ();
+    }
 
 
     void Update () {
@@ -97,6 +101,8 @@ public class Action_Manager : MonoBehaviour
         if (AtkbtnisPressed) { handleShooting (); }
 
         if (Input.GetKey ("space")) { handleShooting (); }
+
+        if (Input.GetKeyDown ("e")) { UseAbility (); }
 
     }
 
@@ -131,31 +137,59 @@ public class Action_Manager : MonoBehaviour
        
     }
 
-    public void MultibtnClick() 
-    { 
-        if(btnState == MultibtnState.Interact) 
-        {
-           GameObject intObj =  Gamemanager.instance.getInteObj ();
+    public void MultibtnClick () {
 
-            if(intObj.GetComponent<Interactable>() !=null) 
-            {
+        if (btnState == MultibtnState.Interact) {
+            GameObject intObj = Gamemanager.instance.getInteObj ();
+
+            if (intObj.GetComponent<Interactable> () != null) {
                 intObj.GetComponent<Interactable> ().ObjPicked ();
             }
+
+
+        } else if (btnState == MultibtnState.Drop) {
+            Gamemanager.instance.DropObj ();
         }
-    
     }
 
 
-
-    private void FixedUpdate () {
+    private void FixedUpdate () 
+    {
         if (PlayerController.instance.GetPlayerState () != PlayerController.PlayerState.Dead) {  //moving the physics body using the movement speed
             PlayerScriptRef.MovePlayer (movement);
         }
 
 
-        if(Gamemanager.instance.getInteObj() ==null) 
-          { btnState = MultibtnState.Shoot; }
+        if(Gamemanager.instance.getInteObj() ==null && Gamemanager.instance.CanCarryObject()) 
+        { 
+            
+          //  btnState = MultibtnState.Shoot; 
+        
+        }
         // handleShooting ();
+        SetMultiBtnState ();
+
+        
+    }
+
+    private void SetMultiBtnState() 
+    {
+        switch (btnState) {
+            case MultibtnState.Interact:
+                UIManager.instance.SetMultiBtnDisplay (Color.yellow);
+                break;
+
+            case MultibtnState.Drop:
+                UIManager.instance.SetMultiBtnDisplay (Color.green);
+                break;
+
+            case MultibtnState.Shoot:
+                UIManager.instance.SetMultiBtnDisplay (Color.red);
+                break;
+    
+
+
+        }
     }
 
 
@@ -243,6 +277,7 @@ public class Action_Manager : MonoBehaviour
         float angle;
 
         if (!lowergun) {
+          
             Vector2 aimDirection = (enemyPos - aimTransform.position).normalized;
 
 
@@ -257,8 +292,25 @@ public class Action_Manager : MonoBehaviour
 
 
 
-        } else {
-            angle = Mathf.Atan2 (movement.y, movement.x) * Mathf.Rad2Deg;
+        } 
+        
+        else 
+        {
+
+            
+           
+            
+            if (movement.magnitude != 0) {
+
+                angle = Mathf.Atan2 (movement.y, movement.x) * Mathf.Rad2Deg;
+                savedAngle = angle;
+            }
+            else 
+            {
+                angle = savedAngle;
+            }
+
+
 
         }
 
@@ -374,7 +426,20 @@ public class Action_Manager : MonoBehaviour
 
     }
 
+
+    public void ShowWeaponHand() 
+    {
+        aimTransform.gameObject.SetActive (true);
+        PlayerController.instance.HidePlayerhand ();
+
+    }
+
    
+    public void UseAbility() 
+    {
+        PlayerController.instance.UseAbility ();
+    }
+
 }
 
 

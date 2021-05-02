@@ -26,6 +26,12 @@ public class PlayerController : MonoBehaviour
 
 
 
+    float abilityRefresh = 5f;
+    bool  abilityUsable = true;
+
+    Vector2 targetvelocity;
+   
+
     private Animator PlayerAnimator;
 
     //Referencing The RigidBody
@@ -74,7 +80,7 @@ public class PlayerController : MonoBehaviour
     public void MovePlayer(Vector2 movement)
    {
         //calculating the speed and direction of motion
-        Vector2 targetvelocity = movement;
+         targetvelocity = movement;
 
         targetvelocity = transform.TransformDirection (targetvelocity);
         targetvelocity *= moveSpeed;
@@ -84,7 +90,8 @@ public class PlayerController : MonoBehaviour
 
         //adding required forces to move
         Vector2 velocity = rb.velocity;
-        Vector2 velocityChange = (targetvelocity - velocity);
+        Vector2 velocityChange;
+        velocityChange = (targetvelocity - velocity);
 
         velocityChange.x = Mathf.Clamp (velocityChange.x, -maxVelocityChange, maxVelocityChange);
         velocityChange.y = Mathf.Clamp (velocityChange.y, -maxVelocityChange, maxVelocityChange);
@@ -92,15 +99,12 @@ public class PlayerController : MonoBehaviour
         rb.AddForce (velocityChange, ForceMode2D.Impulse);
 
         //checking state for animation
-        if (movement.magnitude > 0) {
-                CurrentState = PlayerState.Moving;
-              
-            } else if (movement.magnitude == 0) {
-                CurrentState = PlayerState.Idle;
-               
-            }
+        SetWalkAnim (movement.magnitude);
+           
 
-        SetAnim ();
+        
+
+        //SetAnim ();
         
     }
 
@@ -112,32 +116,96 @@ public class PlayerController : MonoBehaviour
     }
 
 
-     void SetAnim()
+     void SetWalkAnim(float movementMag)
     {
-        switch(CurrentState) 
+
+        if (Gamemanager.instance.CanCarryObject ()) 
         {
-            case PlayerState.Moving:
-                PlayerAnimator.SetBool ("isWalking", true);
-                break;
-
-            case PlayerState.Idle:
-                PlayerAnimator.SetBool ("isWalking", false);
-                break;
-
-            case PlayerState.Dead:
-                PlayerAnimator.SetBool ("isDead", true);
-                break;
+            PlayerAnimator.SetBool ("isCarrying", false);
+        } 
         
+        
+        else 
+        {
+            PlayerAnimator.SetBool ("isCarrying", true);
         }
 
+
+
+        PlayerAnimator.SetFloat ("Movement", movementMag);
     }
+
+    
 
     
     public void Death() 
     {
-        SetAnim ();
-      //  Gunarm.SetActive (true);
+        PlayerAnimator.SetBool ("isDead", true);
+        //  Gunarm.SetActive (true);
         Action_Manager.instance.HideWeaponhand ();
+        ShowPlayerhand ();
+    }
+
+
+    public void HidePlayerhand () 
+    {
+     //  Gunarm.SetActive (false);
+        
+    }
+
+    public void ShowPlayerhand () 
+    {
+       Gunarm.SetActive (true);
+
+    }
+
+
+     void Dash() 
+    {
+        
+        rb.AddForce (targetvelocity.normalized *400, ForceMode2D.Impulse);
+    }
+
+    IEnumerator RefreshAbility() 
+    {
+
+        float counter = 0f;
+        float UIcounter = 0f;
+        float counterStep = abilityRefresh / 10f;
+        while (counter < abilityRefresh) {
+
+          
+            
+            yield return new WaitForSeconds (counterStep);
+            counter = counter + counterStep;
+
+            UIcounter = UIcounter + 0.1f;
+            UIManager.instance.AbilityProgress (UIcounter);
+        }
+
+        abilityUsable = true;
+        
+
+    }
+
+    public void UseAbility() 
+    {
+
+        if (abilityUsable) {
+            Dash ();
+            abilityUsable = false;
+
+            UIManager.instance.AbilityProgress (0);
+            StartCoroutine ("RefreshAbility");
+
+        }
     
     }
+
 }
+
+
+
+
+
+

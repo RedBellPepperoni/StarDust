@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class QuestParent : MonoBehaviour
 {//Quest Variables
+
+    public string questName;
+
     public enum QuestProgress { Disabled, Started, Finished, Rewarded, Failed };
 
     public QuestProgress currentState = QuestProgress.Disabled;
@@ -75,6 +78,8 @@ public class QuestParent : MonoBehaviour
         currentState = QuestProgress.Finished;
         QuestManager.instance.RemoveCompletedQuest (this);
         SpawnerRef.isQuestSpawner = false;
+
+        giveReward ();
     }
 
 /*    protected void SetQuest_Fetch() 
@@ -97,23 +102,30 @@ public class QuestParent : MonoBehaviour
     */
 
 
+    protected virtual void giveReward() 
+    {
+        Gamemanager.instance.Addcoins (coinReward);
+        Debug.LogError ("Rewarded");
+    }
+
     public virtual void ProgressQuest () 
     {
 
         currentAmount++;
-        Debug.LogError ("curramoutn  " + currentAmount);
-        isQuestComplete ();
+        
+        if (!ReturntoQuestGiver) 
+         { isQuestComplete (); }
 
     }
 
-    protected void isQuestComplete() 
+    public virtual void isQuestComplete() 
     {
 
         if (currentAmount >= requiredAmount) 
         {
             currentState = QuestProgress.Finished;
             QuestCompleted ();
-            Debug.LogError ("Q U E S T Completed");
+           // Debug.LogError ("Q U E S T Completed");
         }
 
     }

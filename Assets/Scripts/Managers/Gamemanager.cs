@@ -1,20 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class Gamemanager : MonoBehaviour
 {
     public static Gamemanager instance;
+    // [SerializeField] CinemachineVirtualCamera vcam;
 
+
+    [SerializeField] CinemachineBrain vcam;
 
     [SerializeField] GameObject InteractobjRef;
     [SerializeField] GameObject carryObj;
     [SerializeField] List<GameObject> HealthObjects;
 
     [SerializeField] private GameObject HoldInvRef;
-    
+    [SerializeField] Transform objpickTransform;
 
-    private bool canCarryObj;
+    private bool canCarryObj = true;
 
     [SerializeField] private GameObject UIRef;
     [SerializeField] private GameObject playerAim;
@@ -37,7 +41,8 @@ public class Gamemanager : MonoBehaviour
     private GameObject currWeaponref;
     [SerializeField] private GameObject WeaponRootRef;
 
-   
+
+    private int coinAmount = 0;
    
 
     
@@ -58,9 +63,19 @@ public class Gamemanager : MonoBehaviour
        playerAimRef = playerAim.GetComponent <PlayerWeaponAim_mouse>();
 
 
-        
+       
 
 
+    }
+
+
+    public void cameraLookAt(Transform target,int size) 
+    {
+        vcam.ActiveVirtualCamera.LookAt = target;
+        vcam.ActiveVirtualCamera.Follow = target;
+       
+       
+    
     }
 
 
@@ -90,7 +105,7 @@ public class Gamemanager : MonoBehaviour
         int magSize = weaponScriptRef.getMagazineSize ();
         int totalBullets = weaponScriptRef.getTotalBullets ();
         int reserveBullets = weaponScriptRef.getReserveBullets ();
-
+        UIManager.instance.SetCoinAmount (coinAmount);
         uimanagerRef.setWeaponUIvalues (bulletsinMag, magSize, totalBullets, reserveBullets);
 
 
@@ -227,20 +242,52 @@ public class Gamemanager : MonoBehaviour
         {
             carryObj = ObjRef;
 
+            //  GameObject obj =Instantiate (ObjRef, objpickTransform);
+            // obj.transform.localPosition = Vector3.zero;
+
+            ObjRef.transform.parent = objpickTransform;
+            ObjRef.transform.localPosition = Vector3.zero;
+
+
+            //carryObj = obj;
+            carryObj.GetComponent<Interactable> ().isPicked = true;
             canCarryObj = false;
+
+            Action_Manager.instance.SetMultiButtonFunc (Action_Manager.MultibtnState.Drop);
+
         }
 
-       
+        
 
 
     }
 
+    
+
     public void DropObj() 
     {
-        if (carryObj != null) 
+        if (carryObj != null)
+ 
         {
-            Instantiate (carryObj, transform);
-            canCarryObj = false;
+
+
+
+            carryObj.GetComponent<Interactable> ().Dropped ();
+           
+            
+           
+            objpickTransform.GetChild (0).transform.parent = null;
+            
+
+           // GameObject obj = Instantiate (carryObj, PlayerController.instance.transform);
+           // obj.transform.parent = null;
+            carryObj = null;
+
+           // objpickTransform.GetChild (0).gameObject.GetComponent<Interactable> ().Delete ();
+
+            canCarryObj = true;
+            Action_Manager.instance.SetMultiButtonFunc (Action_Manager.MultibtnState.Shoot);
+
         }
     }
 
@@ -262,4 +309,18 @@ public class Gamemanager : MonoBehaviour
 
     public GameObject getInteObj () 
     { return InteractobjRef; }
+
+
+    public int GetCoinAmount() 
+    {
+        return coinAmount;
+    }
+
+    public void Addcoins(int coins) 
+    {
+        coinAmount = coinAmount + coins;
+        UIManager.instance.SetCoinAmount (coinAmount);
+    }
 }
+
+

@@ -59,11 +59,16 @@ public class ObjectSpawner : MonoBehaviour
 
                         if (isQuestSpawner) 
                         {
+                            if (obj.GetComponent<Quest_Collectable> ()) {
+                                obj.GetComponent<Quest_Collectable> ().QuestRef = QuestRef;
 
-                            obj.GetComponentInChildren<AI_DisplaySelector> ().SetQuest (QuestRef);
+                            } else if (obj.GetComponentInChildren<AI_DisplaySelector> ())
+                                obj.GetComponentInChildren<AI_DisplaySelector> ().SetQuest (QuestRef);
                         }
 
                     }
+
+                   
 
                 }
 
@@ -83,8 +88,17 @@ public class ObjectSpawner : MonoBehaviour
                     GameObject obj = Instantiate (SpawnPrefabs [Randomspawn] , t);
 
                     if (isQuestSpawner) {
+                        
 
-                        obj.GetComponentInChildren<AI_DisplaySelector> ().SetQuest (QuestRef);
+                         if(obj.GetComponent<Quest_Collectable>()) 
+                        {
+                            obj.GetComponent<Quest_Collectable> ().QuestRef = QuestRef;
+                            
+                        }
+
+                        else if (obj.GetComponentInChildren<AI_DisplaySelector> ())
+                            obj.GetComponentInChildren<AI_DisplaySelector> ().SetQuest (QuestRef);
+
                     }
                 }
 
@@ -102,7 +116,11 @@ public class ObjectSpawner : MonoBehaviour
 
                     if (isQuestSpawner) {
 
-                        obj.GetComponentInChildren<AI_DisplaySelector> ().SetQuest (QuestRef);
+                        if (obj.GetComponent<Quest_Collectable> ()) {
+                            obj.GetComponent<Quest_Collectable> ().QuestRef = QuestRef;
+
+                        } else if (obj.GetComponentInChildren<AI_DisplaySelector> ())
+                            obj.GetComponentInChildren<AI_DisplaySelector> ().SetQuest (QuestRef);
                     }
                 }
 
@@ -111,9 +129,7 @@ public class ObjectSpawner : MonoBehaviour
 
             case SpawnerType.ranLocranObj:
 
-                Debug.LogWarning (numSpawn);
-                Debug.LogWarning (spawnPoints.Count);
-                Debug.LogWarning (SpawnPrefabs.Count);
+               
 
                 for (int i = 1; i <= numSpawn; i++) {
                     Randomspawn = Random.Range (0, SpawnPrefabs.Count-1);
@@ -131,7 +147,12 @@ public class ObjectSpawner : MonoBehaviour
 
                     if (isQuestSpawner) {
 
-                        obj.GetComponentInChildren<AI_DisplaySelector> ().SetQuest (QuestRef);
+
+                        if (obj.GetComponent<Quest_Collectable> ()) {
+                            obj.GetComponent<Quest_Collectable> ().QuestRef = QuestRef;
+
+                        } else if (obj.GetComponentInChildren<AI_DisplaySelector> ())
+                            obj.GetComponentInChildren<AI_DisplaySelector> ().SetQuest (QuestRef);
                     }
                 }
 
