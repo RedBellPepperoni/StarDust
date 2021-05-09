@@ -29,6 +29,7 @@ public class Turret_Manager : MonoBehaviour
     [SerializeField] Transform aim2;
 
     [SerializeField] GameObject bulletPrefab;
+    [SerializeField] bool isActivated;
 
 
 
@@ -55,7 +56,7 @@ public class Turret_Manager : MonoBehaviour
 
 
 
-        if (canAim) { aim (); }
+        if (canAim&&isActivated) { aim (); }
     }
 
 
@@ -156,7 +157,7 @@ public class Turret_Manager : MonoBehaviour
     private void OnTriggerEnter2D (Collider2D collision) {
         
         
-        if (collision.tag == "Player") {
+        if (collision.tag == "Player"&& isActivated) {
 
             anim.SetBool ("Begin", true);
             
@@ -168,7 +169,7 @@ public class Turret_Manager : MonoBehaviour
     }
 
     private void OnTriggerExit2D (Collider2D collision) {
-        if (collision.tag == "Player") {
+        if (collision.tag == "Player"&&isActivated) {
 
             canAim = false;
            
@@ -189,5 +190,21 @@ public class Turret_Manager : MonoBehaviour
 
         anim.SetBool ("Begin", false);
     }
+
+    public void Activate() 
+    {
+        isActivated = true;
+        anim.SetBool ("Begin", true);
+
+        canAim = true;
+
+        Invoke ("Shoot", 2f);
+    }
+
+    public void Deactivate () 
+    {
+        isActivated = false;
+    }
 }
+
 

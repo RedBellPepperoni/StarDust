@@ -1,5 +1,5 @@
 using UnityEngine;
-using UnityEngine.Experimental.U2D.Animation;
+
 using UnityEngine.InputSystem;
 
 public enum GroundType
@@ -25,7 +25,7 @@ public class CharacterController2D : MonoBehaviour
 
     [Header("Equipment")]
     [SerializeField] Transform handAnchor = null;
-    [SerializeField] SpriteLibrary spriteLibrary = null;
+    [SerializeField] UnityEngine.U2D.Animation.SpriteLibrary spriteLibrary = null;
 
     [Header("Movement")]
     [SerializeField] float acceleration = 0.0f;
@@ -259,7 +259,7 @@ public class CharacterController2D : MonoBehaviour
         item.localRotation = Quaternion.identity;
     }
 
-    public void SwapSprites(SpriteLibraryAsset spriteLibraryAsset)
+    public void SwapSprites(UnityEngine.U2D.Animation.SpriteLibraryAsset spriteLibraryAsset)
     {
         spriteLibrary.spriteLibraryAsset = spriteLibraryAsset;
     }

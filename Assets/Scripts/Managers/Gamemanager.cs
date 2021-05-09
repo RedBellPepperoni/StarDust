@@ -9,7 +9,7 @@ public class Gamemanager : MonoBehaviour
     // [SerializeField] CinemachineVirtualCamera vcam;
 
 
-    [SerializeField] CinemachineBrain vcam;
+    public CinemachineBrain vcam;
 
     [SerializeField] GameObject InteractobjRef;
     [SerializeField] GameObject carryObj;
@@ -26,8 +26,10 @@ public class Gamemanager : MonoBehaviour
 
     [SerializeField] private GameObject lookatRef;
 
+    public CinemachineVirtualCamera VcamRef;
 
-   // private WeaponClass curWeaponClass;
+
+    // private WeaponClass curWeaponClass;
     private UIManager uimanagerRef;
     private PlayerWeaponAim_mouse playerAimRef;
     private GameObject bulletPrefab;
@@ -43,6 +45,11 @@ public class Gamemanager : MonoBehaviour
 
 
     private int coinAmount = 0;
+    private int ancientCoinamt = 0;
+    private int totalAmmoCount = 100;
+    private int currentAmmoCount = 100;
+
+
    
 
     
@@ -63,19 +70,24 @@ public class Gamemanager : MonoBehaviour
        playerAimRef = playerAim.GetComponent <PlayerWeaponAim_mouse>();
 
 
-       
+
+        uimanagerRef.SetPlayerAmmoValues (currentAmmoCount, totalAmmoCount);
+        uimanagerRef.SetCoinAmount (coinAmount);
 
 
     }
 
 
-    public void cameraLookAt(Transform target,int size) 
+    public void cameraLookAt(Transform target,float size) 
     {
         vcam.ActiveVirtualCamera.LookAt = target;
         vcam.ActiveVirtualCamera.Follow = target;
-       
-       
-    
+
+
+        VcamRef.m_Lens.OrthographicSize = size;
+
+
+
     }
 
 
@@ -96,20 +108,10 @@ public class Gamemanager : MonoBehaviour
 
         Action_Manager.instance.SetAimRange (weaponScriptRef.GetAimRange());
 
-        setUIweaponvalues();
+       
     }
 
-    public void setUIweaponvalues () {
-
-        int bulletsinMag = weaponScriptRef.getCurrentBullets ();
-        int magSize = weaponScriptRef.getMagazineSize ();
-        int totalBullets = weaponScriptRef.getTotalBullets ();
-        int reserveBullets = weaponScriptRef.getReserveBullets ();
-        UIManager.instance.SetCoinAmount (coinAmount);
-        uimanagerRef.setWeaponUIvalues (bulletsinMag, magSize, totalBullets, reserveBullets);
-
-
-    }
+    
 
     public void setUIPlayervalues(float curHealth,float maxHealth) 
     {
@@ -123,52 +125,56 @@ public class Gamemanager : MonoBehaviour
     {
   
        
-                if (!weaponScriptRef.isEmpty()&& !weaponScriptRef.isReloading() && Time.time > nextFire)
+                if (currentAmmoCount > 0 && Time.time > nextFire)
                 {
 
-                     weaponScriptRef.OnShoot ();
-                     nextFire = Time.time + (weaponScriptRef.GetEffectiveFireRate ());
+                       if (currentAmmoCount - weaponScriptRef.getWeaponBulletuse () >= 0) 
+                       {
+                            weaponScriptRef.OnShoot ();
+                            nextFire = Time.time + (weaponScriptRef.GetEffectiveFireRate ());
 
 
-
-                  switch (weaponScriptRef.getWeaponClass()) 
-                  {
-                       case WeaponParent.weaponType.Pistol:
-                            InstantiateBullet (aimGunEndPointTrasform.position, aimGunEndPointTrasform.rotation.eulerAngles);
-                       break;
+                            LowerAmmoCount ();
 
 
-                       case WeaponParent.weaponType.Shotgun:
+                                  switch (weaponScriptRef.getWeaponClass ()) 
+                                  {
+                     
+                                       case WeaponParent.weaponType.Pistol:
+                                                                            InstantiateBullet (aimGunEndPointTrasform.position, aimGunEndPointTrasform.rotation.eulerAngles);
+                                                                            break;
 
-                                Transform Spreadgunpoint = aimGunEndPointTrasform;
 
-                                float rotOffset = weaponScriptRef.GetShotgunangle () / weaponScriptRef.GetBurstbulletCount ();
-
-                                float newRot = -weaponScriptRef.GetShotgunangle () / 2;
-
-                                for (int i = 1; i <= weaponScriptRef.GetBurstbulletCount(); i++) 
-                                {
-
-                       
-                                  InstantiateBullet (aimGunEndPointTrasform.position,aimGunEndPointTrasform.rotation.eulerAngles + new Vector3(0,0,newRot));
-                                   newRot = newRot + rotOffset;
-                                }
+                                       case WeaponParent.weaponType.Shotgun:
+                                                                            Transform Spreadgunpoint = aimGunEndPointTrasform;
  
-                       break;
+                                                                            float rotOffset = weaponScriptRef.GetShotgunangle () / weaponScriptRef.GetBurstbulletCount ();
 
-                  }
+                                                                            float newRot = -weaponScriptRef.GetShotgunangle () / 2;
+
+                                                                            for (int i = 1; i <= weaponScriptRef.GetBurstbulletCount (); i++) 
+                                                                            {
+
+
+                                                                              InstantiateBullet (aimGunEndPointTrasform.position, aimGunEndPointTrasform.rotation.eulerAngles + new Vector3 (0, 0, newRot));
+                                                                              newRot = newRot + rotOffset;
+                                                                            }
+
+                                                                             break;
+
+                                  }
 
 
 
-                    
+                       }
 
                     
                 }
 
-                else if(weaponScriptRef.isEmpty()) 
+                else if(currentAmmoCount <= 0) 
                 {
-            StartReload ();
-        }
+                  currentAmmoCount = 0;
+                }
                    
 
         
@@ -178,8 +184,37 @@ public class Gamemanager : MonoBehaviour
 
                
         
-        setUIweaponvalues();
+        
     }
+
+
+    public void AddAmmo(int ammo) 
+    {
+           currentAmmoCount = currentAmmoCount + ammo;
+
+           if(currentAmmoCount >= totalAmmoCount) 
+           {
+              currentAmmoCount = totalAmmoCount;
+           }
+
+           uimanagerRef.SetPlayerAmmoValues (currentAmmoCount,totalAmmoCount);
+
+
+    }
+
+
+    void LowerAmmoCount() 
+    {
+
+       
+            currentAmmoCount = currentAmmoCount - weaponScriptRef.getWeaponBulletuse ();
+
+
+             uimanagerRef.SetPlayerAmmoValues (currentAmmoCount, totalAmmoCount);
+    }
+
+
+
 
     void InstantiateBullet(Vector3 position,Vector3 rotation) 
     {
@@ -188,23 +223,7 @@ public class Gamemanager : MonoBehaviour
         bullet.GetComponent<Weapon_Bullet> ().setSpeed (weaponScriptRef.GetBulletSpeed ());
         bullet.GetComponent<Weapon_Bullet> ().Move ();
     }
-    public void StartReload()
-    {
-
-
-                if (weaponScriptRef.getCurrentBullets() < weaponScriptRef.getMagazineSize())
-                {
-                    weaponScriptRef.SetReloading(true);
-
-                    StartCoroutine(Reload(weaponScriptRef));
-           
-                   
-                }
-
-                else Debug.Log("AlreadyFull");
-
-               
-    }
+   
 
     void initializeWeapon()
     {
@@ -219,16 +238,7 @@ public class Gamemanager : MonoBehaviour
     }
 
 
-      IEnumerator Reload(WeaponParent scriptRef)
-      {
-
-        yield return new WaitForSeconds(scriptRef.GetReloadTime());
-
-        scriptRef.Reload();
-
-    //    Debug.Log("reloaded");
-        setUIweaponvalues();
-      }
+     
 
 
     public bool CanCarryObject() 
@@ -299,6 +309,12 @@ public class Gamemanager : MonoBehaviour
 
     public void SetintObjRef(GameObject inObject) 
     {
+
+        if(InteractobjRef!=null) 
+        {
+            InteractobjRef.GetComponent<Interactable> ().HideObjInteraction ();
+        }
+
         InteractobjRef = inObject;
     }
 
@@ -319,6 +335,7 @@ public class Gamemanager : MonoBehaviour
     public void Addcoins(int coins) 
     {
         coinAmount = coinAmount + coins;
+        Debug.LogError (coinAmount);
         UIManager.instance.SetCoinAmount (coinAmount);
     }
 }

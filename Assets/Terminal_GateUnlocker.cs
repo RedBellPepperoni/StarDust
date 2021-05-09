@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Terminal_GateUnlocker : Interactable
 {
-    bool canUnlock;
+    protected bool canUnlock;
 
 
     [SerializeField] protected GameObject lockUIRef;
@@ -30,6 +30,8 @@ public class Terminal_GateUnlocker : Interactable
     [SerializeField] Gate_Controller[] GateRef;
 
     protected void Start () {
+        DisplayAnim =  DisplayUIRef.GetComponent<Animator> ();
+
         if (isLocked) {
             Lock ();
 
@@ -148,7 +150,7 @@ public class Terminal_GateUnlocker : Interactable
 
 
 
-    protected void Unlock () {
+    protected virtual void Unlock () {
 
         if (hasPower) {
             foreach (Gate_Controller g in GateRef) { g.UnlockDoor (); }
@@ -170,7 +172,7 @@ public class Terminal_GateUnlocker : Interactable
     }
 
 
-    public void Lock () {
+    public virtual void Lock () {
 
         
             foreach (Gate_Controller g in GateRef) { g.LockDoor (); }
@@ -248,5 +250,13 @@ public class Terminal_GateUnlocker : Interactable
 
         keyUIRef.SetActive (false);
     }
+
+
+    public void SetPower(bool inState)
+    {
+        hasPower = inState;
+    
+    }
+
 
 }

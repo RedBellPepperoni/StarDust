@@ -37,6 +37,7 @@ public class Interactable : MonoBehaviour
 
                         Gamemanager.instance.SetintObjRef (this.gameObject);
                         Action_Manager.instance.SetMultiButtonFunc (Action_Manager.MultibtnState.Interact);
+                        ShowDisplayUI ();
 
                         break;
 
@@ -46,6 +47,7 @@ public class Interactable : MonoBehaviour
 
                         Gamemanager.instance.SetintObjRef (this.gameObject);
                         Action_Manager.instance.SetMultiButtonFunc (Action_Manager.MultibtnState.Interact);
+                        ShowDisplayUI ();
 
                         break;
 
@@ -60,7 +62,7 @@ public class Interactable : MonoBehaviour
                 }
 
 
-                ShowDisplayUI ();
+                
             }
         }
     }
@@ -68,23 +70,31 @@ public class Interactable : MonoBehaviour
     protected virtual void OnTriggerExit2D (Collider2D collision) 
     {
         if (collision.gameObject.tag == "Player" && collision.gameObject.layer == 11) {
-            canBePicked = false;
-            Gamemanager.instance.SetintObjRef (null);
-
-            if (Gamemanager.instance.CanCarryObject ()) 
-            {
-                Action_Manager.instance.SetMultiButtonFunc (Action_Manager.MultibtnState.Shoot);
-            }
-
-            else
-                Action_Manager.instance.SetMultiButtonFunc (Action_Manager.MultibtnState.Drop   );
 
 
-           // 
-            HideDisplayUI ();
+            if (pickableType != Type.Consumable) { HideObjInteraction (); }
 
         }
     }
+
+
+    public virtual void HideObjInteraction() 
+    {
+        canBePicked = false;
+
+       
+
+        if (Gamemanager.instance.CanCarryObject ()) {
+            Action_Manager.instance.SetMultiButtonFunc (Action_Manager.MultibtnState.Shoot);
+        } else
+            Action_Manager.instance.SetMultiButtonFunc (Action_Manager.MultibtnState.Drop);
+
+
+        // 
+        HideDisplayUI ();
+
+    }
+
 
     public virtual void ObjPicked() 
     { 
@@ -108,8 +118,12 @@ public class Interactable : MonoBehaviour
     protected void ShowDisplayUI() 
     {
 
-       // if (DisplayAnim.GetBool ("Open") == false)
+        // if (DisplayAnim.GetBool ("Open") == false)
+
+      
             DisplayAnim.SetBool ("Open",true);
+
+
     }
 
     protected void HideDisplayUI () 

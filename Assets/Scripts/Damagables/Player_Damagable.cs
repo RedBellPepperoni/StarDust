@@ -37,7 +37,7 @@ public class Player_Damagable : Damagable
     }
 
     public override void Die () {
-        base.Die ();
+        
 
         PlayerController.instance.SetPlayerState (PlayerController.PlayerState.Dead);
 

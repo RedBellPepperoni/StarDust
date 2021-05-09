@@ -88,7 +88,11 @@ public class Weapon_Bullet : MonoBehaviour
        
        
        
-       
+       else if(!isEnemybullet && collision.gameObject.tag =="IgnorePlayerBullets") 
+      {
+            ShowImpact (1);
+            Delete ();
+       }
        
        else if (collision.gameObject.layer == LayerMask.NameToLayer ("Damagable")  ) //&& collision.gameObject.tag == "Enemy"
        {

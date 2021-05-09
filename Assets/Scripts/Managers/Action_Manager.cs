@@ -258,13 +258,7 @@ public class Action_Manager : MonoBehaviour
 
 
     }
-    void Reload () {
-
-        Manager.StartReload ();
-
-
-
-    }
+   
 
     private void handleAiming () {
 

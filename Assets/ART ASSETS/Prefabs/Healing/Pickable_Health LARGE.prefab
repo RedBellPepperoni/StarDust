@@ -75,7 +75,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DisplayUIRef: {fileID: 4078980531618018218}
-  pickableType: 2
+  pickableType: 0
   isPicked: 0
   HealthValue: 60
   healthFull: 0

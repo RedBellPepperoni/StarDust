@@ -8,6 +8,7 @@ TagManager:
   - Aimable
   - Shield
   - QuestItem
+  - IgnorePlayerBullets
   layers:
   - Default
   - TransparentFX

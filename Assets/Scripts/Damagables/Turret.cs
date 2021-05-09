@@ -7,11 +7,8 @@ public class Turret : Damagable
     [SerializeField] Turret_Manager turretmanRef;
 
     public override void Die () {
-        //  Instantiate(deathEffect, transform.position, Quaternion.identity);
+        base.Die ();
 
-
-        turretmanRef.Damaged ();
-        Invoke ("Delete", 2);
 
     }
 }

@@ -7,7 +7,7 @@ public class Damagable : MonoBehaviour
     [SerializeField]protected float maxHealth = 100;
     
     protected float currentHealth;
-
+    public Transform DeathEffectTransform;
     protected bool isDead;
 
    
@@ -64,16 +64,21 @@ public class Damagable : MonoBehaviour
 
     public virtual void Die()
     {
-        //  Instantiate(deathEffect, transform.position, Quaternion.identity);
 
+        if (deathEffect != null) 
+        {
+            GameObject g = Instantiate (deathEffect, DeathEffectTransform);
+            g.transform.parent = null;
+        }
 
+        Delete();
 
        
     }
 
     public virtual void Delete()
     {
-
+        
         Destroy(Parent);
     }
 

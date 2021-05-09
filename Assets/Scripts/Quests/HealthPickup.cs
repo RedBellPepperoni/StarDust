@@ -9,6 +9,9 @@ public class HealthPickup : Interactable
 
     public bool healthFull;
 
+    private void Start () {
+        DisplayAnim = DisplayUIRef.GetComponent<Animator> ();
+    }
 
 
     public override void ObjPicked () {

@@ -11,11 +11,24 @@ public class PowerTreads : QuestParent
 
     public bool switchPowerOn = false ;
 
-    [SerializeField] GameObject lightsRef;
-    [SerializeField] GameObject DArknessRef;
+    AudioSource source;
+
+    Animator powerAnimator;
+
+
+    [SerializeField] AudioClip[] SwitchSound;
 
 
 
+    private void Awake () {
+        source = GetComponent<AudioSource> ();
+    }
+
+    private void Start () {
+
+
+        powerAnimator = GetComponent<Animator> ();
+    }
 
 
 
@@ -24,6 +37,15 @@ public class PowerTreads : QuestParent
         Debug.LogWarning ("BulbQuest Started");
        
        
+
+    }
+
+
+    public void Playlightsound() 
+    {
+
+        source.PlayOneShot (SwitchSound[Random.Range (0, SwitchSound.Length - 1)]);
+
 
     }
 
@@ -42,10 +64,9 @@ public class PowerTreads : QuestParent
 
     void LightUp() 
     {
-        DArknessRef.SetActive (false);
-        lightsRef.SetActive (true);
+        powerAnimator.SetBool ("PowerUp",true);
 
-        Invoke ("setCameraback", 1);
+        Invoke ("setCameraback", 4);
     }
 
 

@@ -8,6 +8,10 @@ public class Gate_Controller : MonoBehaviour
     bool islocked = false;
 
 
+
+    [SerializeField] AudioClip audio_open;
+    [SerializeField] AudioClip audio_close;
+
     [SerializeField]bool isSingle = false;
 
     bool Open;
@@ -19,12 +23,27 @@ public class Gate_Controller : MonoBehaviour
     [SerializeField]SpriteRenderer LeftIndicator;
     [SerializeField]SpriteRenderer RightIndicator;
 
+
+    AudioSource source;
     private void Awake () {
         Gateanim = GetComponent<Animator> ();
+
+        source = GetComponent<AudioSource> ();
     }
 
 
-    
+    public void PlayOpenSound() 
+    {
+        source.PlayOneShot (audio_open);
+        
+    }
+
+    public void PlayCloseSound () {
+        source.PlayOneShot (audio_close);
+
+    }
+
+
 
 
     public void UnlockDoor() 

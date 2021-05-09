@@ -230,7 +230,7 @@ public class Bovem_Behaviour : AI_BehaviourParent
 
         //  Vector3 rayDirection = PlayerController.instance.transform.position - endpointTransform.posi;
 
-        if (!weaponScriptRef.isEmpty () && !weaponScriptRef.isReloading () && Time.time > nextFire) {
+        if (Time.time > nextFire) {
             LayerMask layerMask = 1 << 11;
             
 
@@ -253,11 +253,7 @@ public class Bovem_Behaviour : AI_BehaviourParent
             // else nextFire = 0f;
 
 
-        } else if (weaponScriptRef.isEmpty ()) 
-        {
-
-            WeaponReload ();
-        }
+        } 
           
 
         // Debug.Log ("Weapon Reloading");
@@ -301,21 +297,10 @@ public class Bovem_Behaviour : AI_BehaviourParent
     }
 
 
-    void WeaponReload() 
-    {
-        StartCoroutine (Reload(weaponScriptRef));
-    }
+    
 
 
-    IEnumerator Reload (WeaponParent scriptRef) {
-
-        yield return new WaitForSeconds (scriptRef.GetReloadTime ());
-
-        scriptRef.Reload ();
-
-        
-        
-    }
+    
 
     public void GroundAttack() 
     {
