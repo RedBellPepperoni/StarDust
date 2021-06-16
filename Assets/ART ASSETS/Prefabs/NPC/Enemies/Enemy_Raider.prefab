@@ -537,7 +537,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 755794784250870380}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.0020008087, y: -0.19299996, z: 0}
+  m_LocalPosition: {x: 0.002000809, y: -0.193, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 755794785672300546}
@@ -655,7 +655,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 755794784308245585}
   m_LocalRotation: {x: -0, y: -0, z: 0.066834465, w: 0.9977641}
-  m_LocalPosition: {x: -0.29099846, y: -0.34499943, z: 0}
+  m_LocalPosition: {x: -0.23, y: -0.34, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 755794784019573605}
@@ -2093,7 +2093,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 755794784766831482}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -31.19708, y: -2.5123127, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 755794785826865378}
@@ -2131,7 +2131,7 @@ MonoBehaviour:
   traversableTags: -1
   tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   graphMask:
-    value: -1
+    value: 2147483647
 --- !u!114 &755794784766831472
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2192,7 +2192,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 755794784766831482}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -2217,6 +2217,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2aeebeda329ef744afe8b72fa67e00c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 0}
   PlayerRef: {fileID: 0}
   attackRange: 10
   aimTransform: {fileID: 755794785826865378}
@@ -2888,7 +2889,7 @@ Animator:
   m_GameObject: {fileID: 755794785149379737}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 76aec71891155a14da12ca25a7f253ce, type: 2}
+  m_Controller: {fileID: 9100000, guid: c05d11265bca60849946a9fc23eaf631, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -2926,6 +2927,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
+  DeathEffectTransform: {fileID: 0}
   deathEffect: {fileID: 0}
   Parent: {fileID: 755794784766831482}
   HealModifier: 0
@@ -2979,6 +2981,14 @@ MonoBehaviour:
   - {fileID: 755794784979097509}
   - {fileID: 755794784640472073}
   - {fileID: 755794784589295782}
+  coinLoot: {fileID: 1325059176116639927, guid: 8c4991e711b1f6f4a8fc7ca92d72e7d2,
+    type: 3}
+  ammoLoot: {fileID: 8806624911882189581, guid: f7c1e66699b915847bf4f27d437aba5c,
+    type: 3}
+  lootcoinDropmin: 0
+  lootcoinDropmax: 5
+  lootammoDropmin: 0
+  lootammoDropmax: 6
   HealthLevelMultiplier: 0.5
   npcLevel: 1
   type: 0

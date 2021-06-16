@@ -6,8 +6,8 @@ public class UnionofOnion : QuestParent
 {
 
     [SerializeField] Dialogue_manager DiaMan;
-
-
+    [SerializeField] Transform[] Locations;
+    [SerializeField] GameObject Dropzone;
     private void OnTriggerEnter2D (Collider2D collision) 
     {
         
@@ -20,6 +20,9 @@ public class UnionofOnion : QuestParent
                 Debug.Log ("Yeet");
 
                 collision.gameObject.GetComponent<Collider2D> ().enabled = false;
+
+                collision.gameObject.transform.parent = Dropzone.transform;
+              
             }
                 
         }
@@ -36,9 +39,25 @@ public class UnionofOnion : QuestParent
         SpawnerRef.SpawnObjects ();
 
         currentAmount = 0;
+        Invoke ("setCameraback", 8);
+        StartCoroutine ("ShowCargoLoc");
 
+       
     }
 
+    
+
+    IEnumerator ShowCargoLoc () 
+    {
+        for (int i = 0; i < Locations.Length; i++) 
+        {
+            Gamemanager.instance.cameraLookAt (Locations[i], 25);
+        yield return new WaitForSeconds (2);
+
+        }
+
+        StopAllCoroutines ();
+    }
     
 
     protected override void QuestCompleted () {
@@ -47,7 +66,12 @@ public class UnionofOnion : QuestParent
 
 
         DiaMan.setCurrentDialogue (1);
+
+
+        GetComponent<Collider2D> ().enabled = false;
         
     }
 
+
+   
 }

@@ -11,7 +11,12 @@ public class Shield : Damagable
     [SerializeField]GameObject ShieldObj;
 
     public override void Die () {
-        base.Die ();
+        
+        if (deathEffect != null) {
+            GameObject g = Instantiate (deathEffect, DeathEffectTransform);
+            g.transform.parent = null;
+        }
+
 
         if (canReshield) {
             ShieldObj.SetActive (false);

@@ -34,7 +34,7 @@ public class PowerTreads : QuestParent
 
     public override void StartQuest () {
         base.StartQuest ();
-        Debug.LogWarning ("BulbQuest Started");
+        
        
        
 
@@ -50,12 +50,12 @@ public class PowerTreads : QuestParent
     }
 
 
-    public void EnableLights() 
+     void EnableLights() 
     {
         
 
         DiaMan.setCurrentDialogue (1);
-        Gamemanager.instance.cameraLookAt (Cameratarget,20);
+        SetCameratarget (Cameratarget, 20);
 
         Invoke ("LightUp", 2);
 
@@ -70,16 +70,15 @@ public class PowerTreads : QuestParent
     }
 
 
-    void setCameraback() 
-    {
-        Gamemanager.instance.cameraLookAt (PlayerController.instance.transform,13);
-    }
+   
 
     public override void ProgressQuest () {
 
-       
+        EnableLights ();
 
+        currentAmount++;
 
+        isQuestComplete ();
         if (!ReturntoQuestGiver) { isQuestComplete (); }
 
     }

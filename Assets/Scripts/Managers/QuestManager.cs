@@ -14,6 +14,10 @@ public class QuestManager : MonoBehaviour
     QuestParent currentQuest;
 
 
+
+
+    public QuestParent GetCurrentQuest () { return currentQuest; }
+
     private void Awake () {
 
         if (instance == null) 
@@ -42,9 +46,11 @@ public class QuestManager : MonoBehaviour
 
     }
 
-    private void SetQuestUI() 
+    public void SetQuestUI() 
     {
-       
+
+
+        UIManager.instance.SetQuestUI (currentQuest.GetQuestTitle (), currentQuest.GetQuestObjective ());
       
     }
 }

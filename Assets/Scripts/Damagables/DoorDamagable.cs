@@ -6,5 +6,19 @@ public class DoorDamagable : Damagable
 {
     
 
+    [SerializeField] DoorJamQuest Quest;
+   
+
+    public override void Die () {
+
+
+        Quest.ProgressQuest ();
+
+       
+
+
+       
+        base.Die ();
+    }
 
 }

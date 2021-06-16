@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class Dialogue_manager : MonoBehaviour
@@ -8,6 +9,8 @@ public class Dialogue_manager : MonoBehaviour
     public TextMeshPro  dialogue;
     [SerializeField] protected bool isQuestDialogue = false;
     [SerializeField] Dialogue[] Dialogues;
+
+    public Sprite charImage;
     public Dialogue Dialogref;
     public string charName = "";
 
@@ -80,7 +83,8 @@ public class Dialogue_manager : MonoBehaviour
 
         if(isQuestDialogue) 
         {
-            questGiver.GiveQuest ();
+
+            if (questGiver != null) { questGiver.GiveQuest (); }
             isQuestDialogue = false;
 
             

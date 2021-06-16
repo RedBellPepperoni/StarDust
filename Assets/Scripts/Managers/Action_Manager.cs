@@ -53,6 +53,8 @@ public class Action_Manager : MonoBehaviour
 
     LayerMask layer = 1 << 6;
 
+
+
     private void Awake () {
         if (instance == null) {
             //  DontDestroyOnLoad (gameObject);
@@ -142,7 +144,11 @@ public class Action_Manager : MonoBehaviour
         if (btnState == MultibtnState.Interact) {
             GameObject intObj = Gamemanager.instance.getInteObj ();
 
+           
             if (intObj.GetComponent<Interactable> () != null) {
+
+                
+
                 intObj.GetComponent<Interactable> ().ObjPicked ();
             }
 
@@ -432,6 +438,12 @@ public class Action_Manager : MonoBehaviour
     public void UseAbility() 
     {
         PlayerController.instance.UseAbility ();
+    }
+
+
+    public void ActionSwapWeapons() 
+    {
+        Gamemanager.instance.WeaponSwitch ();
     }
 
 }

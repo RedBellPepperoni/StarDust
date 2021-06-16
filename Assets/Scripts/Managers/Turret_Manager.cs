@@ -31,6 +31,8 @@ public class Turret_Manager : MonoBehaviour
     [SerializeField] GameObject bulletPrefab;
     [SerializeField] bool isActivated;
 
+    [SerializeField] GameObject Damagable;
+
 
 
 
@@ -196,14 +198,16 @@ public class Turret_Manager : MonoBehaviour
         isActivated = true;
         anim.SetBool ("Begin", true);
 
-        canAim = true;
-
-        Invoke ("Shoot", 2f);
+       
+        Damagable.SetActive (true);
+       
     }
 
     public void Deactivate () 
     {
         isActivated = false;
+
+        Damagable.SetActive (false);
     }
 }
 

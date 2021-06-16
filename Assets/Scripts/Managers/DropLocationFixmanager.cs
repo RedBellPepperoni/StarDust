@@ -6,6 +6,9 @@ public class DropLocationFixmanager : MonoBehaviour
 {
     GameObject DropReference;
     [SerializeField]BoxCollider2D boxColRef;
+
+    
+
     private void OnTriggerEnter2D (Collider2D collision) {
 
 

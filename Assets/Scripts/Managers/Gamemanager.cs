@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Cinemachine;
 
 public class Gamemanager : MonoBehaviour
@@ -29,6 +30,10 @@ public class Gamemanager : MonoBehaviour
     public CinemachineVirtualCamera VcamRef;
 
 
+    public GameObject[] WeaponsList;
+    int selectedweapon = 0;
+
+    
     // private WeaponClass curWeaponClass;
     private UIManager uimanagerRef;
     private PlayerWeaponAim_mouse playerAimRef;
@@ -50,13 +55,21 @@ public class Gamemanager : MonoBehaviour
     private int currentAmmoCount = 100;
 
 
-   
+   public int GetCurrentAmmo () {return currentAmmoCount; }
+   public int GetmaxAmmo () {return totalAmmoCount; }
 
-    
+
+
+
 
 
     private void Awake()
     {
+#if UNITY_EDITOR
+        Debug.unityLogger.logEnabled = true;
+#else
+Debug. unityLogger. logEnabled = false;
+#endif
 
         Application.targetFrameRate = 120;
 
@@ -119,6 +132,29 @@ public class Gamemanager : MonoBehaviour
     
     }
         
+
+
+    public void WeaponSwitch() 
+    {
+
+        if (selectedweapon < WeaponsList.Length-1) 
+           { selectedweapon++; }
+        else 
+           { selectedweapon = 0; }
+
+
+        foreach(GameObject g in WeaponsList) 
+        {
+            g.SetActive (false);
+        }
+
+        WeaponsList[selectedweapon].SetActive (true);
+        currWeaponref = WeaponsList[selectedweapon];
+
+        SetWeaponReference ();
+    }
+
+
 
    
     public void Onshoot()
@@ -283,9 +319,9 @@ public class Gamemanager : MonoBehaviour
 
 
             carryObj.GetComponent<Interactable> ().Dropped ();
-           
-            
-           
+
+
+            objpickTransform.GetChild (0).transform.position = PlayerController.instance.transform.position;
             objpickTransform.GetChild (0).transform.parent = null;
             
 
@@ -337,6 +373,28 @@ public class Gamemanager : MonoBehaviour
         coinAmount = coinAmount + coins;
         Debug.LogError (coinAmount);
         UIManager.instance.SetCoinAmount (coinAmount);
+    }
+
+    public void AddAncientCoins() 
+    { 
+    
+    }
+
+    public int GetAncientcoins() 
+    {
+        return ancientCoinamt;
+    }
+
+    public void Respawn() 
+    {
+        Player_Damagable.instance.Respawn ();
+        UIManager.instance.HideRespawnUI ();
+    }
+
+    public void RestartLevel() 
+    {
+        SceneManager.LoadScene (SceneManager.GetActiveScene ().buildIndex);
+        Respawn ();
     }
 }
 

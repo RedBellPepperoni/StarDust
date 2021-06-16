@@ -6,9 +6,9 @@ public class Quest_Collectable : Interactable
 {
     public QuestParent QuestRef;
 
-    public override void ObjPicked () 
-    {
+    public override void ObjPicked () {
 
+        
         base.ObjPicked ();
 
         if (canBePicked) 
@@ -20,14 +20,15 @@ public class Quest_Collectable : Interactable
                 Delete ();
             } 
             
-            else
+            else if (pickableType == Type.Pickable)
             {
                 if (Gamemanager.instance.CanCarryObject ()) 
                 {
 
                     GetComponent<BoxCollider2D> ().enabled = false;
-                    Gamemanager.instance.PickupObject (this.gameObject);
+                    Gamemanager.instance.PickupObject (gameObject);
 
+                   
 
                     //Delete ();
                 }
@@ -39,17 +40,23 @@ public class Quest_Collectable : Interactable
 
             }
         }
+
+
+        else
+            Debug.LogError ("Pickyissues");
     }
 
 
     public override void Dropped () {
         base.Dropped ();
 
-        if(isPicked) {
+        
+
             isPicked = false;
+            canBePicked = true;
             GetComponent<BoxCollider2D> ().enabled = true;
            
 
-        }
+        
     }
 }

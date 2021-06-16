@@ -363,7 +363,7 @@ MonoBehaviour:
   DisplayUIRef: {fileID: 7128490319291609737}
   pickableType: 0
   isPicked: 0
-  Weights: 28000000190000001400000005000000
+  Weights: 28000000320000001400000005000000
   Items:
   - {fileID: 1389341869412507574, guid: 0b6686defb5025a498f5bc5a2d161c5d, type: 3}
   - {fileID: 1389341869412507574, guid: 13d8be90e52bdaf458a660035ea4cd02, type: 3}

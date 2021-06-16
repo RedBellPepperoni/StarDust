@@ -6,7 +6,7 @@ public class NPC_StaticBEhav : Interactable
 {
     [SerializeField]protected Dialogue_manager NPCDialogueMan;
 
-    
+    [SerializeField]protected Animator NPCAnim;
 
 
   //  [SerializeField]protected bool isQuestGiver = false;
@@ -41,6 +41,8 @@ public class NPC_StaticBEhav : Interactable
                     
                     if (QuestGiverRef.GetQuestInfo ().IsReached()) 
                     {
+
+                        
                         NPCDialogueMan.setCurrentDialogue (1);
                     }
                         QuestGiverRef.GetQuestInfo ().isQuestComplete ();

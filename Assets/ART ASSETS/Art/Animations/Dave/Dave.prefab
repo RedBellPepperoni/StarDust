@@ -1826,6 +1826,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 120
+  DeathEffectTransform: {fileID: 0}
   deathEffect: {fileID: 0}
   Parent: {fileID: 0}
   HealModifier: 0

@@ -429,6 +429,7 @@ Transform:
   - {fileID: 7128490319291609740}
   - {fileID: 3731545275202226511}
   - {fileID: 1947337235316759871}
+  - {fileID: 3213575519977790013}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -447,12 +448,12 @@ MonoBehaviour:
   DisplayUIRef: {fileID: 7128490319291609737}
   pickableType: 0
   isPicked: 0
-  Weights: 2800000019000000140000000f000000
+  Weights: 32000000190000000f0000000a000000
   Items:
+  - {fileID: 1389341869412507574, guid: 13d8be90e52bdaf458a660035ea4cd02, type: 3}
+  - {fileID: 1389341869412507574, guid: 0b6686defb5025a498f5bc5a2d161c5d, type: 3}
   - {fileID: 3326633097192911207, guid: 84010ae9e62f59b4eaae7af17c877d5b, type: 3}
-  - {fileID: 3326633097192911207, guid: 84010ae9e62f59b4eaae7af17c877d5b, type: 3}
-  - {fileID: 3326633097192911207, guid: 84010ae9e62f59b4eaae7af17c877d5b, type: 3}
-  - {fileID: 3326633097192911207, guid: 84010ae9e62f59b4eaae7af17c877d5b, type: 3}
+  - {fileID: 6916021545415701810}
   coinAmountMin: 20
   coinAmountMax: 30
   ammoAmountMin: 40
@@ -496,6 +497,36 @@ SortingGroup:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 4
+--- !u!1 &6916021545415701810
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3213575519977790013}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3213575519977790013
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6916021545415701810}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.30094528, y: 0.6777077, z: -0.10315092}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3731545275883243924}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &3731545275464787696
 PrefabInstance:
   m_ObjectHideFlags: 0

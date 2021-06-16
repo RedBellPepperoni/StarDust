@@ -29,6 +29,8 @@ public class Gate_Controller : MonoBehaviour
         Gateanim = GetComponent<Animator> ();
 
         source = GetComponent<AudioSource> ();
+
+
     }
 
 

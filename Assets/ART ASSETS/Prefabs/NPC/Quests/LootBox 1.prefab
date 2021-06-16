@@ -387,7 +387,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.54509807, y: 0.41568628}
+    oldSize: {x: 0.54296875, y: 0.4140625}
     newSize: {x: 0.54509807, y: 0.41568628}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -449,9 +449,9 @@ MonoBehaviour:
   isPicked: 0
   Weights: 64000000
   Items:
-  - {fileID: 1389341869412507574, guid: 13d8be90e52bdaf458a660035ea4cd02, type: 3}
-  coinAmountMin: 20
-  coinAmountMax: 30
+  - {fileID: 1389341869412507574, guid: 0b6686defb5025a498f5bc5a2d161c5d, type: 3}
+  coinAmountMin: 200
+  coinAmountMax: 400
   ammoAmountMin: 40
   ammoAmountMax: 40
   LidClose: {fileID: 3731545274428410222}

@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingOrder: 10
   m_Sprite: {fileID: 7482667652216324306, guid: db750325989564987a34393247d883b4,
     type: 3}
-  m_Color: {r: 0.3018868, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.1882353, g: 0.54901963, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -158,7 +158,7 @@ SpriteRenderer:
   m_SortingOrder: 10
   m_Sprite: {fileID: 7482667652216324306, guid: db750325989564987a34393247d883b4,
     type: 3}
-  m_Color: {r: 0.3019608, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.1882353, g: 0.54901963, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -277,11 +277,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3710834556229070752}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.03, y: 3.63, z: 0}
+  m_LocalPosition: {x: 11.03, y: 3.63, z: 1}
   m_LocalScale: {x: 7.8022, y: 15.330624, z: 1}
   m_Children: []
   m_Father: {fileID: 6932972708333981058}
-  m_RootOrder: 3
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!331 &2872756855177024599
 SpriteMask:
@@ -331,7 +331,7 @@ SpriteMask:
   m_BackSortingLayerID: 0
   m_FrontSortingLayer: 0
   m_BackSortingLayer: 0
-  m_FrontSortingOrder: 0
+  m_FrontSortingOrder: 11
   m_BackSortingOrder: 0
   m_IsCustomRangeActive: 0
   m_SpriteSortPoint: 0
@@ -367,7 +367,7 @@ Transform:
   - {fileID: 478295358354145658}
   - {fileID: 6138137408415427561}
   m_Father: {fileID: 6932972708333981058}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8228731145621142306
 SpriteRenderer:
@@ -409,7 +409,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingOrder: 4
   m_Sprite: {fileID: -8341440526737268333, guid: a1b93f285580f3b4dae7df63c6b5b8eb,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -439,7 +439,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.2}
-    oldSize: {x: 0.7019608, y: 1.227451}
+    oldSize: {x: 0.69921875, y: 1.2226562}
     newSize: {x: 0.7019608, y: 1.227451}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -473,11 +473,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6754169253271642845}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.88, y: 3.1115, z: 0}
+  m_LocalPosition: {x: -10.88, y: 3.1115, z: 1}
   m_LocalScale: {x: 7.8022, y: 15.330624, z: 1}
   m_Children: []
   m_Father: {fileID: 6932972708333981058}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!331 &1696198847688923707
 SpriteMask:
@@ -522,12 +522,12 @@ SpriteMask:
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: db750325989564987a34393247d883b4,
     type: 3}
-  m_MaskAlphaCutoff: 0.2
+  m_MaskAlphaCutoff: 0.194
   m_FrontSortingLayerID: 0
   m_BackSortingLayerID: 0
   m_FrontSortingLayer: 0
   m_BackSortingLayer: 0
-  m_FrontSortingOrder: 0
+  m_FrontSortingOrder: 11
   m_BackSortingOrder: 0
   m_IsCustomRangeActive: 0
   m_SpriteSortPoint: 0
@@ -563,10 +563,10 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.43056563, y: 0.35999998, z: 0.8}
   m_Children:
-  - {fileID: 8729213362114089430}
-  - {fileID: 2696594659306027071}
   - {fileID: 6923644112272374413}
   - {fileID: 88349154063703296}
+  - {fileID: 8729213362114089430}
+  - {fileID: 2696594659306027071}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -859,7 +859,7 @@ Transform:
   - {fileID: 3565942460172952157}
   - {fileID: 5271767747277845312}
   m_Father: {fileID: 6932972708333981058}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8729213362114089429
 SpriteRenderer:
@@ -931,7 +931,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.2}
-    oldSize: {x: 0.7019608, y: 1.227451}
+    oldSize: {x: 0.69921875, y: 1.2226562}
     newSize: {x: 0.7019608, y: 1.227451}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

@@ -19,7 +19,9 @@ public class Interactable : MonoBehaviour
 
 
     private void Start () {
-       DisplayAnim =  DisplayUIRef.GetComponent<Animator> ();
+      
+        if(DisplayUIRef!=null) 
+        DisplayAnim =  DisplayUIRef.GetComponent<Animator> ();
     }
 
     protected virtual void OnTriggerEnter2D (Collider2D collision)     
@@ -80,7 +82,7 @@ public class Interactable : MonoBehaviour
 
     public virtual void HideObjInteraction() 
     {
-        canBePicked = false;
+        
 
        
 

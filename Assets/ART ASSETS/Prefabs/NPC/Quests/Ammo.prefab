@@ -179,6 +179,7 @@ GameObject:
   - component: {fileID: 916374254788369547}
   - component: {fileID: 5790176649988030569}
   - component: {fileID: 8766176833967337945}
+  - component: {fileID: -5204100021588306391}
   m_Layer: 0
   m_Name: Ammo
   m_TagString: Untagged
@@ -242,4 +243,16 @@ MonoBehaviour:
   DisplayUIRef: {fileID: 0}
   pickableType: 2
   isPicked: 0
-  ammoRefillCount: 10
+  ammoRefillCount: 2
+--- !u!114 &-5204100021588306391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8806624911882189581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fee4c84b503aec4e8e0d973c51876aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

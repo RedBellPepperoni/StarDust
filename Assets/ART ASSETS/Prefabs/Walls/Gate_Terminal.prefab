@@ -63,7 +63,7 @@ MonoBehaviour:
   KeyRequired: 1
   isLocked: 0
   ScreenRef: {fileID: 67541223146054010}
-  IdleColor: {r: 0.6039216, g: 0.47058827, b: 0.07058824, a: 1}
+  IdleColor: {r: 0.30588236, g: 1, b: 0, a: 1}
   PowerOffColor: {r: 0, g: 0, b: 0, a: 0}
   AccessDoorColor: {r: 1, g: 1, b: 1, a: 1}
   hasPower: 1
@@ -150,7 +150,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5000001, y: 0.26028025}
-    oldSize: {x: 0.42745098, y: 0.74509805}
+    oldSize: {x: 0.42578125, y: 0.7421875}
     newSize: {x: 0.42745098, y: 0.74509805}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

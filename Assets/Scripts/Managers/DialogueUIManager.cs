@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class DialogueUIManager : MonoBehaviour
@@ -9,6 +10,8 @@ public class DialogueUIManager : MonoBehaviour
     // [SerializeField] Dialogue[] Dialogues;
 
     public Dialogue_manager dialogueMan;
+
+    public Image characterImage;
 
     public Dialogue Dialogref;
     string Charactername = "Bea";
@@ -22,7 +25,7 @@ public class DialogueUIManager : MonoBehaviour
     [SerializeField] Animator anim;
 
 
-
+    public int GetIndex () { return index; }
 
     private void Awake () {
         if (instance == null) {
@@ -48,9 +51,14 @@ public class DialogueUIManager : MonoBehaviour
             SetcurrDialogueReference ();
             Charactername = dialogueMan.charName;
 
+           if(dialogueMan.charImage!=null)
+                characterImage.sprite = dialogueMan.charImage;
+           
+
             DialogueStart ();
         } else {
             ClearcurrDialogueRef ();
+            characterImage = null;
             DialogueEnd ();
         }
 
@@ -101,7 +109,11 @@ public class DialogueUIManager : MonoBehaviour
         }
     }
 
-    
+
+    public bool CheckDialogueEnd() 
+    {
+       return (index > Dialogref.questSentences.Length - 1);
+    }
 
 
     void setSpeakername() 

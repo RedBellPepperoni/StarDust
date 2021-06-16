@@ -15,6 +15,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI maxHealthRef;
     [SerializeField] private Slider healthbar;
 
+    [SerializeField] GameObject RespawnScreen;
 
 
     [SerializeField] private TextMeshProUGUI currAmmo;
@@ -26,7 +27,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Image MultiBtnDiaplay;
 
 
-    
+    [SerializeField] TextMeshProUGUI QuestName;
+    [SerializeField] TextMeshProUGUI QuestStatus;
 
 
     [SerializeField] TextMeshProUGUI coinAmount;
@@ -99,6 +101,32 @@ public class UIManager : MonoBehaviour
     {
         ancientCoinAmount.text = inAmount.ToString ();
     }
+
+    public void SetQuestUI(string inQuestName, string inQuestDescrip) 
+    {
+        QuestName.text = inQuestName;
+        QuestStatus.text = inQuestDescrip;
+    }
+
+    public void ResetQuestUI() 
+    {
+        QuestName.text = "";
+        QuestStatus.text = "";
+
+    }
+
+    public void ShowRespawnUI() 
+    {
+        RespawnScreen.SetActive (true);
+
+
+    
+    }
+    public void HideRespawnUI() 
+    {
+        RespawnScreen.SetActive (false);
+    }
+
 }
 
 

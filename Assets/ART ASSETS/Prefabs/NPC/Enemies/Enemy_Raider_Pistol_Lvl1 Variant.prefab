@@ -7,6 +7,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 755794784766831473, guid: 89dc3aeca794d1d40b71b76db5d68d46,
+        type: 3}
+      propertyPath: graphMask.value
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 755794784766831478, guid: 89dc3aeca794d1d40b71b76db5d68d46,
         type: 3}
       propertyPath: destiSetter

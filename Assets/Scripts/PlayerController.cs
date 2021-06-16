@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour
 
 
 
-    float abilityRefresh = 5f;
+    [SerializeField]float abilityRefresh = 5f;
     bool  abilityUsable = true;
 
     Vector2 targetvelocity;
@@ -200,6 +200,13 @@ public class PlayerController : MonoBehaviour
 
         }
     
+    }
+
+    public void Respawn() 
+    {
+        PlayerAnimator.SetBool ("isDead", false);
+        Action_Manager.instance.ShowWeaponHand ();
+
     }
 
 }

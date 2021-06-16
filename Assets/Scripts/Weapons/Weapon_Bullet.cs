@@ -58,7 +58,7 @@ public class Weapon_Bullet : MonoBehaviour
       
 
 
-       if (collision.gameObject.layer == LayerMask.NameToLayer ("Damagable") && !isEnemybullet && collision.gameObject.tag == "Enemy") //&& collision.gameObject.tag == "Enemy"
+       if (collision.gameObject.layer == LayerMask.NameToLayer ("Damagable") && !isEnemybullet && collision.gameObject.CompareTag("Enemy")) //&& collision.gameObject.tag == "Enemy"
         {
             collision.GetComponent<Damagable> ().TakeDamage (physicalDamage, plasmaDamage, fireDamage, iceDamage, electricDamage);
 
@@ -67,7 +67,7 @@ public class Weapon_Bullet : MonoBehaviour
         } 
         
         
-        else if (collision.gameObject.tag == "Player" && isEnemybullet && collision.gameObject.layer == 11) {
+        else if (collision.gameObject.CompareTag("Player") && isEnemybullet && collision.gameObject.layer == 11) {
 
             collision.GetComponent<Damagable> ().TakeDamage (physicalDamage, plasmaDamage, fireDamage, iceDamage, electricDamage);
             ShowImpact (2);
@@ -82,21 +82,46 @@ public class Weapon_Bullet : MonoBehaviour
             return;
        }
 
-       else if(collision.gameObject.tag == "Shield" && isEnemybullet)
+       else if(collision.gameObject.CompareTag("Shield") && isEnemybullet)
             { return; } 
        
        
        
        
-       else if(!isEnemybullet && collision.gameObject.tag =="IgnorePlayerBullets") 
+       else if(!isEnemybullet && collision.gameObject.CompareTag("IgnorePlayerBullets") && collision.gameObject.layer == LayerMask.NameToLayer ("Damagable")) 
       {
+
+           
             ShowImpact (1);
             Delete ();
        }
+
+       else if ( collision.gameObject.CompareTag("IgnoreBullets") && collision.gameObject.layer == LayerMask.NameToLayer ("Damagable")) 
+       {
+            ShowImpact (1);
+            Delete ();
+        }
+
+
        
-       else if (collision.gameObject.layer == LayerMask.NameToLayer ("Damagable")  ) //&& collision.gameObject.tag == "Enemy"
+       else if (collision.gameObject.layer == LayerMask.NameToLayer ("Damagable") && collision.gameObject.CompareTag("IgnorePlayerBullets") && isEnemybullet) //&& collision.gameObject.tag == "Enemy"
        {
             collision.GetComponent<Damagable> ().TakeDamage (physicalDamage, plasmaDamage, fireDamage, iceDamage, electricDamage);
+
+            
+
+            ShowImpact (1);
+            Delete ();
+       } 
+       
+       else if (collision.gameObject.layer == LayerMask.NameToLayer ("Damagable") && !collision.gameObject.CompareTag("IgnorePlayerBullets")) //&& collision.gameObject.tag == "Enemy"
+          {
+
+           
+
+            collision.GetComponent<Damagable> ().TakeDamage (physicalDamage, plasmaDamage, fireDamage, iceDamage, electricDamage);
+
+
 
             ShowImpact (1);
             Delete ();

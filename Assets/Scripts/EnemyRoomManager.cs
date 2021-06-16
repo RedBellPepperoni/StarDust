@@ -16,7 +16,8 @@ public class EnemyRoomManager : MonoBehaviour
 
     [SerializeField]List<Terminal_GateUnlocker> GateTerminals;
 
-    [SerializeField] List<QuestParent> EnemyWaveQuest; 
+    [SerializeField] List<QuestParent> EnemyWaveQuest;
+    [SerializeField] Dialogue_manager NPCmanager;
   
     
 
@@ -87,6 +88,12 @@ public class EnemyRoomManager : MonoBehaviour
         roomCleared = true;
         UnlockAllDoors ();
     
+
+        if(NPCmanager!=null) 
+        {
+            NPCmanager.setCurrentDialogue (1);
+        }
+
     }
 
 

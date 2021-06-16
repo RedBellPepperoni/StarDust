@@ -46,6 +46,9 @@ public class Terminal_GateUnlocker : Interactable
         }
 
 
+        if(!hasPower) 
+        { ScreenRef.color = PowerOffColor; }
+
     }
 
 
@@ -154,7 +157,7 @@ public class Terminal_GateUnlocker : Interactable
 
         if (hasPower) {
             foreach (Gate_Controller g in GateRef) { g.UnlockDoor (); }
-            ScreenRef.color = PowerOffColor;
+            ScreenRef.color = IdleColor;
 
             isLocked = false;
             SetUlockUI ();

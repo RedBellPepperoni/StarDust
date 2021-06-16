@@ -40,8 +40,9 @@ public class Player_Damagable : Damagable
         
 
         PlayerController.instance.SetPlayerState (PlayerController.PlayerState.Dead);
-
+        
         PlayerController.instance.Death ();
+        UIManager.instance.ShowRespawnUI ();
 
 
     }
@@ -56,5 +57,17 @@ public class Player_Damagable : Damagable
 
 
         Gamemanager.instance.setUIPlayervalues (currentHealth, maxHealth);
+    }
+
+    public void Respawn() 
+    {
+        isDead = false;
+        currentHealth = maxHealth;
+        Gamemanager.instance.setUIPlayervalues (currentHealth, maxHealth);
+
+
+        PlayerController.instance.SetPlayerState (PlayerController.PlayerState.Idle);
+        PlayerController.instance.Respawn ();
+
     }
 }

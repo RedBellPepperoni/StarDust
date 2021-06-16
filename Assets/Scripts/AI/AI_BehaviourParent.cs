@@ -9,6 +9,7 @@ public class AI_BehaviourParent : MonoBehaviour
 
     public enum AIState { Idle, Roaming, Interacting , Chase, RunningtoCover, Dead };
     protected AIState currentBehaviour;
+    public Animator animator;
 
     protected bool canSeetarget = false;
     
@@ -92,6 +93,7 @@ public class AI_BehaviourParent : MonoBehaviour
     protected virtual void FixedUpdate()
     {
         SetAIBehaviour();
+        playAnim ();
 
        // Debug.LogWarning(currentBehaviour);
     }
@@ -124,6 +126,23 @@ public class AI_BehaviourParent : MonoBehaviour
 
         
        
+    }
+
+    void playAnim () {
+
+        switch (currentBehaviour) 
+        {
+            case AIState.Chase:
+                animator.SetBool ("isWalking", true);
+
+                break;
+            case AIState.Idle:
+                animator.SetBool ("isWalking", false);
+                break;
+                
+            
+           
+        }
     }
 
 }

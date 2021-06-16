@@ -24,6 +24,16 @@ public class AI_DisplaySelector : Damagable
     protected QuestParent QuestRef;
     protected AI_BehaviourParent BehaviourRef;
 
+
+    [SerializeField] protected GameObject coinLoot;
+    [SerializeField] protected GameObject ammoLoot;
+    [SerializeField] protected int lootcoinDropmin = 0;
+    [SerializeField] protected int lootcoinDropmax = 5;
+    [SerializeField] protected int lootammoDropmin = 0;
+    [SerializeField] protected int lootammoDropmax = 6;
+    
+
+
     //[SerializeField] int levelHealthMultiplier = 1;
     
     [SerializeField] protected float HealthLevelMultiplier = 0.5f;
@@ -68,12 +78,51 @@ public class AI_DisplaySelector : Damagable
             
 
         BehaviourRef.SetDead ();
-        Invoke (nameof (Delete), 4);
+
+        SpawnLoot ();
+        Invoke (nameof (Delete), 1);
 
         GetComponent<Collider2D> ().enabled = false;
 
 
         // SpawnerRef
+
+
+    }
+
+    void SpawnLoot() 
+    {
+        int dropAmount=0;
+        GameObject g;
+        if (Random.Range(0,4) == 0) 
+        {
+            dropAmount = Random.Range (lootcoinDropmin, lootcoinDropmax);
+            if(dropAmount != 0) 
+            {   
+                for (int i = 0; i<=dropAmount; i++) 
+                {
+                    g = Instantiate (coinLoot,transform.position,Quaternion.identity);
+                    g.transform.parent = null;
+                }
+
+            }
+        
+        }
+
+
+        else 
+        { 
+           dropAmount = Random.Range (lootammoDropmin, lootammoDropmax);
+
+            if (dropAmount != 0) {
+                for (int i = 0; i <= dropAmount; i++) {
+                     g  =Instantiate (ammoLoot, transform.position, Quaternion.identity);
+                    g.transform.parent = null;
+                }
+
+            }
+
+        }
 
 
     }
