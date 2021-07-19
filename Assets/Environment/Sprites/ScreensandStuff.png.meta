@@ -1,0 +1,984 @@
+fileFormatVersion: 2
+guid: 98ec6d573745d5a469bf807fbdafe6fe
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 1862663497528716303
+    second: ScreensandStuff_0
+  - first:
+      213: 1220357434558320708
+    second: ScreensandStuff_1
+  - first:
+      213: -5019351979333991353
+    second: ScreensandStuff_2
+  - first:
+      213: -7538211434934097087
+    second: ScreensandStuff_3
+  - first:
+      213: 7275644073364319218
+    second: ScreensandStuff_4
+  - first:
+      213: -9164067434674794545
+    second: ScreensandStuff_5
+  - first:
+      213: 927801516170786287
+    second: ScreensandStuff_6
+  - first:
+      213: 7969720386261820867
+    second: ScreensandStuff_7
+  - first:
+      213: 6620561265743136402
+    second: ScreensandStuff_8
+  - first:
+      213: 3413028547441875473
+    second: ScreensandStuff_9
+  - first:
+      213: -2621051925244634013
+    second: ScreensandStuff_10
+  - first:
+      213: -7702558279183381070
+    second: ScreensandStuff_11
+  - first:
+      213: -4187956795466762081
+    second: ScreensandStuff_12
+  - first:
+      213: -9070506935294269876
+    second: ScreensandStuff_13
+  - first:
+      213: 1757671781586982917
+    second: ScreensandStuff_14
+  - first:
+      213: 885713901363222108
+    second: ScreensandStuff_15
+  - first:
+      213: 7111353766143452616
+    second: ScreensandStuff_16
+  - first:
+      213: 9044684803931374299
+    second: ScreensandStuff_17
+  - first:
+      213: -367434359082597090
+    second: ScreensandStuff_18
+  - first:
+      213: -9019696389894278789
+    second: ScreensandStuff_19
+  - first:
+      213: -6937926943512039767
+    second: ScreensandStuff_20
+  - first:
+      213: -915860012638075372
+    second: ScreensandStuff_21
+  - first:
+      213: -6712576709235337553
+    second: ScreensandStuff_22
+  - first:
+      213: -1714667704208667247
+    second: ScreensandStuff_23
+  - first:
+      213: 7133952560472885504
+    second: ScreensandStuff_24
+  - first:
+      213: 7344518384822433766
+    second: ScreensandStuff_25
+  - first:
+      213: -6048164274702276198
+    second: ScreensandStuff_26
+  - first:
+      213: 4140274572902281498
+    second: ScreensandStuff_27
+  - first:
+      213: 164425762793846617
+    second: ScreensandStuff_28
+  - first:
+      213: -5921228983195794289
+    second: ScreensandStuff_29
+  - first:
+      213: -4052810653588311145
+    second: ScreensandStuff_30
+  - first:
+      213: -8583125653433803302
+    second: ScreensandStuff_31
+  - first:
+      213: -6207219316442690208
+    second: ScreensandStuff_32
+  - first:
+      213: 530391300808548776
+    second: ScreensandStuff_33
+  - first:
+      213: -5410237889185980765
+    second: ScreensandStuff_34
+  - first:
+      213: -1090420897222886035
+    second: ScreensandStuff_35
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 128
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 512
+    resizeAlgorithm: 0
+    textureFormat: 47
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 1
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: ScreensandStuff_0
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 442
+        width: 106
+        height: 69
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f0c294a059289d910800000000000000
+      internalID: 1862663497528716303
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ScreensandStuff_1
+      rect:
+        serializedVersion: 2
+        x: 114
+        y: 416
+        width: 108
+        height: 89
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4401bd9fe949fe010800000000000000
+      internalID: 1220357434558320708
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ScreensandStuff_2
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 338
+        width: 91
+        height: 173
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 744c42de7fda75ab0800000000000000
+      internalID: -5019351979333991353
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ScreensandStuff_3
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 461
+        width: 176
+        height: 44
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 14b27fa93a4e26790800000000000000
+      internalID: -7538211434934097087
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ScreensandStuff_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 387
+        width: 40
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2fb6e099cb748f460800000000000000
+      internalID: 7275644073364319218
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ScreensandStuff_5
+      rect:
+        serializedVersion: 2
+        x: 46
+        y: 387
+        width: 39
+        height: 39
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fcfcb72b831b2d080800000000000000
+      internalID: -9164067434674794545
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ScreensandStuff_6
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 416
+        width: 176
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe5bd61309630ec00800000000000000
+      internalID: 927801516170786287
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ScreensandStuff_7
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 343
+        width: 39
+        height: 39
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c5235647722a9e60800000000000000
+      internalID: 7969720386261820867
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ScreensandStuff_8
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 344
+        width: 42
+        height: 38
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 296845ad465f0eb50800000000000000
+      internalID: 6620561265743136402
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ScreensandStuff_9
+      rect:
+        serializedVersion: 2
+        x: 117
+        y: 300
+        width: 103
+        height: 91
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 11a5a8281638d5f20800000000000000
+      internalID: 3413028547441875473
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ScreensandStuff_10
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 368
+        width: 89
+        height: 45
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 36c90f1392720abd0800000000000000
+      internalID: -2621051925244634013
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ScreensandStuff_11
+      rect:
+        serializedVersion: 2
+        x: 419
+        y: 368
+        width: 75
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2bdc7831e040b1590800000000000000
+      internalID: -7702558279183381070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ScreensandStuff_12
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 226
+        width: 101
+        height: 102
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f983587bb7361e5c0800000000000000
+      internalID: -4187956795466762081
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ScreensandStuff_13
+      rect:
+        serializedVersion: 2
+        x: 308
+        y: 221
+        width: 10
+        height: 115
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c46611dfff51f1280800000000000000
+      internalID: -9070506935294269876
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ScreensandStuff_14
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 319
+        width: 93
+        height: 43
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 508583d3c21846810800000000000000
+      internalID: 1757671781586982917
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ScreensandStuff_15
+      rect:
+        serializedVersion: 2
+        x: 424
+        y: 316
+        width: 52
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c56516fb910ba4c00800000000000000
+      internalID: 885713901363222108
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ScreensandStuff_16
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 251
+        width: 52
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c5ed1f929a90b260800000000000000
+      internalID: 7111353766143452616
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ScreensandStuff_17
+      rect:
+        serializedVersion: 2
+        x: 172
+        y: 179
+        width: 28
+        height: 121
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd204bb88ec258d70800000000000000
+      internalID: 9044684803931374299
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ScreensandStuff_18
+      rect:
+        serializedVersion: 2
+        x: 202
+        y: 208
+        width: 105
+        height: 103
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e15cb9ca56c96eaf0800000000000000
+      internalID: -367434359082597090
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ScreensandStuff_19
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 225
+        width: 187
+        height: 85
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b717a7afbe993d280800000000000000
+      internalID: -9019696389894278789
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ScreensandStuff_20
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 162
+        width: 99
+        height: 60
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9ae6a5e143887bf90800000000000000
+      internalID: -6937926943512039767
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ScreensandStuff_21
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 176
+        width: 26
+        height: 63
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 41609b2cb263a43f0800000000000000
+      internalID: -915860012638075372
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ScreensandStuff_22
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 5
+        width: 87
+        height: 192
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa697763c0328d2a0800000000000000
+      internalID: -6712576709235337553
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ScreensandStuff_23
+      rect:
+        serializedVersion: 2
+        x: 309
+        y: 175
+        width: 120
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 19dcec6cec64438e0800000000000000
+      internalID: -1714667704208667247
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ScreensandStuff_24
+      rect:
+        serializedVersion: 2
+        x: 433
+        y: 174
+        width: 68
+        height: 43
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 00989737e04e00360800000000000000
+      internalID: 7133952560472885504
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ScreensandStuff_25
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 7
+        width: 39
+        height: 133
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e7baadde88fce560800000000000000
+      internalID: 7344518384822433766
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ScreensandStuff_26
+      rect:
+        serializedVersion: 2
+        x: 46
+        y: 77
+        width: 78
+        height: 80
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a99a92ff2aa901ca0800000000000000
+      internalID: -6048164274702276198
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ScreensandStuff_27
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 6
+        width: 72
+        height: 162
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a113c66b9c5357930800000000000000
+      internalID: 4140274572902281498
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ScreensandStuff_28
+      rect:
+        serializedVersion: 2
+        x: 344
+        y: 130
+        width: 160
+        height: 38
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 957ff3f2c58284200800000000000000
+      internalID: 164425762793846617
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ScreensandStuff_29
+      rect:
+        serializedVersion: 2
+        x: 338
+        y: 82
+        width: 172
+        height: 44
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f840ede9c9193dda0800000000000000
+      internalID: -5921228983195794289
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ScreensandStuff_30
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 2
+        width: 56
+        height: 72
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 79333faee2681c7c0800000000000000
+      internalID: -4052810653588311145
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ScreensandStuff_31
+      rect:
+        serializedVersion: 2
+        x: 309
+        y: 36
+        width: 50
+        height: 44
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: add198c81bc92e880800000000000000
+      internalID: -8583125653433803302
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ScreensandStuff_32
+      rect:
+        serializedVersion: 2
+        x: 409
+        y: 13
+        width: 10
+        height: 61
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 06d8d704be68bd9a0800000000000000
+      internalID: -6207219316442690208
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ScreensandStuff_33
+      rect:
+        serializedVersion: 2
+        x: 423
+        y: 13
+        width: 35
+        height: 47
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a1a6a4f3145c5700800000000000000
+      internalID: 530391300808548776
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ScreensandStuff_34
+      rect:
+        serializedVersion: 2
+        x: 466
+        y: 13
+        width: 35
+        height: 47
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3aed5b0fd49fae4b0800000000000000
+      internalID: -5410237889185980765
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ScreensandStuff_35
+      rect:
+        serializedVersion: 2
+        x: 353
+        y: 3
+        width: 42
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d6dfd55a8fb0ed0f0800000000000000
+      internalID: -1090420897222886035
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

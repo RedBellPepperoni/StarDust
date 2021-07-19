@@ -12,7 +12,15 @@ public class DoorDamagable : Damagable
     public override void Die () {
 
 
+
+        if(Quest.currentState == QuestParent.QuestProgress.Disabled) 
+        {
+            Quest.StartQuestDoor ();
+        }
+
         Quest.ProgressQuest ();
+
+        Quest.doorOpened = true;
 
        
 

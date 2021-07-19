@@ -4,22 +4,22 @@ using UnityEngine;
 
 public class Weapon_Bullet : MonoBehaviour
 {
-    private float speed = 20f;
-    private float physicalDamage = 10;
-    private float plasmaDamage = 0;
-    private float fireDamage = 0;
-    private float iceDamage = 0;
-    private float electricDamage = 0;
+   protected float speed = 20f;
+    [SerializeField]protected float physicalDamage = 10;
+    [SerializeField]protected float plasmaDamage = 0;
+    [SerializeField]protected float fireDamage = 0;
+    [SerializeField]protected float iceDamage = 0;
+    [SerializeField]protected float electricDamage = 0;
 
     public Rigidbody2D rb;
 
-    [SerializeField] bool isEnemybullet;
+    [SerializeField] protected bool isEnemybullet;
    
 
-    [SerializeField] private GameObject classicImpactprefab;
-    [SerializeField] private GameObject BloodEffect;
-    [SerializeField] private GameObject energyImpactprefab;
-    [SerializeField] private GameObject explosiveImpactprefab;
+    [SerializeField] protected GameObject classicImpactprefab;
+    [SerializeField] protected GameObject BloodEffect;
+    [SerializeField] protected GameObject energyImpactprefab;
+    [SerializeField] protected GameObject explosiveImpactprefab;
     
 
 
@@ -27,7 +27,7 @@ public class Weapon_Bullet : MonoBehaviour
 
 
 
-    public void setDamage(float inphyDmg, float inPlasmaDmg, float infireDmg,float iniceDmg, float inelecDmg ) 
+    public virtual void setDamage(float inphyDmg, float inPlasmaDmg, float infireDmg,float iniceDmg, float inelecDmg ) 
     {
 
         physicalDamage = inphyDmg;
@@ -39,11 +39,11 @@ public class Weapon_Bullet : MonoBehaviour
     
     
     }
-    public void setSpeed(float Speed) { speed = Speed; }
+    public virtual void setSpeed(float Speed) { speed = Speed; }
 
-    public float getSpeed () { return speed; }
+    public virtual float getSpeed () { return speed; }
 
-    private void Start()
+    protected virtual void Start()
     {
         transform.parent = null;
 
@@ -51,7 +51,7 @@ public class Weapon_Bullet : MonoBehaviour
     }
 
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
         
        
@@ -137,7 +137,7 @@ public class Weapon_Bullet : MonoBehaviour
             Delete ();
         }
 
-        
+       
     }
 
 
@@ -169,13 +169,13 @@ public class Weapon_Bullet : MonoBehaviour
 
     }
 
-    public void Move () {
+    public virtual void Move () {
 
         rb.velocity = transform.right * speed;
         
     }
 
-    private void Delete () 
+    protected virtual void Delete () 
     { Destroy (gameObject); }
 
 }

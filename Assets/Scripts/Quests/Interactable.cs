@@ -10,6 +10,8 @@ public class Interactable : MonoBehaviour
     [SerializeField]protected GameObject DisplayUIRef;
     protected Animator DisplayAnim;
 
+    [SerializeField]Action_Manager.MultibtnState interactabletType;
+
      public enum Type {Interactable, Pickable, Consumable }
     [SerializeField]protected Type pickableType = Type.Interactable;
 
@@ -18,7 +20,7 @@ public class Interactable : MonoBehaviour
     protected bool canBePicked = false;
 
 
-    private void Start () {
+    protected virtual void Start () {
       
         if(DisplayUIRef!=null) 
         DisplayAnim =  DisplayUIRef.GetComponent<Animator> ();
@@ -38,7 +40,8 @@ public class Interactable : MonoBehaviour
                         canBePicked = true;
 
                         Gamemanager.instance.SetintObjRef (this.gameObject);
-                        Action_Manager.instance.SetMultiButtonFunc (Action_Manager.MultibtnState.Interact);
+
+                        SetActionMultibtnState ();
                         ShowDisplayUI ();
 
                         break;
@@ -48,7 +51,7 @@ public class Interactable : MonoBehaviour
                         canBePicked = true;
 
                         Gamemanager.instance.SetintObjRef (this.gameObject);
-                        Action_Manager.instance.SetMultiButtonFunc (Action_Manager.MultibtnState.Interact);
+                        SetActionMultibtnState ();
                         ShowDisplayUI ();
 
                         break;
@@ -67,6 +70,13 @@ public class Interactable : MonoBehaviour
                 
             }
         }
+    }
+
+    void SetActionMultibtnState () 
+    {
+
+        Action_Manager.instance.SetMultiButtonFunc (interactabletType);
+
     }
 
     protected virtual void OnTriggerExit2D (Collider2D collision) 

@@ -39,6 +39,7 @@ public class DialogueUIManager : MonoBehaviour
         //StartCoroutine (Type ());
 
         anim = GetComponent<Animator> ();
+        
     }
 
 
@@ -51,15 +52,15 @@ public class DialogueUIManager : MonoBehaviour
             SetcurrDialogueReference ();
             Charactername = dialogueMan.charName;
 
-           if(dialogueMan.charImage!=null)
-                characterImage.sprite = dialogueMan.charImage;
+           
            
 
             DialogueStart ();
         } else {
-            ClearcurrDialogueRef ();
-            characterImage = null;
+
+
             DialogueEnd ();
+            ClearcurrDialogueRef ();
         }
 
     }
@@ -84,12 +85,32 @@ public class DialogueUIManager : MonoBehaviour
 
 
     public void DialogueStart () {
+
+        UIManager.instance.ShowCinematicUI ();
+
         anim.SetTrigger ("Open");
 
     }
 
     public void DialogueEnd () {
-        if (anim.GetCurrentAnimatorStateInfo (0).IsName ("Dialogue_Idle")) { anim.SetTrigger ("Close"); }
+
+        if (dialogueMan != null) {
+            if (dialogueMan.IsQuestFinished ()) {
+                UIManager.instance.HideCinematicUI ();
+            }
+        }
+
+        if (anim.GetCurrentAnimatorStateInfo (0).IsName ("Dialogue_Idle")) 
+        { 
+
+            
+            
+            anim.SetTrigger ("Close");
+            
+        }
+
+       
+     
     }
 
     public void Nextsentence () {

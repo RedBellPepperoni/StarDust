@@ -8,11 +8,11 @@ public class NPC_StaticBEhav : Interactable
 
     [SerializeField]protected Animator NPCAnim;
 
-
+    bool popUp = false;
   //  [SerializeField]protected bool isQuestGiver = false;
     [SerializeField]protected QuestGiver_Parent QuestGiverRef;
 
-    
+    [SerializeField] Animator PopUpAnim;
 
     public override void ObjPicked () {
         base.ObjPicked ();
@@ -28,7 +28,11 @@ public class NPC_StaticBEhav : Interactable
 
                 case QuestParent.QuestProgress.Disabled:
 
-                    if (DialogueUIManager.instance.dialogueMan != null) { DialogueUIManager.instance.Nextsentence (); } else {
+                    if (DialogueUIManager.instance.dialogueMan != null) { DialogueUIManager.instance.Nextsentence (); } 
+
+                  //  else if (NPCDialogueMan)
+                    
+                    else {
 
                         DialogueUIManager.instance.SetDialoguemanagerReference (NPCDialogueMan);
                         DialogueUIManager.instance.Nextsentence ();
@@ -47,8 +51,17 @@ public class NPC_StaticBEhav : Interactable
                     }
                         QuestGiverRef.GetQuestInfo ().isQuestComplete ();
 
-                    NPCDialogueMan.nextDialogue ();
-                    break;
+
+                    if (NPCDialogueMan.Dialogref.reQuestSentences.Length > 0) {
+                        if (!popUp) {
+                            popUp = true;
+                            PopUpAnim.SetBool ("PopUp", true);
+                        }
+
+                        NPCDialogueMan.nextDialogue ();
+                    }
+                        break;
+                    
 
                 case QuestParent.QuestProgress.Finished:
 
@@ -65,6 +78,14 @@ public class NPC_StaticBEhav : Interactable
         }
         else 
         {
+            if(!popUp) 
+            {
+                popUp = true;
+                PopUpAnim.SetBool ("PopUp", true);
+            }
+
+
+
             if (NPCDialogueMan.Dialogref.reQuestSentences.Length > 0) { NPCDialogueMan.nextDialogue (); }
 
             else 
@@ -88,6 +109,11 @@ public class NPC_StaticBEhav : Interactable
 
         DialogueUIManager.instance.SetDialoguemanagerReference (null);
         NPCDialogueMan.clearDialogueText ();
+
+        if (popUp) {
+            popUp = false;
+            PopUpAnim.SetBool ("PopUp", false);
+        }
     }
 
 }

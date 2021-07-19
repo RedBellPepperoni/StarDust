@@ -22,6 +22,9 @@ public class LootBox : Interactable
     [SerializeField] GameObject LidClose;
     [SerializeField] GameObject LidOpen;
 
+    [SerializeField] AudioClip OpenSound;
+    [SerializeField] AudioSource audSource;
+
 
     int total;
     int randomNumber;
@@ -113,6 +116,9 @@ public class LootBox : Interactable
 
         LidOpen.SetActive (true);
         LidClose.SetActive (false);
+
+        audSource.PlayOneShot (OpenSound);
+
         setDropitem ();
 
         GetComponent<BoxCollider2D> ().enabled = false;

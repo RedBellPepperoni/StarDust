@@ -69,7 +69,7 @@ public class AI_DisplaySelector : Damagable
 
         if(QuestRef != null && QuestRef.goalType == QuestParent.GoalType.Kill) 
         {
-            Debug.LogError ("QuestDead");
+            
             QuestRef.ProgressQuest ();
 
             

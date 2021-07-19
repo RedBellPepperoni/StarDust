@@ -548,6 +548,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
+  DeathEffectTransform: {fileID: 0}
   deathEffect: {fileID: 0}
   Parent: {fileID: 1189077984185912982}
   HealModifier: 0
@@ -601,6 +602,12 @@ MonoBehaviour:
   - {fileID: 1189077982908035657}
   - {fileID: 1189077984312275429}
   - {fileID: 0}
+  coinLoot: {fileID: 0}
+  ammoLoot: {fileID: 0}
+  lootcoinDropmin: 0
+  lootcoinDropmax: 5
+  lootammoDropmin: 0
+  lootammoDropmax: 6
   HealthLevelMultiplier: 0.5
   npcLevel: 1
   type: 0

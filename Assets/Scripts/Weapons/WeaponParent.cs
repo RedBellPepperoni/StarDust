@@ -13,6 +13,8 @@ public class WeaponParent : MonoBehaviour
 
     public Transform Endpoint;
 
+    [SerializeField] AudioSource source;
+
     [SerializeField] float AimRange = 13f;
 
     public float GetAimRange () {
@@ -149,6 +151,13 @@ public class WeaponParent : MonoBehaviour
 
         }
 
+        PlayAudio ();
+
+    }
+
+    public void PlayAudio() 
+    {
+        source.Play ();
     }
 
 }

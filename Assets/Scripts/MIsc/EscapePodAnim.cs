@@ -6,30 +6,35 @@ public class EscapePodAnim : MonoBehaviour
 {
 
     public GameObject Pod;
-     Animator PodAnim;
-
+     [SerializeField]Animator PodAnim;
+    bool escaped = false;
 
     private void Start () {
-        PodAnim = Pod.GetComponent<Animator> ();
+       // PodAnim = Pod.GetComponent<Animator> ();
     }
 
     private void OnTriggerEnter2D (Collider2D collision) {
-        if (collision.CompareTag ("Player")) {
+        if (collision.CompareTag ("Player")&&!escaped) {
             ReleasePod ();
+            escaped = true;
         }
     }
 
 
     void ReleasePod () {
-        PodAnim.Play ("Pod_Close");
 
-        Invoke ("Escape", 1);
+
+        PodAnim.SetBool("Escape",true);
+        
+        Invoke ("Escape", 4);
 
     }
-
+    
 
     void Escape () 
     {
+        PodAnim.SetBool ("Escape", false);
+
         StartCoroutine ("Move");
     }
 
@@ -42,12 +47,13 @@ public class EscapePodAnim : MonoBehaviour
         {
             i++;
             offset = offset + i/10;
-            yield return new WaitForSeconds (0.05f);
+            yield return new WaitForSeconds (0);
 
-            transform.position = new Vector3 (transform.position.x, transform.position.y - offset, transform.position.z);
+           Pod.transform.position = new Vector3 (Pod.transform.position.x, Pod.transform.position.y - offset, Pod.transform.position.z);
 
         }
 
+        Destroy (Pod);
         Destroy (gameObject);
     }
 }

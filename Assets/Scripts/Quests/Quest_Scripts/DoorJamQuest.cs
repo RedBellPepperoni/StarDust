@@ -20,16 +20,30 @@ public class DoorJamQuest : QuestParent
         removeallmarkers ();
     }
 
+    public void StartQuestDoor() 
+    {
+        currentState = QuestProgress.Started;
+        
 
+        QuestManager.instance.AddActiveQuest (this);
+
+        QuestManager.instance.SetCurrentQuest (this);
+        QuestManager.instance.SetQuestUI ();
+
+
+    }
 
     public override void StartQuest () {
         base.StartQuest ();
 
         
         TerminalRef.SetKey ();
-
         ShowNextmarker (currentMarkerProgess);
-        Invoke ("KillallinRoom", 80);
+
+
+        SetCameratarget (CameraLook[0], 13);
+        Invoke ("SetCameraToDoor", 2);
+
     }
 
     protected override void giveReward () 
@@ -84,24 +98,31 @@ public class DoorJamQuest : QuestParent
     { 
        switch(currentAmount) 
        {
-            case 1: SetCameratarget (CameraLook[0], 13);
-                Invoke ("SetCameraToDoor", 2);
-
+            
 
                 
-                break;
+              
 
-            case 3: SetCameratarget (CameraLook[2], 20);
+            case 2: SetCameratarget (CameraLook[2], 20);
                 Invoke ("setCameraback", 3);
                 break;
        }
     }
 
 
+
+
     void SetCameraToDoor() 
     {
         SetCameratarget (CameraLook[1], 13);
         Invoke ("setCameraback",1);
+    }
+
+
+    protected override void setCameraback () {
+        base.setCameraback ();
+
+        UIManager.instance.HideCinematicUI ();
     }
 
 }

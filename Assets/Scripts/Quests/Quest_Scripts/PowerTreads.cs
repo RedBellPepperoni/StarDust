@@ -8,8 +8,10 @@ public class PowerTreads : QuestParent
     [SerializeField] Dialogue_manager DiaMan;
     [SerializeField] GameObject NPCRef;
     [SerializeField] Transform Cameratarget;
+    [SerializeField] Terminal_GateUnlocker PowerTerm;
 
     public bool switchPowerOn = false ;
+
 
     AudioSource source;
 
@@ -34,9 +36,9 @@ public class PowerTreads : QuestParent
 
     public override void StartQuest () {
         base.StartQuest ();
-        
-       
-       
+
+        UIManager.instance.HideCinematicUI ();
+
 
     }
 
@@ -52,11 +54,13 @@ public class PowerTreads : QuestParent
 
      void EnableLights() 
     {
-        
+        UIManager.instance.ShowCinematicUI ();
 
         DiaMan.setCurrentDialogue (1);
         SetCameratarget (Cameratarget, 20);
 
+
+        PowerTerm.SetPower (true);
         Invoke ("LightUp", 2);
 
         
@@ -65,6 +69,7 @@ public class PowerTreads : QuestParent
     void LightUp() 
     {
         powerAnimator.SetBool ("PowerUp",true);
+
 
         Invoke ("setCameraback", 4);
     }
@@ -94,10 +99,6 @@ public class PowerTreads : QuestParent
         
     }
 
-    private void OnTriggerEnter2D (Collider2D collision) {
-
-        EnableLights ();
-
-    }
+   
 
 }

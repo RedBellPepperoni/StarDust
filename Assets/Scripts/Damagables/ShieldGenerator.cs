@@ -37,9 +37,12 @@ public class ShieldGenerator : Damagable
 
     void SetShieldValues() 
     {
-        shieldRef.SetMaxHealth (shieldHealth);
-        
-        shieldRef.SetReShieldtime (timetoRespawn);
-        shieldRef.SetStartValues ();
+        if (shieldRef) 
+        {
+            shieldRef.SetMaxHealth (shieldHealth);
+
+            shieldRef.SetReShieldtime (timetoRespawn);
+            shieldRef.SetStartValues ();
+        }
     }
 }

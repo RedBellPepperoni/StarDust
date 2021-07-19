@@ -13,7 +13,8 @@ public class Action_Manager : MonoBehaviour
     //button related varables
     [SerializeField] FloatingJoystick MovejoystickRef;
     bool AtkbtnisPressed = false;
-    public enum MultibtnState {Shoot,Interact,Charge,Drop };
+    public enum MultibtnState { Grab, Shoot, Meleeatck, Drop, Heal, Talk, Examine, Charge };
+ 
     MultibtnState btnState = MultibtnState.Shoot;
 
     private Camera cam;
@@ -83,6 +84,7 @@ public class Action_Manager : MonoBehaviour
 
     private void Start () {
         ShowWeaponHand ();
+        SetMultiBtnState ();
     }
 
 
@@ -111,6 +113,7 @@ public class Action_Manager : MonoBehaviour
     public void SetMultiButtonFunc(MultibtnState state) 
     {
         btnState = state;
+        SetMultiBtnState ();
     
     }
 
@@ -141,7 +144,7 @@ public class Action_Manager : MonoBehaviour
 
     public void MultibtnClick () {
 
-        if (btnState == MultibtnState.Interact) {
+        if (btnState == MultibtnState.Grab||btnState == MultibtnState.Heal||btnState == MultibtnState.Examine||btnState== MultibtnState.Talk) {
             GameObject intObj = Gamemanager.instance.getInteObj ();
 
            
@@ -173,29 +176,14 @@ public class Action_Manager : MonoBehaviour
         
         }
         // handleShooting ();
-        SetMultiBtnState ();
+       // SetMultiBtnState ();
 
         
     }
 
     private void SetMultiBtnState() 
     {
-        switch (btnState) {
-            case MultibtnState.Interact:
-                UIManager.instance.SetMultiBtnDisplay (Color.yellow);
-                break;
-
-            case MultibtnState.Drop:
-                UIManager.instance.SetMultiBtnDisplay (Color.green);
-                break;
-
-            case MultibtnState.Shoot:
-                UIManager.instance.SetMultiBtnDisplay (Color.red);
-                break;
-    
-
-
-        }
+        UIManager.instance.SetMultiBtnDisplay (btnState);
     }
 
 
@@ -206,7 +194,12 @@ public class Action_Manager : MonoBehaviour
         // if (Input.touchCount > 0)
         // { 
 
-        movement = MovejoystickRef.Direction;
+
+        if (UIManager.instance.isCinematic == false)
+            movement = MovejoystickRef.Direction;
+
+        else
+            movement = Vector2.zero;
         /*
                 Vector3 aimLocalScale = Vector3.one;
                 if (movement.x < 0) {

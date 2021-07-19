@@ -854,6 +854,7 @@ GameObject:
   - component: {fileID: 4862139478017556170}
   - component: {fileID: 2534738134759237671}
   - component: {fileID: 7022878217309160416}
+  - component: {fileID: 142523427993932678}
   m_Layer: 3
   m_Name: Enemy_Gun_Base
   m_TagString: Aimable
@@ -924,8 +925,10 @@ MonoBehaviour:
   speed: 20
   aim1: {fileID: 6135421784419922739}
   aim2: {fileID: 2319591856863277328}
-  bulletPrefab: {fileID: 6221161495908124953, guid: e036c4ff69945a445ad9ca673bf72423,
+  bulletPrefab: {fileID: 6221161495908124953, guid: 9486007ce12fe4f40a7d2a9d38fef812,
     type: 3}
+  isActivated: 0
+  Damagable: {fileID: 0}
 --- !u!58 &7022878217309160416
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -942,6 +945,17 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0.025290173}
   serializedVersion: 2
   m_Radius: 1.9214493
+--- !u!210 &142523427993932678
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4862139478017556165}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 4
 --- !u!1 &5143099321100222979
 GameObject:
   m_ObjectHideFlags: 0

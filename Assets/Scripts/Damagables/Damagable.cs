@@ -24,7 +24,7 @@ public class Damagable : MonoBehaviour
     [SerializeField] protected float iceDamReduction = 0;
     [SerializeField] protected float electricDamReduction = 0;
 
-    private float ProcChance = 10/100;
+    
 
 
 
@@ -46,6 +46,8 @@ public class Damagable : MonoBehaviour
     }
     public virtual void TakeDamage(float inphyDmg, float inPlasmaDmg, float infireDmg, float iniceDmg, float inelecDmg)
     {
+        //Note: Add a elemeental Damage Proc Logic and DOT effects
+
        currentHealth = currentHealth -  CalcDamageReduction (inphyDmg,inPlasmaDmg,infireDmg,iniceDmg,inelecDmg);
 
 

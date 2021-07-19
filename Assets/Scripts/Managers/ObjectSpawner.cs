@@ -53,10 +53,10 @@ public class ObjectSpawner : MonoBehaviour
 
                 for (int i = 0; i < TempPoints.Count; i++) {
 
-                    if (spawnPoints.Count == SpawnPrefabs.Count-1) 
+                    if (spawnPoints.Count == SpawnPrefabs.Count) 
                     {
                         GameObject obj = Instantiate (SpawnPrefabs[i], TempPoints[i]);
-
+                        obj.transform.parent = null;
                         if (isQuestSpawner) 
                         {
                             if (obj.GetComponent<Quest_Collectable> ()) {
@@ -84,9 +84,9 @@ public class ObjectSpawner : MonoBehaviour
 
                 foreach (Transform t in spawnPoints) 
                 {
-                    Randomspawn = Random.Range (0, SpawnPrefabs.Count-1);
+                    Randomspawn = Random.Range (0, SpawnPrefabs.Count);
                     GameObject obj = Instantiate (SpawnPrefabs [Randomspawn] , t);
-
+                    obj.transform.parent = null;
                     if (isQuestSpawner) {
                         
 
@@ -109,9 +109,9 @@ public class ObjectSpawner : MonoBehaviour
             case SpawnerType.ranLocfixObj:
 
                 foreach (GameObject g in SpawnPrefabs) {
-                    int tempPointIndex = Random.Range (0, TempPoints.Count - 1);
+                    int tempPointIndex = Random.Range (0, TempPoints.Count);
                     GameObject obj = Instantiate (g, TempPoints[tempPointIndex]);
-
+                    obj.transform.parent = null;
                     TempPoints.RemoveAt (tempPointIndex);
 
                     if (isQuestSpawner) {
@@ -132,15 +132,15 @@ public class ObjectSpawner : MonoBehaviour
                
 
                 for (int i = 1; i <= numSpawn; i++) {
-                    Randomspawn = Random.Range (0, SpawnPrefabs.Count-1);
+                    Randomspawn = Random.Range (0, SpawnPrefabs.Count);
 
 
-                    int tempPointIndex = Random.Range (0, TempPoints.Count-1);
+                    int tempPointIndex = Random.Range (0, TempPoints.Count);
 
                    
 
                     GameObject obj = Instantiate (SpawnPrefabs[Randomspawn], TempPoints[tempPointIndex]);
-
+                    obj.transform.parent = null;
                     
                     TempPoints.RemoveAt (tempPointIndex);
 
@@ -153,6 +153,9 @@ public class ObjectSpawner : MonoBehaviour
 
                         } else if (obj.GetComponentInChildren<AI_DisplaySelector> ())
                             obj.GetComponentInChildren<AI_DisplaySelector> ().SetQuest (QuestRef);
+
+
+
                     }
                 }
 

@@ -7,8 +7,8 @@ public class QuestManager : MonoBehaviour
     public static QuestManager instance;
 
 
-    [SerializeField]  List<QuestParent> Quests;
-
+   
+    [SerializeField] List<QuestManagerHelper> SavedQuests;
     public List<QuestParent> ActiveQuests;
 
     QuestParent currentQuest;

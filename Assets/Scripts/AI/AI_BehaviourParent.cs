@@ -19,7 +19,7 @@ public class AI_BehaviourParent : MonoBehaviour
     [SerializeField] protected float attackRange = 30f;
     [SerializeField] protected Transform aimTransform;
     protected bool isMoving = false;
-    protected float nextFire = 0f;
+    [SerializeField]protected float nextFire = 0f;
     [SerializeField] protected float targetRange = 100f;
 
     [SerializeField] protected AIPath pathgen;
@@ -61,7 +61,9 @@ public class AI_BehaviourParent : MonoBehaviour
 
 
     protected  Vector2 GetRandomDir()
-    { return new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized; }
+    { 
+        return new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized;
+    }
 
 
     protected Vector2 getroamPosition(Vector2 startPosi,float min = 5f, float max = 150f)
@@ -114,7 +116,7 @@ public class AI_BehaviourParent : MonoBehaviour
             playerScale.x = 1;
         ObjectSprite.transform.localScale = playerScale;
 
-
+        Debug.LogWarning (ObjectSprite.transform.localScale);
     }
 
     

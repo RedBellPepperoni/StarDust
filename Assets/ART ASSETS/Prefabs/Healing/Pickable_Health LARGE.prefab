@@ -75,6 +75,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DisplayUIRef: {fileID: 4078980531618018218}
+  interactabletType: 4
   pickableType: 0
   isPicked: 0
   HealthValue: 60
@@ -124,7 +125,7 @@ Transform:
   m_GameObject: {fileID: 3326633097958505964}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 2}
+  m_LocalScale: {x: 4.0323, y: 4.0323, z: 2.6882}
   m_Children: []
   m_Father: {fileID: 3326633097192911208}
   m_RootOrder: 0

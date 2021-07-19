@@ -13,7 +13,7 @@ public class TerminalPower : Interactable
 
         if (PowerQuest.currentState == QuestParent.QuestProgress.Started)
         {
-            if (!doOnce) {
+            if (doOnce == false) {
                 base.ObjPicked ();
 
                 PowerQuest.ProgressQuest ();

@@ -171,6 +171,7 @@ Debug. unityLogger. logEnabled = false;
 
 
                             LowerAmmoCount ();
+                            
 
 
                                   switch (weaponScriptRef.getWeaponClass ()) 
@@ -332,7 +333,13 @@ Debug. unityLogger. logEnabled = false;
            // objpickTransform.GetChild (0).gameObject.GetComponent<Interactable> ().Delete ();
 
             canCarryObj = true;
-            Action_Manager.instance.SetMultiButtonFunc (Action_Manager.MultibtnState.Shoot);
+
+            if (weaponScriptRef.getWeaponClass () == WeaponParent.weaponType.Melee) 
+            {
+                Action_Manager.instance.SetMultiButtonFunc (Action_Manager.MultibtnState.Meleeatck);
+            } 
+            else 
+            { Action_Manager.instance.SetMultiButtonFunc (Action_Manager.MultibtnState.Shoot); }
 
         }
     }
@@ -371,12 +378,14 @@ Debug. unityLogger. logEnabled = false;
     public void Addcoins(int coins) 
     {
         coinAmount = coinAmount + coins;
-        Debug.LogError (coinAmount);
+        
         UIManager.instance.SetCoinAmount (coinAmount);
     }
 
-    public void AddAncientCoins() 
-    { 
+    public void AddAncientCoins(int coins) 
+    {
+        ancientCoinamt = ancientCoinamt + coins;
+        UIManager.instance.SetAncientCoinAmt (ancientCoinamt);
     
     }
 
@@ -387,6 +396,8 @@ Debug. unityLogger. logEnabled = false;
 
     public void Respawn() 
     {
+
+
         Player_Damagable.instance.Respawn ();
         UIManager.instance.HideRespawnUI ();
     }

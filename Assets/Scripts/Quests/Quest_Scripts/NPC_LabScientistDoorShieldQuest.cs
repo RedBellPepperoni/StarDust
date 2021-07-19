@@ -50,7 +50,7 @@ public class NPC_LabScientistDoorShieldQuest : NPC_StaticBEhav
     void checkQuestProgress() 
     {
         if (DialogueUIManager.instance.CheckDialogueEnd ()) {
-            Quest.ProgressQuest ();
+            Quest.ProgressQuest();
 
             Invoke ("UnlockDoor", 2);
 

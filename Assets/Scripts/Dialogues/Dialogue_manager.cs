@@ -10,7 +10,7 @@ public class Dialogue_manager : MonoBehaviour
     [SerializeField] protected bool isQuestDialogue = false;
     [SerializeField] Dialogue[] Dialogues;
 
-    public Sprite charImage;
+   
     public Dialogue Dialogref;
     public string charName = "";
 
@@ -20,7 +20,7 @@ public class Dialogue_manager : MonoBehaviour
 
 
 
-
+    
 
     private void Start () {
         setCurrentDialogue (0);
@@ -50,7 +50,7 @@ public class Dialogue_manager : MonoBehaviour
         else 
         { 
             currentIndex = 0;
-            clearDialogueText ();
+           // clearDialogueText ();
         }
     }
 
@@ -91,6 +91,12 @@ public class Dialogue_manager : MonoBehaviour
         
         }
     }
+
     
     
+    public bool IsQuestFinished() 
+    {
+        return (questGiver.GetQuestInfo ().currentState == QuestParent.QuestProgress.Finished) || (questGiver.GetQuestInfo ().currentState == QuestParent.QuestProgress.Rewarded);
+    }
+   
 }

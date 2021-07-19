@@ -7,7 +7,7 @@ public class CAIMAN_Behaviour : AI_BehaviourParent
     // Start is called before the first frame update
 
    
-    float gndAtkCooldown = 7f;
+    float gndAtkCooldown = 13f;
     float missileatkcooldown = 5f;
 
 
@@ -15,23 +15,28 @@ public class CAIMAN_Behaviour : AI_BehaviourParent
     bool canGndAtk = true;
 
     [SerializeField] GameObject Bullet;
+    [SerializeField] GameObject GroundBullet;
+    [SerializeField] GameObject GndAtckBase;
+    [SerializeField] List<Transform> GndAtckLocations;
+
 
     protected override void Start () {
         base.Start ();
-
-        findTarget (getroamPosition (transform.position));
+        PlayerRef = PlayerController.instance.transform.gameObject;
+       findTarget (getroamPosition (transform.position));
         SetAIBehaviour ();
+
     }
 
     protected override void Awake () {
         base.Awake ();
         SetRandomPathTime ();
-        SetWeapon ();
+       
     }
 
     // Update is called once per frame
     void Update () {
-      
+     
 
     }
 
@@ -47,7 +52,10 @@ public class CAIMAN_Behaviour : AI_BehaviourParent
 
 
        SetAIBehaviour ();
-       // if (canSeetarget) 
+        // if (canSeetarget) 
+
+        if (canGndAtk)
+            GroundAttack ();
     }
 
 
@@ -219,26 +227,19 @@ public class CAIMAN_Behaviour : AI_BehaviourParent
         return (Vector2.Distance (transform.position, PlayerController.instance.getposition ()) <= attackRange);
     }
 
-    public void SetWeaponReference () {
-
-
-
-
-
-    }
+    
 
     public void Shoot () {
+        
+        
         RaycastHit2D hit;
-
-       
-
 
         //  Vector3 rayDirection = PlayerController.instance.transform.position - endpointTransform.posi;
 
         if (Time.time > nextFire) {
             LayerMask layerMask = 1 << 11;
-            
 
+           
             hit = Physics2D.Raycast (endpointTransform.position, endpointTransform.right, 100, layerMask);
 
 
@@ -246,30 +247,45 @@ public class CAIMAN_Behaviour : AI_BehaviourParent
 
             if (hit.collider.gameObject.CompareTag ("Player")) {
 
+
+
+                // weaponScriptRef.OnShoot ();
                 
+                // InstatiateBullet (endpointTransform);
 
-                weaponScriptRef.OnShoot ();
-
-                InstatiateBullet (endpointTransform);
+                GameObject bullet = Instantiate (Bullet, endpointTransform.position, endpointTransform.rotation);
+                nextFire = Time.time + 3f;
             }
 
-            nextFire = Time.time + (weaponScriptRef.GetEffectiveFireRate ());
+           
+            
+
             SetRandomPathTime ();
-            // else nextFire = 0f;
+
+
+           
 
 
         } 
           
 
-        // Debug.Log ("Weapon Reloading");
+        
     }
 
 
-    void InstatiateBullet (Transform aimGunEndPointTrasform) {
-        GameObject bullet = Instantiate (weaponScriptRef.getBulletPrefab (), aimGunEndPointTrasform.position, aimGunEndPointTrasform.rotation);
-        bullet.GetComponent<Weapon_Bullet> ().setDamage (weaponScriptRef.getWeaponPhyDmg (), weaponScriptRef.getWeaponPlasmaDmg (), weaponScriptRef.getWeaponFireDmg (), weaponScriptRef.getWeaponIceDmg (), weaponScriptRef.getWeaponElecDmg ());
-        bullet.GetComponent<Weapon_Bullet> ().setSpeed (weaponScriptRef.GetBulletSpeed ());
-        bullet.GetComponent<Weapon_Bullet> ().Move ();
+    protected override void flip (float horizontal) {
+        Vector3 playerScale = ObjectSprite.transform.localScale;
+        if (horizontal < 0) {
+
+            playerScale.x = 1;
+
+
+
+        } else
+            playerScale.x = -1;
+        ObjectSprite.transform.localScale = playerScale;
+
+        
     }
 
     private void AimAtTarget (Vector3 aimTarget) {
@@ -281,41 +297,55 @@ public class CAIMAN_Behaviour : AI_BehaviourParent
 
         //Flip Gun if aiming at the other side
 
-        Vector3 aimLocalScale = Vector3.one;
+      //  Vector3 aimLocalScale = Vector3.one;
         if (angle > 90 || angle < -90) {
             flip (-1);
 
-            aimLocalScale.y = -1f;
-            aimTransform.position = AimRootRight.position;
+            //aimLocalScale.y = -1f;
+          
         } else {
             flip (1);
-            aimLocalScale.y = +1f;
-            aimTransform.position = AimRootLeft.position;
+          //  aimLocalScale.y = +1f;
+           
         }
-        aimTransform.localScale = aimLocalScale;
+      //  aimTransform.localScale = aimLocalScale;
        
     }
 
-    void SetWeapon () 
+    
+
+
+    
+
+
+    void GroundAttack() 
     {
-        weaponScriptRef = weaponRootRef.transform.Find ("WeaponRoot").GetChild (0).gameObject.GetComponent<WeaponParent> ();
+        animator.SetTrigger ("GndAttack");
+
+        canGndAtk = false;
+        StartCoroutine (refreshGndAtk ());
     }
 
-
     
+    public void GroundAttackHook() {
+        GndAtckBase.transform.localEulerAngles = new Vector3 (0, 0, Random.Range (-180, 180));
 
+        foreach (Transform t in GndAtckLocations) {
+            GameObject g = Instantiate (GroundBullet, t);
+            g.GetComponent<Weapon_Bullet> ().Move ();
+        }
+    }
 
-    
+    public void ResetAnimTrigger() 
+    {
+        animator.ResetTrigger ("GndAttack");
 
-    
-
-
-    
+    }
 
     IEnumerator refreshGndAtk () 
     {
         yield return new WaitForSeconds (gndAtkCooldown);
-
+        
         canGndAtk = true;
      //   if (inGndAtckRange)
           //  GroundAttack ();
@@ -327,7 +357,8 @@ public class CAIMAN_Behaviour : AI_BehaviourParent
         {
           
             inGndAtckRange  = true;
-//
+            //
+            
         }
     }
 

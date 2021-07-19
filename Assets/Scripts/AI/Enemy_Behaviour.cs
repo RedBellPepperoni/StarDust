@@ -44,7 +44,14 @@ public class Enemy_Behaviour : AI_BehaviourParent
     protected override void FixedUpdate () {
 
         if (!isStopped) { SetAIBehaviour (); }
-       // if (canSeetarget) 
+        if (ai.velocity.magnitude > 0.5f) 
+        {
+            animator.SetBool ("isWalking", true);
+           
+        } else 
+        {
+            animator.SetBool ("isWalking",false);
+        }
     }
 
 
@@ -240,7 +247,35 @@ public class Enemy_Behaviour : AI_BehaviourParent
 
                 weaponScriptRef.OnShoot ();
 
-                InstatiateBullet (endpointTransform);
+                
+
+
+                switch (weaponScriptRef.getWeaponClass ()) {
+
+                    case WeaponParent.weaponType.Pistol:
+                        InstatiateBullet (endpointTransform.position,endpointTransform.rotation.eulerAngles);
+                        break;
+
+
+                    case WeaponParent.weaponType.Shotgun:
+                        Transform Spreadgunpoint = endpointTransform;
+
+                        float rotOffset = weaponScriptRef.GetShotgunangle () / weaponScriptRef.GetBurstbulletCount ();
+
+                        float newRot = -weaponScriptRef.GetShotgunangle () / 2;
+
+                        for (int i = 1; i <= weaponScriptRef.GetBurstbulletCount (); i++) {
+
+
+                            InstatiateBullet (endpointTransform.position, endpointTransform.rotation.eulerAngles + new Vector3 (0, 0, newRot));
+                            newRot = newRot + rotOffset;
+                        }
+
+                        break;
+
+                }
+
+
             }
 
             nextFire = Time.time + (weaponScriptRef.GetEffectiveFireRate ());
@@ -255,8 +290,8 @@ public class Enemy_Behaviour : AI_BehaviourParent
     }
 
 
-    void InstatiateBullet (Transform aimGunEndPointTrasform) {
-        GameObject bullet = Instantiate (weaponScriptRef.getBulletPrefab (), aimGunEndPointTrasform.position, aimGunEndPointTrasform.rotation);
+    void InstatiateBullet (Vector3 aimGunEndPointPosition, Vector3 aimGunEndPointRotation ) {
+        GameObject bullet = Instantiate (weaponScriptRef.getBulletPrefab (), aimGunEndPointPosition, Quaternion.Euler(aimGunEndPointRotation));
         bullet.GetComponent<Weapon_Bullet> ().setDamage (weaponScriptRef.getWeaponPhyDmg (), weaponScriptRef.getWeaponPlasmaDmg (), weaponScriptRef.getWeaponFireDmg (), weaponScriptRef.getWeaponIceDmg (), weaponScriptRef.getWeaponElecDmg ());
         bullet.GetComponent<Weapon_Bullet> ().setSpeed (weaponScriptRef.GetBulletSpeed ());
         bullet.GetComponent<Weapon_Bullet> ().Move ();

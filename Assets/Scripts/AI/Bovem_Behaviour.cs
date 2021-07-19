@@ -237,7 +237,7 @@ public class Bovem_Behaviour : AI_BehaviourParent
             hit = Physics2D.Raycast (endpointTransform.position, endpointTransform.right, 100, layerMask);
 
 
-            Debug.LogWarning (hit.collider.tag);
+            
 
             if (hit.collider.gameObject.CompareTag ("Player")) {
 

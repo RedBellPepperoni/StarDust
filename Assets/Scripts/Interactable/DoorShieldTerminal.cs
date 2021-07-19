@@ -6,16 +6,26 @@ public class DoorShieldTerminal : TerminalTurrent
 {
 
     [SerializeField] DoorShieldMissionNPC NPCRef;
-    [SerializeField] QuestParent Quest;
+    
 
     bool unlocked;
+
+
+     void Start () {
+        if (DisplayUIRef != null)
+            DisplayAnim = DisplayUIRef.GetComponent<Animator> ();
+
+        turrentmanRwef.Activate ();
+    }
     protected override void Unlock () {
 
         if (!unlocked) {
-            turrentmanRwef.Activate ();
 
-            Quest.ProgressQuest ();
-            NPCRef.TakeCover ();
+            if(turrentmanRwef.isActiveAndEnabled)
+            turrentmanRwef.Deactivate ();
+
+            
+           // NPCRef.TakeCover ();
             unlocked = true;
         }
        

@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyRaiderSelecter : AI_DisplaySelector
 {
     
-    ObjectSpawner SpawnerRef;
+    
     
 
     //[SerializeField] int levelHealthMultiplier = 1;

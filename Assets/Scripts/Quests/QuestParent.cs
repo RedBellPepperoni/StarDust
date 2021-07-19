@@ -5,7 +5,8 @@ using UnityEngine;
 public class QuestParent : MonoBehaviour
 {//Quest Variables
 
-    public string questName;
+    [SerializeField]string questName;
+    [SerializeField] bool registertoQuestMaster;
 
     public enum QuestProgress { Disabled, Started, Finished, Rewarded, Failed };
 
@@ -61,7 +62,7 @@ public class QuestParent : MonoBehaviour
     }
 
 
-
+    public string GetQuestname () { return questName; }
     public bool GetcanRestart () { return isRestartable; }
 
     // [SerializeField] protected List<GameObject> QuestObjects;
@@ -80,6 +81,9 @@ public class QuestParent : MonoBehaviour
     public virtual void StartQuest() 
     {
         currentState = QuestProgress.Started;
+
+
+
         QuestManager.instance.AddActiveQuest (this);
 
         QuestManager.instance.SetCurrentQuest (this);
@@ -107,7 +111,7 @@ public class QuestParent : MonoBehaviour
     protected virtual void giveReward() 
     {
         Gamemanager.instance.Addcoins (coinReward);
-        Debug.LogError ("Rewarded");
+        
     }
 
     public virtual void ProgressQuest () 
@@ -152,6 +156,9 @@ public class QuestParent : MonoBehaviour
 
     protected virtual void setCameraback () {
         Gamemanager.instance.cameraLookAt (PlayerController.instance.transform, 13);
+
+
+        UIManager.instance.HideCinematicUI ();
        
     }
 

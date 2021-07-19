@@ -60,7 +60,8 @@ public class UnionofOnion : QuestParent
     }
     
 
-    protected override void QuestCompleted () {
+    protected override void QuestCompleted () 
+    {
         base.QuestCompleted ();
 
 
@@ -72,6 +73,7 @@ public class UnionofOnion : QuestParent
         
     }
 
+    
 
    
 }

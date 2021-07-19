@@ -5,8 +5,11 @@ using UnityEngine;
 public class Player_Damagable : Damagable
 {
     public static Player_Damagable instance;
-   
-    
+
+    [SerializeField] AudioClip FootstepVar1;
+    [SerializeField] AudioClip FootstepVar2;
+    [SerializeField] AudioClip FootstepVar3;
+    AudioSource audiosrc;
     private void Awake () {
 
        
@@ -24,7 +27,7 @@ public class Player_Damagable : Damagable
     }
 
         private void Start () {
-
+        audiosrc = GetComponent<AudioSource> ();
         Gamemanager.instance.setUIPlayervalues (currentHealth, maxHealth);
 
 
@@ -69,5 +72,23 @@ public class Player_Damagable : Damagable
         PlayerController.instance.SetPlayerState (PlayerController.PlayerState.Idle);
         PlayerController.instance.Respawn ();
 
+    }
+
+    public void PlayFootStepSound() 
+    {
+        int selector = Random.Range (0, 3);
+        switch(selector)
+        {
+            case 0:
+               audiosrc.PlayOneShot (FootstepVar1);
+                break;
+            case 1:
+                audiosrc.PlayOneShot (FootstepVar2);
+                break;
+            case 2:
+                audiosrc.PlayOneShot (FootstepVar3);
+                break;
+        
+        }
     }
 }
