@@ -11,6 +11,7 @@ TagManager:
   - IgnorePlayerBullets
   - IgnoreBullets
   - MiscItem
+  - NPC
   layers:
   - Default
   - TransparentFX

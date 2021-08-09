@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 
 
@@ -9,7 +10,7 @@ using UnityEngine;
 public class Dialogue : MonoBehaviour
 {
 
-
+    public UnityEvent DialogueEnd;
    
     public string[] randomsentences;
     public string[] questSentences;
@@ -35,4 +36,9 @@ public class Dialogue : MonoBehaviour
     public string ReQuestDialogue(int index) 
     { return reQuestSentences[index]; }
 
+
+    public void DialogueEndQuest () 
+    {
+        DialogueEnd.Invoke ();
+    }
 }

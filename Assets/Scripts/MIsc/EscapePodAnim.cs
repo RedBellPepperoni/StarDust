@@ -24,7 +24,7 @@ public class EscapePodAnim : MonoBehaviour
     void ReleasePod () {
 
 
-        PodAnim.SetBool("Escape",true);
+        PodAnim.SetTrigger("Escape");
         
         Invoke ("Escape", 4);
 
@@ -33,7 +33,7 @@ public class EscapePodAnim : MonoBehaviour
 
     void Escape () 
     {
-        PodAnim.SetBool ("Escape", false);
+        
 
         StartCoroutine ("Move");
     }

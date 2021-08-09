@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3769204763487782842}
   - component: {fileID: 6750642546646141473}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Missile2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -83,6 +83,36 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &664100660729161926
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7612630170403788329}
+  m_Layer: 7
+  m_Name: AttackLoc5
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7612630170403788329
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 664100660729161926}
+  m_LocalRotation: {x: -0, y: -0, z: -0.9340606, w: -0.35711467}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3614341815387311915}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -221.846}
 --- !u!1 &1642133654308854116
 GameObject:
   m_ObjectHideFlags: 0
@@ -92,7 +122,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3658394224819869507}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: FrontpieceDamge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -115,6 +145,36 @@ Transform:
   m_Father: {fileID: 7845223977731166950}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1870043700851546751
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4558781221728046179}
+  m_Layer: 7
+  m_Name: AttackLoc2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4558781221728046179
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1870043700851546751}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3614341815387311915}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2081904956511964947
 GameObject:
   m_ObjectHideFlags: 0
@@ -125,7 +185,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2329784582950569923}
   - component: {fileID: 4207697594010178339}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: damage_1 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -209,7 +269,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1557317396420118023}
   - component: {fileID: 7659322083315388210}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -293,7 +353,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3077961990001878981}
   - component: {fileID: 6736406238071866685}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: damage_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -376,7 +436,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 521417921329760351}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Missile_Transform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -406,7 +466,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7316490394082406885}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Shadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -437,7 +497,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7373010064847051613}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Missiles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -463,6 +523,66 @@ Transform:
   m_Father: {fileID: 7845223977731166950}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4345056207301073056
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3924111134313701917}
+  m_Layer: 7
+  m_Name: AttackLoc1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3924111134313701917
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4345056207301073056}
+  m_LocalRotation: {x: -0, y: -0, z: 0.62647104, w: 0.7794447}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3614341815387311915}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 77.58}
+--- !u!1 &5104379465108132968
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 501797975312384546}
+  m_Layer: 7
+  m_Name: AttackLoc4
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &501797975312384546
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5104379465108132968}
+  m_LocalRotation: {x: -0, y: -0, z: -0.8953782, w: 0.4453066}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3614341815387311915}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -127.114}
 --- !u!1 &6154241469318962618
 GameObject:
   m_ObjectHideFlags: 0
@@ -473,7 +593,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1515097664719261612}
   - component: {fileID: 7958611299938806646}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Missile5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -546,6 +666,71 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &6313263344684810830
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3614341815387311915}
+  m_Layer: 7
+  m_Name: GroundBase
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3614341815387311915
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6313263344684810830}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 3924111134313701917}
+  - {fileID: 4558781221728046179}
+  - {fileID: 259686394492567220}
+  - {fileID: 501797975312384546}
+  - {fileID: 7612630170403788329}
+  m_Father: {fileID: 7845223977662093809}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6897160461640352734
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 259686394492567220}
+  m_Layer: 7
+  m_Name: AttackLoc3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &259686394492567220
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6897160461640352734}
+  m_LocalRotation: {x: -0, y: -0, z: -0.40438616, w: 0.9145884}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3614341815387311915}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -47.705}
 --- !u!1 &7733312111163783015
 GameObject:
   m_ObjectHideFlags: 0
@@ -556,7 +741,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6056969490634936488}
   - component: {fileID: 7131217771062763633}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Missile4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -639,7 +824,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7845223976568965161}
   - component: {fileID: 7845223976568965160}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BaseSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -721,7 +906,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7845223976621651086}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Legs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -755,7 +940,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7845223976752890288}
   - component: {fileID: 7845223976752890291}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: LEG2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -838,7 +1023,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7845223976902839538}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: HeadRoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -873,7 +1058,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7845223977096716060}
   - component: {fileID: 7845223977096716063}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: LEG3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -960,9 +1145,11 @@ GameObject:
   - component: {fileID: 22307689}
   - component: {fileID: 22307690}
   - component: {fileID: 22307691}
-  m_Layer: 0
+  - component: {fileID: 6044965649062988390}
+  - component: {fileID: 7248717376140242813}
+  m_Layer: 7
   m_Name: CAIMAN_boss
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1086,15 +1273,57 @@ MonoBehaviour:
   pathgen: {fileID: 22307689}
   newPathTime: 3
   weaponRootRef: {fileID: 0}
-  ObjectSprite: {fileID: 0}
+  ObjectSprite: {fileID: 7845223976902839539}
   endpointTransform: {fileID: 521417921329760351}
   AimRootRight: {fileID: 0}
   AimRootLeft: {fileID: 0}
   Bullet: {fileID: 6221161495908124953, guid: 1f19b70510dcb624b8f236738f87f56b, type: 3}
   GroundBullet: {fileID: 6221161495908124953, guid: add2dd30963c34b429a30c757a72b2c9,
     type: 3}
-  GndAtckBase: {fileID: 0}
-  GndAtckLocations: []
+  GndAtckBase: {fileID: 6313263344684810830}
+  GndAtckLocations:
+  - {fileID: 3924111134313701917}
+  - {fileID: 4558781221728046179}
+  - {fileID: 259686394492567220}
+  - {fileID: 501797975312384546}
+  - {fileID: 7612630170403788329}
+--- !u!58 &6044965649062988390
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7845223977142367572}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 2.354309
+--- !u!50 &7248717376140242813
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7845223977142367572}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &7845223977508013309
 GameObject:
   m_ObjectHideFlags: 0
@@ -1105,7 +1334,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7845223977508013308}
   - component: {fileID: 7845223977508013311}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: LEG1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1193,7 +1422,7 @@ GameObject:
   - component: {fileID: 4908972881746075705}
   m_Layer: 6
   m_Name: Body
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1293,9 +1522,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7845223977662093809}
-  m_Layer: 0
+  - component: {fileID: 2852571076683248585}
+  m_Layer: 7
   m_Name: Base
-  m_TagString: Aimable
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1313,9 +1543,26 @@ Transform:
   m_Children:
   - {fileID: 7845223976568965161}
   - {fileID: 7845223976621651086}
+  - {fileID: 3614341815387311915}
   m_Father: {fileID: 7845223977624463438}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!70 &2852571076683248585
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7845223977662093814}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.09659457, y: -0.057957172}
+  m_Size: {x: 3.030796, y: 8.053868}
+  m_Direction: 0
 --- !u!1 &7845223977731166951
 GameObject:
   m_ObjectHideFlags: 0
@@ -1326,7 +1573,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7845223977731166950}
   - component: {fileID: 7845223977731166945}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: HeadSpriteFront
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1412,7 +1659,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5750930540975031714}
   - component: {fileID: 5969464922026401223}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Missile3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1495,7 +1742,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4851912168171442268}
   - component: {fileID: 4267825530522232004}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: damage_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1578,7 +1825,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3961275387312663709}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BackpieceDamage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1611,7 +1858,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8559992497270557074}
   - component: {fileID: 2251322081760350949}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: damage_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1694,7 +1941,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7610583299204927679}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Damaged
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1725,7 +1972,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2705750762917286829}
   - component: {fileID: 1975423917318674973}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: HeadSpriteBack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1810,7 +2057,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4731783714575653676}
   - component: {fileID: 755293645543710594}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Missile1
   m_TagString: Untagged
   m_Icon: {fileID: 0}

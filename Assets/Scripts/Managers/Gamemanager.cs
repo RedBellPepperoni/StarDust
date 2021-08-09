@@ -8,7 +8,14 @@ public class Gamemanager : MonoBehaviour
 {
     public static Gamemanager instance;
     // [SerializeField] CinemachineVirtualCamera vcam;
+    bool secAccesslvl1 = false;
+    bool secAccesslvl2 = false;
+    bool secAccesslvl3 = false;
 
+
+    [SerializeField] List<string> CurrentRelics ;
+
+    
 
     public CinemachineBrain vcam;
 
@@ -406,6 +413,35 @@ Debug. unityLogger. logEnabled = false;
     {
         SceneManager.LoadScene (SceneManager.GetActiveScene ().buildIndex);
         Respawn ();
+    }
+
+    public void SetSecurityAccessDetail(int i) 
+    { 
+      switch(i) 
+      {
+            case 1: secAccesslvl1 = true;
+                break;
+            case 2: secAccesslvl2 = true;
+                break;
+            case 3: secAccesslvl3 = true;
+                break;
+
+            default: Debug.LogWarning ("SomethingisWrong with Security Access gamemanager ");
+                break;
+      }
+    }
+
+    public void ClearSecurityAccess () 
+    {
+        secAccesslvl1 = false;
+        secAccesslvl2 = false;
+        secAccesslvl3 = false;
+    }
+
+
+    public void AddRelic(string relic) 
+    {
+        CurrentRelics.Add (relic);
     }
 }
 

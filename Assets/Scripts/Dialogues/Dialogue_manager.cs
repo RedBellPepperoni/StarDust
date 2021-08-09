@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+
 using TMPro;
 
 public class Dialogue_manager : MonoBehaviour
@@ -9,6 +9,8 @@ public class Dialogue_manager : MonoBehaviour
     public TextMeshPro  dialogue;
     [SerializeField] protected bool isQuestDialogue = false;
     [SerializeField] Dialogue[] Dialogues;
+    protected int currDialogueindex = 0;
+
 
    
     public Dialogue Dialogref;
@@ -64,8 +66,10 @@ public class Dialogue_manager : MonoBehaviour
 
     public void RandomDialogue()
     {
-        currenttext = Dialogref.SayRandomDialogue ();
-        UpdateDialogueText ();
+        if (Dialogref.randomsentences.Length > 0) {
+            currenttext = Dialogref.SayRandomDialogue ();
+            UpdateDialogueText ();
+        }
 
     }
 
@@ -79,9 +83,16 @@ public class Dialogue_manager : MonoBehaviour
     
     public virtual void QuestDialogueCompleted() 
     {
-        if (Dialogues.Length > 1) { setCurrentDialogue (1); }
 
-        if(isQuestDialogue) 
+        currDialogueindex++;
+        Dialogref.DialogueEndQuest ();
+
+         if (currDialogueindex < Dialogues.Length) 
+          { setCurrentDialogue (currDialogueindex); }
+
+       
+
+      /*  if(isQuestDialogue) 
         {
 
             if (questGiver != null) { questGiver.GiveQuest (); }
@@ -89,13 +100,16 @@ public class Dialogue_manager : MonoBehaviour
 
             
         
-        }
+        }*/
     }
 
     
     
     public bool IsQuestFinished() 
     {
+        Debug.LogWarning (questGiver.GetQuestInfo ().currentState);
+
+
         return (questGiver.GetQuestInfo ().currentState == QuestParent.QuestProgress.Finished) || (questGiver.GetQuestInfo ().currentState == QuestParent.QuestProgress.Rewarded);
     }
    

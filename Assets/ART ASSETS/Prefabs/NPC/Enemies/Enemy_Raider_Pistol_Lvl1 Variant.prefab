@@ -1,5 +1,102 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!82 &947648558419695242
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3799525180119945322}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 24300002, guid: d18e27b95b624874c9ae033c9191da04,
+    type: 2}
+  m_audioClip: {fileID: 8300000, guid: 8fbb4f33990892e42bcf595c2831dce8, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.765
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 194
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 10
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1001 &5922705589878751859
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12,6 +109,11 @@ PrefabInstance:
       propertyPath: animator
       value: 
       objectReference: {fileID: 6362656090430793447}
+    - target: {fileID: -4896927953540775538, guid: 89dc3aeca794d1d40b71b76db5d68d46,
+        type: 3}
+      propertyPath: nextFire
+      value: 0.75
+      objectReference: {fileID: 0}
     - target: {fileID: 755794784766831473, guid: 89dc3aeca794d1d40b71b76db5d68d46,
         type: 3}
       propertyPath: graphMask.value
@@ -124,6 +226,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7389014319293403675, guid: 89dc3aeca794d1d40b71b76db5d68d46,
         type: 3}
+      propertyPath: source
+      value: 
+      objectReference: {fileID: 947648558419695242}
+    - target: {fileID: 7389014319293403675, guid: 89dc3aeca794d1d40b71b76db5d68d46,
+        type: 3}
+      propertyPath: rateOfFire
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7389014319293403675, guid: 89dc3aeca794d1d40b71b76db5d68d46,
+        type: 3}
       propertyPath: physicalDamage
       value: 4
       objectReference: {fileID: 0}
@@ -140,6 +252,12 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 755794784766831479, guid: 89dc3aeca794d1d40b71b76db5d68d46, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 89dc3aeca794d1d40b71b76db5d68d46, type: 3}
+--- !u!1 &3799525180119945322 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7389014319293403673, guid: 89dc3aeca794d1d40b71b76db5d68d46,
+    type: 3}
+  m_PrefabInstance: {fileID: 5922705589878751859}
+  m_PrefabAsset: {fileID: 0}
 --- !u!95 &6362656090430793447 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 755794785149379732, guid: 89dc3aeca794d1d40b71b76db5d68d46,

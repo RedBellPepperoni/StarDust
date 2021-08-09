@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Terminal_GateUnlocker : Interactable
 {
     protected bool canUnlock;
-
+    public UnityEvent UnlockDoor;
 
     [SerializeField] protected GameObject lockUIRef;
     [SerializeField] protected GameObject unlockUIRef;
@@ -158,6 +159,9 @@ public class Terminal_GateUnlocker : Interactable
         if (hasPower) {
             foreach (Gate_Controller g in GateRef) { g.UnlockDoor (); }
             ScreenRef.color = IdleColor;
+
+
+            UnlockDoor.Invoke ();
 
             isLocked = false;
             SetUlockUI ();

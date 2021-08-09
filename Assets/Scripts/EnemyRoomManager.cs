@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class EnemyRoomManager : MonoBehaviour
 {
-    
+    public UnityEvent QuestComplete;
 
     int Totalwaves = 1;
     int currentWave = 1;
@@ -17,7 +18,7 @@ public class EnemyRoomManager : MonoBehaviour
     [SerializeField]List<Terminal_GateUnlocker> GateTerminals;
 
     [SerializeField] List<QuestParent> EnemyWaveQuest;
-    [SerializeField] Dialogue_manager NPCmanager;
+    
   
     
 
@@ -37,7 +38,11 @@ public class EnemyRoomManager : MonoBehaviour
         }
 
 
+
     }
+
+
+
 
 
     void BeginBattle () 
@@ -87,12 +92,11 @@ public class EnemyRoomManager : MonoBehaviour
     {
         roomCleared = true;
         UnlockAllDoors ();
-    
 
-        if(NPCmanager!=null) 
-        {
-            NPCmanager.setCurrentDialogue (1);
-        }
+
+        QuestComplete.Invoke ();
+
+
 
     }
 

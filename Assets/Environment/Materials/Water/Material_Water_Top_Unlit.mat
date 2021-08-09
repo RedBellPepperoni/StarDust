@@ -44,22 +44,23 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    m_Ints: []
     m_Floats:
     - Vector1_1098D7FE: 2.2
     - Vector1_128C7CD1: 0.71
-    - Vector1_52909EDA: 10.25
-    - Vector1_6A8B50F0: 0.44
+    - Vector1_52909EDA: 23.68
+    - Vector1_6A8B50F0: 0.355
     - Vector1_6EC07791: 0.58
     - Vector1_8F5EE685: 2
-    - Vector1_BB49C78C: 0
-    - Vector1_DC129BE: 1.27
-    - Vector1_DD119790: 1.529
+    - Vector1_BB49C78C: 0.819
+    - Vector1_DC129BE: 3.15
+    - Vector1_DD119790: 1.167
     - Vector1_DDE1D04C: 0.009
     m_Colors:
-    - Color_4BDDB20F: {r: 0.1791118, g: 0.2397898, b: 0.3301887, a: 1}
+    - Color_4BDDB20F: {r: 0.7497775, g: 0.7628991, b: 0.7830189, a: 1}
     - Color_A070067B: {r: 0.10840159, g: 0.7924528, b: 0.24666728, a: 0.54509807}
-    - Color_A0D31A6A: {r: 0.28773582, g: 1, b: 0.9352488, a: 1}
+    - Color_A0D31A6A: {r: 0, g: 0, b: 0, a: 1}
     - Color_DD84C9EF: {r: 0.9575472, g: 0.98006004, b: 1, a: 1}
-    - Vector2_2F7B3F9F: {r: 0.39, g: 5.29, b: 0, a: 0}
+    - Vector2_2F7B3F9F: {r: 0.48, g: -0.75, b: 0, a: 0}
     - Vector2_E537B32A: {r: 0.44, g: 2.06, b: 0, a: 0}
   m_BuildTextureStacks: []

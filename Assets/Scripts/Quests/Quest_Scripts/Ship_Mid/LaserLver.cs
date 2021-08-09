@@ -18,6 +18,8 @@ public class LaserLver : QuestInteractable
         base.Start ();
 
         Lever.flipY = true;
+        LeverMethod ();
+            LeverMethod ();
 
     }
 
@@ -25,14 +27,7 @@ public class LaserLver : QuestInteractable
         base.ObjPicked ();
 
 
-        if(Quest!=null && Quest.currentState != QuestParent.QuestProgress.Finished) 
-        {
-
-
-            Quest.ProgressQuest ();
-
         
-        }
 
         LeverMethod ();
     }

@@ -92,9 +92,12 @@ public class Gate_Controller : MonoBehaviour
 
     private void OnTriggerEnter2D (Collider2D collision) {
 
+       
 
-        if (collision.gameObject.layer == LayerMask.NameToLayer ("Player")&& !Open && PlayerDetection) 
+        if ((collision.CompareTag("Player")|| collision.CompareTag("Enemy") || collision.CompareTag ("NPC")) && !Open && PlayerDetection) 
         {
+
+            
            
                 OpenSesame ();
           
@@ -108,7 +111,7 @@ public class Gate_Controller : MonoBehaviour
 
 
 
-        if (collision.gameObject.layer == LayerMask.NameToLayer ("Player")&& Open && PlayerDetection) 
+        if ((collision.CompareTag ("Player") || collision.CompareTag ("Enemy") || collision.CompareTag("NPC"))&& Open && PlayerDetection) 
         {
             
                 CloseSesame ();

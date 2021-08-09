@@ -16,6 +16,7 @@ public class UIManager : MonoBehaviour
 
     public bool isCinematic;
     [SerializeField] Animator cinemabarAnim;
+    
 
     [SerializeField] GameObject moveJoystick;
     [SerializeField] GameObject otherButtons;
@@ -27,7 +28,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Slider healthbar;
 
     [SerializeField] List<Sprite> MultibuttonSprites;
-    
+
+    [SerializeField] List<GameObject> SecurityAccessDisplays;
+
 
     /// <summary>
     /// Roomvariables
@@ -75,6 +78,7 @@ public class UIManager : MonoBehaviour
             instance = this;
         }
 
+        HideSecurityAccessDisplay ();
 
         HideCinematicUI ();
 
@@ -222,6 +226,16 @@ public class UIManager : MonoBehaviour
         HideDisplayUI (false);
 
         HideCinematicDisplay (true);
+    }
+
+    public void SetSecurityAccessDisplay(int i) 
+    {
+        SecurityAccessDisplays[i-1].SetActive(true);
+    }
+    public void HideSecurityAccessDisplay() 
+    { 
+       foreach(GameObject g in SecurityAccessDisplays) 
+       { g.SetActive (false); }
     }
 
 }

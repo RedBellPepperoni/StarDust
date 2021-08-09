@@ -225,6 +225,11 @@ public class Action_Manager : MonoBehaviour
         // }
     }
 
+    public void PlayerMoveStop() 
+    {
+        movement = Vector2.zero;
+    }
+
     public void setZoom () {
 
         float zoomChange = 10f;

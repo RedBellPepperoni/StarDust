@@ -1,13 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class HealthPickup : Interactable
 {
+    public UnityEvent ObjPickedCall;
+
+
     // Start is called before the first frame update
     [SerializeField] float HealthValue = 20f;
 
-    public bool healthFull;
+    
 
     protected override void Start () {
         base.Start ();
@@ -22,9 +26,21 @@ public class HealthPickup : Interactable
 
 
             Gamemanager.instance.AddHealth (HealthValue);
+
+            ObjPickedCall.Invoke ();
+
             Delete ();
 
         }
+
+        if( HealthValue<0 ) 
+        {
+            Gamemanager.instance.AddHealth (HealthValue);
+            ObjPickedCall.Invoke ();
+            Delete ();
+        }
+
+
 
 
     }

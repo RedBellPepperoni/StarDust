@@ -110,6 +110,9 @@ TextureImporter:
   - first:
       213: -1090420897222886035
     second: ScreensandStuff_35
+  - first:
+      213: 6128906202570226695
+    second: ScreensandStuff_36
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -763,7 +766,7 @@ TextureImporter:
         x: 46
         y: 77
         width: 78
-        height: 80
+        height: 46
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -962,6 +965,27 @@ TextureImporter:
       bones: []
       spriteID: d6dfd55a8fb0ed0f0800000000000000
       internalID: -1090420897222886035
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ScreensandStuff_36
+      rect:
+        serializedVersion: 2
+        x: 46
+        y: 122
+        width: 78
+        height: 35
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70cf2e908bf3e0550800000000000000
+      internalID: 6128906202570226695
       vertices: []
       indices: 
       edges: []

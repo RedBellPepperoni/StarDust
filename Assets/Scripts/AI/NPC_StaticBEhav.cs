@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+
 
 public class NPC_StaticBEhav : Interactable
 {
@@ -13,6 +15,14 @@ public class NPC_StaticBEhav : Interactable
     [SerializeField]protected QuestGiver_Parent QuestGiverRef;
 
     [SerializeField] Animator PopUpAnim;
+    [SerializeField] GameObject CharNameText;
+    [SerializeField] TextMeshPro charname;
+
+
+    private void Awake () {
+        ShowCharname ();
+        charname.text = NPCDialogueMan.charName;
+    }
 
     public override void ObjPicked () {
         base.ObjPicked ();
@@ -52,7 +62,8 @@ public class NPC_StaticBEhav : Interactable
                         QuestGiverRef.GetQuestInfo ().isQuestComplete ();
 
 
-                    if (NPCDialogueMan.Dialogref.reQuestSentences.Length > 0) {
+                     if (NPCDialogueMan.Dialogref.reQuestSentences.Length > 0) 
+                    {
                         if (!popUp) {
                             popUp = true;
                             PopUpAnim.SetBool ("PopUp", true);
@@ -72,6 +83,11 @@ public class NPC_StaticBEhav : Interactable
                         DialogueUIManager.instance.SetDialoguemanagerReference (NPCDialogueMan);
                         DialogueUIManager.instance.Nextsentence ();
                     }
+                    break;
+
+                case QuestParent.QuestProgress.Rewarded:
+                    NPCDialogueMan.RandomDialogue ();
+
                     break;
             }
 
@@ -100,7 +116,12 @@ public class NPC_StaticBEhav : Interactable
 
 
     protected override void OnTriggerEnter2D (Collider2D collision) {
+
+
         base.OnTriggerEnter2D (collision);
+
+        if(collision.CompareTag("Player"))
+        HideCharName ();
         
     }
 
@@ -110,10 +131,25 @@ public class NPC_StaticBEhav : Interactable
         DialogueUIManager.instance.SetDialoguemanagerReference (null);
         NPCDialogueMan.clearDialogueText ();
 
+
+
         if (popUp) {
             popUp = false;
             PopUpAnim.SetBool ("PopUp", false);
+
         }
+
+        ShowCharname ();
     }
 
+
+    void ShowCharname() 
+    {
+        CharNameText.SetActive(true);
+    }
+
+    void HideCharName() 
+    {
+        CharNameText.SetActive (false);
+    }
 }

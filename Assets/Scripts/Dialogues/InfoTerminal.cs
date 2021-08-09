@@ -12,6 +12,12 @@ public class InfoTerminal : MonoBehaviour
     [SerializeField] float typingSpeed = 2;
     [SerializeField] GameObject MarkerRef;
 
+    [SerializeField] AudioClip PopupSound;
+    [SerializeField] AudioClip PopDownSound;
+    [SerializeField] AudioClip TextPop;
+
+    public AudioSource audSource;
+
     bool hasPopup;
 
     // Start is called before the first frame update
@@ -66,6 +72,7 @@ public class InfoTerminal : MonoBehaviour
 
         foreach (char letter in displayText) {
             dialogue.text += letter;
+            audSource.PlayOneShot (TextPop);
             yield return new WaitForSeconds (typingSpeed);
 
         }

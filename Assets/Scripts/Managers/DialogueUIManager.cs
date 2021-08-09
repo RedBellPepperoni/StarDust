@@ -116,6 +116,8 @@ public class DialogueUIManager : MonoBehaviour
     public void Nextsentence () {
         if (index <= Dialogref.questSentences.Length - 1) {
 
+
+           
             dialogue.text = "";
             StopAllCoroutines ();
             StartCoroutine (Type ());

@@ -1,27 +1,38 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class UnionofOnion : QuestParent
 {
 
+    
+
+
     [SerializeField] Dialogue_manager DiaMan;
     [SerializeField] Transform[] Locations;
+    [SerializeField] GameObject[] DropLocations;
     [SerializeField] GameObject Dropzone;
+    int dropcounter = 0;
+
     private void OnTriggerEnter2D (Collider2D collision) 
     {
         
         if(collision.gameObject.tag == "QuestItem") 
         {
 
+            
             if(collision.gameObject.GetComponent<Quest_Collectable> ().QuestRef == this) 
             {
                 ProgressQuest ();
                 Debug.Log ("Yeet");
 
-                collision.gameObject.GetComponent<Collider2D> ().enabled = false;
+                Destroy (collision.gameObject);
 
-                collision.gameObject.transform.parent = Dropzone.transform;
+                if (dropcounter < DropLocations.Length) {
+                    DropLocations[dropcounter].SetActive (true);
+                    dropcounter++;
+                }
               
             }
                 
@@ -34,19 +45,22 @@ public class UnionofOnion : QuestParent
     public override void StartQuest () {
         base.StartQuest ();
         Debug.LogWarning ("BulbQuest Started");
-        SetSpawnPrefebs ();
+       
 
-        SpawnerRef.SpawnObjects ();
+        
 
         currentAmount = 0;
         Invoke ("setCameraback", 8);
-        StartCoroutine ("ShowCargoLoc");
+        Invoke ("startCargoLoc", 2);
 
        
     }
 
     
-
+    void startCargoLoc() 
+    {
+        StartCoroutine ("ShowCargoLoc");
+    }
     IEnumerator ShowCargoLoc () 
     {
         for (int i = 0; i < Locations.Length; i++) 
@@ -70,8 +84,12 @@ public class UnionofOnion : QuestParent
 
 
         GetComponent<Collider2D> ().enabled = false;
+
+
         
     }
+
+    
 
     
 

@@ -1,9 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class QuestParent : MonoBehaviour
 {//Quest Variables
+    public UnityEvent QuestStart;
+    public UnityEvent QuestComplete;
+    
+
 
     [SerializeField]string questName;
     [SerializeField] bool registertoQuestMaster;
@@ -52,10 +57,13 @@ public class QuestParent : MonoBehaviour
     public string GetQuestTitle () { return title; }
     public virtual string GetQuestObjective () {
 
-        if (currentAmount >= requiredAmount)
+        if (currentAmount >= requiredAmount && ReturntoQuestGiver)
+            return QuestFlow[QuestFlow.Length - 1];
+
+        else if (currentAmount >= requiredAmount)
             return "";
 
-        else if (QuestFlow.Length>0)
+        else if (QuestFlow.Length > 0)
             return QuestFlow[currentAmount];
 
         else return "";
@@ -89,29 +97,47 @@ public class QuestParent : MonoBehaviour
         QuestManager.instance.SetCurrentQuest (this);
         QuestManager.instance.SetQuestUI ();
 
+        QuestStart.Invoke ();
+
 
     }
 
     protected virtual void QuestCompleted() 
     {
         currentState = QuestProgress.Finished;
-        QuestManager.instance.RemoveCompletedQuest (this);
+       
 
-        UIManager.instance.ResetQuestUI ();
+        QuestComplete.Invoke ();
+
+        Debug.LogWarning ("QuestComplete");
        
         if(SpawnerRef!=null)
         SpawnerRef.isQuestSpawner = false;
 
-        giveReward ();
+
+        if (!ReturntoQuestGiver) { giveReward (); }
     }
 
 
-
+    public virtual void checkandGiveReward() 
+    { 
+      if(currentState == QuestProgress.Finished) 
+      {
+            giveReward ();
+        }
+    
+    }
 
     protected virtual void giveReward() 
     {
         Gamemanager.instance.Addcoins (coinReward);
-        
+        currentState = QuestProgress.Rewarded;
+        Debug.LogWarning ("QuestRewarded");
+
+        QuestManager.instance.RemoveCompletedQuest (this);
+
+        UIManager.instance.ResetQuestUI ();
+
     }
 
     public virtual void ProgressQuest () 
@@ -123,8 +149,8 @@ public class QuestParent : MonoBehaviour
         QuestManager.instance.SetCurrentQuest (this);
         QuestManager.instance.SetQuestUI ();
 
-        if (!ReturntoQuestGiver) 
-         { isQuestComplete (); }
+        
+          isQuestComplete (); 
 
     }
 
@@ -133,9 +159,9 @@ public class QuestParent : MonoBehaviour
 
         if (currentAmount >= requiredAmount) 
         {
-            currentState = QuestProgress.Finished;
+            
             QuestCompleted ();
-            Debug.LogError ("Q U E S T Completed");
+            
         }
 
     }
@@ -165,5 +191,11 @@ public class QuestParent : MonoBehaviour
     protected virtual void SetCameratarget(Transform inCameratarget,int Zoom) 
     {
         Gamemanager.instance.cameraLookAt (inCameratarget, Zoom);
+    }
+
+
+    protected void EndCinematic () {
+        setCameraback ();
+        UIManager.instance.HideCinematicUI ();
     }
 }

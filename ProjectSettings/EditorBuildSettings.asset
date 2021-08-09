@@ -17,6 +17,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Spacecraft_Mid.unity
     guid: 9f2ded414daca5349a863cea6f7738d6
+  - enabled: 1
+    path: Assets/Scenes/Spacecraft_Cockpit.unity
+    guid: 3948c8085b4b1654abdcf7598451be6f
   m_configObjects:
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 06a73c7e6a75cfd4d83f33706f113e4b,
       type: 2}
