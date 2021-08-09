@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3326633097192911209}
   - component: {fileID: 3326633097192911206}
   - component: {fileID: 3326633097192911211}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Pickable_Health LARGE
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -78,8 +78,10 @@ MonoBehaviour:
   interactabletType: 4
   pickableType: 0
   isPicked: 0
+  ObjPickedCall:
+    m_PersistentCalls:
+      m_Calls: []
   HealthValue: 60
-  healthFull: 0
 --- !u!95 &3326633097192911211
 Animator:
   serializedVersion: 3
@@ -280,6 +282,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Light_Fake
       objectReference: {fileID: 0}
+    - target: {fileID: 251352089584762786, guid: 626ac474732b79c4e8121a0c27828f23,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 626ac474732b79c4e8121a0c27828f23, type: 3}
 --- !u!4 &3266913246471740701 stripped
@@ -295,6 +302,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3326633097192911208}
     m_Modifications:
+    - target: {fileID: 22878949747750790, guid: b0a368600bcd4fb4db3a23cdb597d1b9,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 22878950219492034, guid: b0a368600bcd4fb4db3a23cdb597d1b9,
         type: 3}
       propertyPath: m_RootOrder
@@ -354,6 +366,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: DisplayUI_Heal Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 22878950219492039, guid: b0a368600bcd4fb4db3a23cdb597d1b9,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22878950812290783, guid: b0a368600bcd4fb4db3a23cdb597d1b9,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22878951351460142, guid: b0a368600bcd4fb4db3a23cdb597d1b9,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b0a368600bcd4fb4db3a23cdb597d1b9, type: 3}

@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 3326633097192911209}
   - component: {fileID: 3326633097192911206}
   - component: {fileID: 3326633097192911211}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Pickable_HealthSmall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -161,8 +161,10 @@ MonoBehaviour:
   interactabletType: 4
   pickableType: 0
   isPicked: 0
+  ObjPickedCall:
+    m_PersistentCalls:
+      m_Calls: []
   HealthValue: 30
-  healthFull: 0
 --- !u!95 &3326633097192911211
 Animator:
   serializedVersion: 3

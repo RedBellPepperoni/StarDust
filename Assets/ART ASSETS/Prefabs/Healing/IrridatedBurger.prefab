@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3326633097192911206}
   - component: {fileID: 3326633097192911211}
   - component: {fileID: 3897325249957929239}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: IrridatedBurger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -79,8 +79,10 @@ MonoBehaviour:
   interactabletType: 4
   pickableType: 0
   isPicked: 0
+  ObjPickedCall:
+    m_PersistentCalls:
+      m_Calls: []
   HealthValue: 60
-  healthFull: 0
 --- !u!95 &3326633097192911211
 Animator:
   serializedVersion: 3

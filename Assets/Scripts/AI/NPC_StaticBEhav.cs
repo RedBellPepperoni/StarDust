@@ -120,8 +120,10 @@ public class NPC_StaticBEhav : Interactable
 
         base.OnTriggerEnter2D (collision);
 
-        if(collision.CompareTag("Player"))
-        HideCharName ();
+        if (collision.CompareTag ("Player")) { HideCharName (); }
+
+
+        
         
     }
 
@@ -151,5 +153,27 @@ public class NPC_StaticBEhav : Interactable
     void HideCharName() 
     {
         CharNameText.SetActive (false);
+    }
+
+
+    public void UseNearbyInteractables()
+    {
+       Collider2D[] hitinteractables = Physics2D.OverlapCircleAll (transform.position, 10);
+
+        foreach(Collider2D c in hitinteractables) 
+        { 
+        
+                if(c.gameObject.GetComponent<HealthPickup>()) 
+                {
+                Destroy (c.gameObject); 
+                }
+
+                else if (c.gameObject.GetComponent<LootBox>()) 
+                {
+                  c.gameObject.GetComponent<LootBox> ().ObjPicked ();
+                }
+        
+        }
+
     }
 }

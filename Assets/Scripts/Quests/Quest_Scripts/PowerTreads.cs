@@ -61,6 +61,7 @@ public class PowerTreads : QuestParent
 
 
         PowerTerm.SetPower (true);
+        PowerTerm.AutoUnlock();
         Invoke ("LightUp", 2);
 
         
