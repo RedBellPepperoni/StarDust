@@ -5,9 +5,10 @@ using UnityEngine;
 public class GeneratorInteractable : QuestInteractable
 {
     public Animator anim;
-    bool isOn = false;
+    
     public AudioSource audioRef;
     public SpriteRenderer Lever;
+    bool doOnce;
 
     private void Start () {
 
@@ -21,26 +22,20 @@ public class GeneratorInteractable : QuestInteractable
     }
 
     public override void ObjPicked () {
-        base.ObjPicked ();
 
-        if(!isOn) 
-        {
+        if (!doOnce) {
+            base.ObjPicked ();
+
+
+
             anim.SetBool ("isOn", true);
             audioRef.UnPause ();
-            isOn = true;
+            
             Lever.flipY = true;
 
-        }
+            doOnce = false;
 
-        else 
-        {
-            anim.SetBool ("isOn", false);
-            audioRef.Pause ();
-            isOn = false;
-            Lever.flipY = false ;
         }
-
-       
        
     }
 }

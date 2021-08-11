@@ -48,7 +48,7 @@ public class DoorJamQuest : QuestParent
 
     protected override void giveReward () 
     {
-        Gamemanager.instance.Addcoins (coinReward);
+        base.giveReward ();
         removeallmarkers ();
         TerminalOpenRef.SetKey ();
 

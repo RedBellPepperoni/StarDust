@@ -12,6 +12,9 @@ public class ElectricalQuest : QuestParent
 
     public override void StartQuest () {
         base.StartQuest ();
+
+        if(isGeneratorOn) 
+        { ProgressQuest (); }
        
         EndCinematic ();
     }
@@ -40,6 +43,8 @@ public class ElectricalQuest : QuestParent
     }
 
     void CheckProgressCount () {
+        
+
         switch (currentAmount) {
 
 
@@ -47,7 +52,7 @@ public class ElectricalQuest : QuestParent
 
 
             case 2:
-                SetCameratarget (CameraLook[1], 20);
+                SetCameratarget (CameraLook[0], 20);
                 Invoke ("setCameraback", 3);
                 break;
         }
