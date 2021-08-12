@@ -1,11 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using TMPro;
 
 
 public class NPC_StaticBEhav : Interactable
 {
+    
+    public UnityEvent DidnotInteract;
+    public UnityEvent Interacted;
+
+    LayerMask Interactionlayer = 1 << 13;
+
     [SerializeField]protected Dialogue_manager NPCDialogueMan;
 
     [SerializeField]protected Animator NPCAnim;
@@ -25,14 +32,15 @@ public class NPC_StaticBEhav : Interactable
     }
 
     public override void ObjPicked () {
-        base.ObjPicked ();
-
+        
         //  NPCDialogueMan.nextDialogue ();
 
         DisplayAnim.SetBool ("Open", false);
 
 
         if (QuestGiverRef != null) {
+
+            Debug.LogError ("YEEETETETETTE");
             switch (QuestGiverRef.GetQuestInfo ().currentState) {
 
 
@@ -102,7 +110,13 @@ public class NPC_StaticBEhav : Interactable
 
 
 
-            if (NPCDialogueMan.Dialogref.reQuestSentences.Length > 0) { NPCDialogueMan.nextDialogue (); }
+            if (NPCDialogueMan.Dialogref.reQuestSentences.Length > 0) 
+            {
+                
+
+                NPCDialogueMan.nextDialogue ();
+               
+            }
 
             else 
             { NPCDialogueMan.RandomDialogue(); }
@@ -158,7 +172,7 @@ public class NPC_StaticBEhav : Interactable
 
     public void UseNearbyInteractables()
     {
-       Collider2D[] hitinteractables = Physics2D.OverlapCircleAll (transform.position, 10);
+       Collider2D[] hitinteractables = Physics2D.OverlapCircleAll (transform.position, 10,Interactionlayer);
 
         foreach(Collider2D c in hitinteractables) 
         { 
@@ -172,7 +186,24 @@ public class NPC_StaticBEhav : Interactable
                 {
                   c.gameObject.GetComponent<LootBox> ().ObjPicked ();
                 }
-        
+
+
+           
+
+        }
+
+
+
+
+        if (hitinteractables == null || hitinteractables.Length == 0) {
+
+            DidnotInteract.Invoke ();
+        } else {
+
+            Interacted.Invoke ();
+
+           
+
         }
 
     }

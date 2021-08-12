@@ -116,7 +116,7 @@ public class AI_BehaviourParent : MonoBehaviour
             playerScale.x = 1;
         ObjectSprite.transform.localScale = playerScale;
 
-        Debug.LogWarning (ObjectSprite.transform.localScale);
+        
     }
 
     

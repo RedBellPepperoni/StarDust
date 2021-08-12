@@ -7,10 +7,12 @@ public class QuestParent : MonoBehaviour
 {//Quest Variables
     public UnityEvent QuestStart;
     public UnityEvent QuestComplete;
-    
 
+    protected bool isMainQuest;
+    public float questStartTimer = 1;
+    public float questRewardTimer = 1;
 
-    [SerializeField]string questName;
+   
     [SerializeField] bool registertoQuestMaster;
 
     public enum QuestProgress { Disabled, Started, Finished, Rewarded, Failed };
@@ -70,7 +72,7 @@ public class QuestParent : MonoBehaviour
     }
 
 
-    public string GetQuestname () { return questName; }
+
     public bool GetcanRestart () { return isRestartable; }
 
     // [SerializeField] protected List<GameObject> QuestObjects;
@@ -86,16 +88,34 @@ public class QuestParent : MonoBehaviour
         SpawnerRef.setSpawnPrefabs (SpawnPrefabs);
     }
 
+
+    public virtual void PreStartQuest() 
+    {
+        Invoke ("StartQuest", questStartTimer);
+    
+    }
+
+
     public virtual void StartQuest() 
     {
         currentState = QuestProgress.Started;
 
 
+        if (isMainQuest) {
+            QuestManager.instance.AddActiveMainQuest (this);
 
-        QuestManager.instance.AddActiveQuest (this);
+            QuestManager.instance.SetCurrentMainQuest (this);
+            
+        } 
+        else 
+        {
+            QuestManager.instance.AddActivesideQuest (this);
 
-        QuestManager.instance.SetCurrentQuest (this);
-        QuestManager.instance.SetQuestUI ();
+            QuestManager.instance.SetCurrentSideQuest (this);
+        }
+
+        Debug.LogError ("Started");
+        
 
         QuestStart.Invoke ();
 
@@ -115,7 +135,7 @@ public class QuestParent : MonoBehaviour
         SpawnerRef.isQuestSpawner = false;
 
 
-        if (!ReturntoQuestGiver) { giveReward (); }
+        if (!ReturntoQuestGiver) { Invoke("giveReward",questRewardTimer); }
     }
 
 
@@ -134,9 +154,21 @@ public class QuestParent : MonoBehaviour
         currentState = QuestProgress.Rewarded;
         Debug.LogWarning ("QuestRewarded");
 
-        QuestManager.instance.RemoveCompletedQuest (this);
+        if(isMainQuest) 
+        {
+            QuestManager.instance.RemoveCompletedMainQuest (this);
 
-        UIManager.instance.ResetQuestUI ();
+            UIManager.instance.ResetQuestMainUI ();
+
+        }
+        else 
+        {
+            QuestManager.instance.RemoveCompletedSideQuest (this);
+
+            UIManager.instance.ResetQuestSideUI ();
+        }
+
+        
 
     }
 
@@ -145,9 +177,13 @@ public class QuestParent : MonoBehaviour
 
         currentAmount++;
 
-
-        QuestManager.instance.SetCurrentQuest (this);
-        QuestManager.instance.SetQuestUI ();
+        if (isMainQuest) {
+            QuestManager.instance.ChangeMainQuestObjective (this);
+        } 
+        else 
+        {
+            QuestManager.instance.ChangeSideQuestObjective (this);
+        }
 
         
           isQuestComplete (); 

@@ -31,6 +31,7 @@ public class Dialogue_manager : MonoBehaviour
     public void setCurrentDialogue (int index)
     {
         Dialogref = Dialogues[index];
+        
     
     }
     private void UpdateDialogueText () 
@@ -83,7 +84,7 @@ public class Dialogue_manager : MonoBehaviour
     
     public virtual void QuestDialogueCompleted() 
     {
-
+        
         currDialogueindex++;
         Dialogref.DialogueEndQuest ();
 

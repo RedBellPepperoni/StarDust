@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class NPCMovement : MonoBehaviour
 {
+
+    
+
     public List<Waypoints> waypointStruct;
 
     [SerializeField] protected GameObject nPC_Root;
@@ -27,6 +30,8 @@ public class NPCMovement : MonoBehaviour
 
        Invoke("MovetoWaypoint",time );
 
+        
+
     }
 
     protected void MovetoWaypoint () {
@@ -41,23 +46,27 @@ public class NPCMovement : MonoBehaviour
         } 
         else 
         {
-            waypointStruct[currentindex].ReachedDestination ();
+           
             
             StopMove (); }
     }
 
     protected void StopMove ()
-    { canMove = false; }
+    { canMove = false;
+        
+        waypointStruct[currentindex].ReachedDestination ();
+    }
 
     protected void FixedUpdate () {
-        
-        if(canMove)
-        nPC_Root.transform.position = Vector2.MoveTowards (nPC_Root.transform.position, targetpos, 0.15f);
 
-        // Check if the position of the cube and sphere are approximately equal.
-        if (Vector2.Distance (nPC_Root.transform.position, targetpos) < 0.001f) {
-            canMove = false;
-            MovetoWaypoint ();
+        if (canMove) {
+            nPC_Root.transform.position = Vector2.MoveTowards (nPC_Root.transform.position, targetpos, 0.15f);
+
+            // Check if the position of the cube and sphere are approximately equal.
+            if (Vector2.Distance (nPC_Root.transform.position, targetpos) < 0.001f) {
+                canMove = false;
+                MovetoWaypoint ();
+            }
         }
     }
 

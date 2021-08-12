@@ -75,7 +75,7 @@ public class EnemyRoomManager : MonoBehaviour
             EnemyWaveQuest.RemoveAt(0);
 
 
-            foreach(QuestParent g in EnemyWaveQuest) { Debug.LogWarning (g); }
+            
 
             currentWave++;
 
@@ -93,7 +93,7 @@ public class EnemyRoomManager : MonoBehaviour
         roomCleared = true;
         UnlockAllDoors ();
 
-
+       
         QuestComplete.Invoke ();
 
 

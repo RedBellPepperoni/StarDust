@@ -23,20 +23,23 @@ public class DoorJamQuest : QuestParent
     public void StartQuestDoor() 
     {
         currentState = QuestProgress.Started;
-        
 
-        QuestManager.instance.AddActiveQuest (this);
 
-        QuestManager.instance.SetCurrentQuest (this);
-        QuestManager.instance.SetQuestUI ();
+        if (isMainQuest) {
+            QuestManager.instance.AddActiveMainQuest (this);
+
+            QuestManager.instance.SetCurrentMainQuest (this);
+
+        } else {
+            QuestManager.instance.AddActivesideQuest (this);
+
+            QuestManager.instance.SetCurrentSideQuest (this);
+        }
 
 
     }
 
-    public override void StartQuest () {
-        base.StartQuest ();
-
-        
+    public override void PreStartQuest () {
         TerminalRef.SetKey ();
         ShowNextmarker (currentMarkerProgess);
 
@@ -44,7 +47,22 @@ public class DoorJamQuest : QuestParent
         SetCameratarget (CameraLook[0], 13);
         Invoke ("SetCameraToDoor", 2);
 
+        base.PreStartQuest ();
     }
+
+
+    public override void StartQuest () {
+
+       
+
+
+
+        base.StartQuest ();
+
+    }
+
+    void baseStart() 
+        { }
 
     protected override void giveReward () 
     {

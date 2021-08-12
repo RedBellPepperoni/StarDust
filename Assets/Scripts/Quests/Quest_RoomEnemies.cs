@@ -12,16 +12,19 @@ public class Quest_RoomEnemies : QuestParent
     public override void StartQuest () {
 
 
+        
+        FillQuestFlow ();
+
+
         SetSpawnPrefebs ();
-
-        currentState = QuestProgress.Started;
-
 
         SpawnerRef.SpawnObjects ();
 
         currentAmount = 0;
 
+        base.StartQuest ();
 
+        
         
     }
 
@@ -31,5 +34,24 @@ public class Quest_RoomEnemies : QuestParent
         Debug.LogWarning ("WAveFinished");
         RoomRef.BeginnexttWave ();
 
+        giveReward ();
+
+    }
+
+    void FillQuestFlow() 
+    {
+        QuestFlow = new string[requiredAmount];
+
+
+        QuestFlow[0] = "Kill all the Enemies";
+        int i;
+        for(i = 0; i <= requiredAmount - 1; i++) 
+        {
+            QuestFlow[i] = "Enemies left: " + (requiredAmount-i).ToString();
+        
+        }
+
+        Debug.LogError (QuestFlow.Length);
+    
     }
 }

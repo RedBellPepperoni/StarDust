@@ -20,7 +20,7 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] GameObject moveJoystick;
     [SerializeField] GameObject otherButtons;
-    [SerializeField] GameObject displayUI;
+    [SerializeField] Animator displayUI;
     [SerializeField] GameObject CinematicUI;
 
     [SerializeField] private TextMeshProUGUI currHealthRef;
@@ -55,8 +55,13 @@ public class UIManager : MonoBehaviour
     /// <summary>
     /// Quest Variables
     /// </summary>
-    [SerializeField] TextMeshProUGUI QuestName;
-    [SerializeField] TextMeshProUGUI QuestStatus;
+    [SerializeField] TextMeshProUGUI QuestName_Main;
+    [SerializeField] TextMeshProUGUI QuestStatus_Main;
+    [SerializeField] TextMeshProUGUI QuestName_Side;
+    [SerializeField] TextMeshProUGUI QuestStatus_Side;
+
+    [SerializeField] Animator aniMainQuest;
+    [SerializeField] Animator aniSideQuest;
 
 
 
@@ -126,30 +131,77 @@ public class UIManager : MonoBehaviour
         MultiBtnDisplay.sprite = MultibuttonSprites[(int)state];
 
     }
-
+    // Setting UI values for total coins
     public void SetCoinAmount(int inAmount) 
     {
         coinAmount.text = inAmount.ToString();
     
     }
 
+
+    //Seting UI values for Total Ancient coins
     public void SetAncientCoinAmt(int inAmount) 
     {
         ancientCoinAmount.text = inAmount.ToString ();
     }
 
-    public void SetQuestUI(string inQuestName, string inQuestDescrip) 
+    /// <summary>
+    /// Quest UI Functions
+    /// </summary>
+    
+
+    // Animation and setting of text for main Quest
+
+
+    public void SetQuestMainUI(string inQuestName, string inQuestDescrip) 
     {
-        QuestName.text = inQuestName;
-        QuestStatus.text = inQuestDescrip;
+        QuestName_Main.text = inQuestName;
+        QuestStatus_Main.text = inQuestDescrip;
+
+        aniMainQuest.Play ("QuestUI_NewQuest");
+
     }
 
-    public void ResetQuestUI() 
+    public void ResetQuestMainUI() 
     {
-        QuestName.text = "";
-        QuestStatus.text = "";
+        aniMainQuest.Play ("QuestUI_QuestComplete");
+
+        
 
     }
+
+    public void UpdateMainObjective(string inQuestDescrip) 
+    {
+        QuestStatus_Main.text = inQuestDescrip;
+    }
+
+
+    public void SetQuestSideUI (string inQuestName, string inQuestDescrip) {
+
+        
+        QuestName_Side.text = inQuestName;
+        QuestStatus_Side.text = inQuestDescrip;
+        aniSideQuest.Play("QuestUI_NewQuest");
+        
+
+
+
+    }
+
+    public void ResetQuestSideUI () {
+       aniSideQuest.Play ("QuestUI_QuestComplete");
+       
+
+
+
+    }
+
+    public void UpdateSideObjective (string inQuestDescrip) {
+
+        aniSideQuest.Play ("QuestUI_UpdateDescrip");
+        QuestStatus_Side.text = inQuestDescrip;
+    }
+
 
     public void ShowRespawnUI() 
     {
@@ -192,7 +244,9 @@ public class UIManager : MonoBehaviour
 
     void HideDisplayUI(bool Hide) 
     {
-        displayUI.SetActive (!Hide);
+        displayUI.SetBool ("Hide",Hide);
+
+        
     }
 
     void HideCinematicDisplay(bool Hide) 

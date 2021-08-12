@@ -42,6 +42,15 @@ public class UnionofOnion : QuestParent
     }
 
 
+
+    public override void PreStartQuest () {
+        base.PreStartQuest ();
+
+        currentAmount = 0;
+        Invoke ("setCameraback", 8);
+        Invoke ("startCargoLoc", 2);
+    }
+
     public override void StartQuest () {
         base.StartQuest ();
         Debug.LogWarning ("BulbQuest Started");
@@ -49,9 +58,7 @@ public class UnionofOnion : QuestParent
 
         
 
-        currentAmount = 0;
-        Invoke ("setCameraback", 8);
-        Invoke ("startCargoLoc", 2);
+       
 
        
     }

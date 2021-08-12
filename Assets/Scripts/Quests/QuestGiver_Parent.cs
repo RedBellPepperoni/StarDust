@@ -19,7 +19,7 @@ public class QuestGiver_Parent : MonoBehaviour
     {
         if (Questref.currentState == QuestParent.QuestProgress.Disabled) {
 
-            Questref.StartQuest ();
+            Questref.PreStartQuest ();
 
         } else if (Questref.currentState == QuestParent.QuestProgress.Started) {
 
@@ -28,7 +28,7 @@ public class QuestGiver_Parent : MonoBehaviour
         } else if (Questref.currentState == QuestParent.QuestProgress.Finished && Questref.ReturntoQuestGiver) {
 
             //GiveReward
-            Debug.LogError ("Q U E S T Rewarded");
+            Debug.LogError ("Q U E S T Already Completed");
 
             Questref.currentState = QuestParent.QuestProgress.Rewarded;
 

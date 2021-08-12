@@ -8,7 +8,14 @@ public class Waypoints : MonoBehaviour
 {
     public List<Transform> waypointslocations;
     public UnityEvent ReachedDesti;
-    private int index;
+    public UnityEvent Startmove;
+    private int index = 0;
+
+
+    public void StartMove() 
+    {
+        Startmove.Invoke ();
+    }
 
     public Vector2 GetnextWaypoint() 
     {
