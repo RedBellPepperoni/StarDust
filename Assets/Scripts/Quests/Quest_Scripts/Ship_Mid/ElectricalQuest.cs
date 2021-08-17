@@ -5,6 +5,7 @@ using UnityEngine;
 public class ElectricalQuest : QuestParent
 {
     public bool isGeneratorOn = false ;
+   
     public Transform[] CameraLook;
 
 
@@ -13,10 +14,11 @@ public class ElectricalQuest : QuestParent
     public override void StartQuest () {
         base.StartQuest ();
 
-        if(isGeneratorOn) 
-        { ProgressQuest (); }
-       
         EndCinematic ();
+
+        
+       
+        
     }
     public override void ProgressQuest () {
 
@@ -40,6 +42,21 @@ public class ElectricalQuest : QuestParent
     public void SetGeneratorOn() 
     {
         isGeneratorOn = true;
+    }
+
+    public void CheckStartAndProgress() 
+    { 
+        if(currentState == QuestProgress.Started) 
+        {
+            ProgressQuest ();
+        
+        }
+        else if(currentState == QuestProgress.Disabled) 
+        {
+            currentAmount = 1;
+           
+        
+        }
     }
 
     void CheckProgressCount () {

@@ -165,6 +165,10 @@ public class Terminal_GateUnlocker : Interactable
 
             isLocked = false;
             SetUlockUI ();
+
+            if (UnlockStayOpen) {
+                UnlockAndStayOpen ();
+            }
         }
         else 
         { }

@@ -4132,6 +4132,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Weapon_RaiderShotgunLvl1
       objectReference: {fileID: 0}
+    - target: {fileID: 4623426602150491618, guid: 8eb10b7373dd7974cb6d708eb99bc277,
+        type: 3}
+      propertyPath: physicalDamage
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4623426602150491619, guid: 8eb10b7373dd7974cb6d708eb99bc277,
         type: 3}
       propertyPath: m_RootOrder

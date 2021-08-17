@@ -429,6 +429,8 @@ Debug. unityLogger. logEnabled = false;
             default: Debug.LogWarning ("SomethingisWrong with Security Access gamemanager ");
                 break;
       }
+
+        UIManager.instance.SetSecurityAccessDisplay (i);
     }
 
     public void ClearSecurityAccess () 

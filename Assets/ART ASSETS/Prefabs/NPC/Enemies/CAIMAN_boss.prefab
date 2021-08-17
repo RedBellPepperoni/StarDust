@@ -1147,9 +1147,9 @@ GameObject:
   - component: {fileID: 22307691}
   - component: {fileID: 6044965649062988390}
   - component: {fileID: 7248717376140242813}
-  m_Layer: 7
+  m_Layer: 3
   m_Name: CAIMAN_boss
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1266,7 +1266,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 2180490949603672660}
   PlayerRef: {fileID: 0}
-  attackRange: 30
+  attackRange: 50
   aimTransform: {fileID: 521417921329760351}
   nextFire: 0
   targetRange: 100
@@ -1277,6 +1277,7 @@ MonoBehaviour:
   endpointTransform: {fileID: 521417921329760351}
   AimRootRight: {fileID: 0}
   AimRootLeft: {fileID: 0}
+  missileatkcooldown: 3
   Bullet: {fileID: 6221161495908124953, guid: 1f19b70510dcb624b8f236738f87f56b, type: 3}
   GroundBullet: {fileID: 6221161495908124953, guid: add2dd30963c34b429a30c757a72b2c9,
     type: 3}
@@ -1488,25 +1489,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3075ad608decdf40a3ea73550a1d18d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 300
+  maxHealth: 800
   DeathEffectTransform: {fileID: 0}
   deathEffect: {fileID: 0}
   Parent: {fileID: 7845223977142367572}
   HealModifier: 0
-  physicalDamReduction: 10
+  physicalDamReduction: 20
   plasmaDamReduction: 0
   fireDamReduction: 0
   iceDamReduction: 0
   electricDamReduction: 0
   BehaviourRef: {fileID: 22307691}
-  coinLoot: {fileID: 1325059176116639927, guid: 8c4991e711b1f6f4a8fc7ca92d72e7d2,
+  coinLoot: {fileID: 1389341869412507574, guid: 0b6686defb5025a498f5bc5a2d161c5d,
     type: 3}
-  ammoLoot: {fileID: 8806624911882189581, guid: f7c1e66699b915847bf4f27d437aba5c,
+  ammoLoot: {fileID: 1389341869412507574, guid: 13d8be90e52bdaf458a660035ea4cd02,
     type: 3}
-  lootcoinDropmin: 100
-  lootcoinDropmax: 300
-  lootammoDropmin: 100
-  lootammoDropmax: 200
+  lootcoinDropmin: 5
+  lootcoinDropmax: 5
+  lootammoDropmin: 1
+  lootammoDropmax: 1
   HealthLevelMultiplier: 0.5
   npcLevel: 1
   Damageparts:

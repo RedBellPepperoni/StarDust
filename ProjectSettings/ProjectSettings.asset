@@ -13,7 +13,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: DefaultCompany
-  productName: 2DTopDownShooter
+  productName: StarDust
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -127,7 +127,7 @@ PlayerSettings:
     16:10: 1
     16:9: 1
     Others: 1
-  bundleVersion: 1.0
+  bundleVersion: 0.9
   preloadedAssets:
   - {fileID: 0}
   - {fileID: 0}
@@ -136,6 +136,7 @@ PlayerSettings:
   - {fileID: 0}
   - {fileID: 11400000, guid: afe8b43f4004eb94ea6f29bdc5c709a6, type: 2}
   - {fileID: 8045619031545008344, guid: 06a73c7e6a75cfd4d83f33706f113e4b, type: 2}
+  - {fileID: 11400000, guid: a8911febceed54f418993af03aed4565, type: 2}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1
@@ -153,7 +154,7 @@ PlayerSettings:
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
-    Android: com.LunarPepper.eclipse
+    Android: com.LunarPepper.StarDust
     Standalone: com.Company.ProductName
   buildNumber:
     Standalone: 0
@@ -534,7 +535,7 @@ PlayerSettings:
     tvOS: 1
   m_BuildTargetGroupLightmapEncodingQuality:
   - m_BuildTarget: Android
-    m_EncodingQuality: 2
+    m_EncodingQuality: 0
   m_BuildTargetGroupLightmapSettings:
   - m_BuildTarget: Android
     m_TextureStreamingEnabled: 0

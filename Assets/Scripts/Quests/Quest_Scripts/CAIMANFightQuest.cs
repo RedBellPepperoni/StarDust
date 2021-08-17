@@ -7,6 +7,7 @@ public class CAIMANFightQuest : QuestParent
     [SerializeField] Transform spawnposition;
 
     [SerializeField] GameObject CAIMANBoss;
+    [SerializeField] Transform[] CameraTargets;
 
     public EnemyRoomManager EnemyRoomRef;
 
@@ -15,6 +16,8 @@ public class CAIMANFightQuest : QuestParent
         base.StartQuest ();
 
         SpawnBoss ();
+
+        SetCameratarget(PlayerController.instance.transform, 25);
 
     }
 
@@ -25,4 +28,9 @@ public class CAIMANFightQuest : QuestParent
         boss.GetComponentInChildren<CAIMANDamagable> ().SetQuest (this);
     }
 
+    protected override void giveReward () {
+        base.giveReward ();
+
+        setCameraback ();
+    }
 }

@@ -13,14 +13,22 @@ public class LaserLver : QuestInteractable
     [SerializeField]List<Laser> laserRefs;
 
     bool isOn = true;
+    
+    
 
     protected override void Start () {
         base.Start ();
 
         Lever.flipY = true;
-        LeverMethod ();
-            LeverMethod ();
 
+        foreach (Laser l in laserRefs) {
+            l.DisableLaser ();
+        }
+
+
+        foreach (Laser l in laserRefs) {
+            l.EnableLaser ();
+        }
     }
 
     public override void ObjPicked () {
@@ -36,24 +44,21 @@ public class LaserLver : QuestInteractable
     void LeverMethod() 
     {
 
-        if (!isOn) {
+        if (isOn) {
 
-            foreach (Laser l in laserRefs) {
-                l.EnableLaser ();
+            if (!doOnce) {
+                foreach (Laser l in laserRefs) {
+                    l.DisableLaser ();
+                }
+
+                doOnce = true;
             }
-
-            audioRef.PlayOneShot (LeverPositive);
-            isOn = true;
-            Lever.flipY = true;
-
-        } else {
-
             audioRef.PlayOneShot (LeverNegative);
-            foreach (Laser l in laserRefs) {
-                l.DisableLaser ();
-            }
-            isOn = false;
-            Lever.flipY = false;
-        }
+          
+                isOn = false;
+                Lever.flipY = false;
+            
+        } 
+       
     }
 }

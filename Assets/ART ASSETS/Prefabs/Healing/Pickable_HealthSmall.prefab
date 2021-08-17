@@ -95,6 +95,7 @@ GameObject:
   - component: {fileID: 3326633097192911209}
   - component: {fileID: 3326633097192911206}
   - component: {fileID: 3326633097192911211}
+  - component: {fileID: 1589679990150168935}
   m_Layer: 13
   m_Name: Pickable_HealthSmall
   m_TagString: Untagged
@@ -164,7 +165,7 @@ MonoBehaviour:
   ObjPickedCall:
     m_PersistentCalls:
       m_Calls: []
-  HealthValue: 30
+  HealthValue: 20
 --- !u!95 &3326633097192911211
 Animator:
   serializedVersion: 3
@@ -184,6 +185,17 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!210 &1589679990150168935
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3326633097192911207}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 4
 --- !u!1 &3326633097958505964
 GameObject:
   m_ObjectHideFlags: 0

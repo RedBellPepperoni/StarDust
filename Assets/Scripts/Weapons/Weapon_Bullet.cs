@@ -20,9 +20,9 @@ public class Weapon_Bullet : MonoBehaviour
     [SerializeField] protected GameObject BloodEffect;
     [SerializeField] protected GameObject energyImpactprefab;
     [SerializeField] protected GameObject explosiveImpactprefab;
-    
 
 
+    protected Damagable singleRef;
 
 
 
@@ -53,25 +53,28 @@ public class Weapon_Bullet : MonoBehaviour
 
     protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
-        
-       
-      
+        //setting the reference for damagable calss for the collided object
+        singleRef = collision.GetComponent<Damagable> ();
 
 
-       if (collision.gameObject.layer == LayerMask.NameToLayer ("Damagable") && !isEnemybullet && collision.gameObject.CompareTag("Enemy")) //&& collision.gameObject.tag == "Enemy"
+
+        if (collision.gameObject.layer == LayerMask.NameToLayer ("Damagable") && !isEnemybullet && collision.gameObject.CompareTag("Enemy")) //&& collision.gameObject.tag == "Enemy"
         {
-            collision.GetComponent<Damagable> ().TakeDamage (physicalDamage, plasmaDamage, fireDamage, iceDamage, electricDamage);
+
 
             ShowImpact (2);
-            Delete ();
+            DamageCall ();
+            
+            
         } 
         
         
         else if (collision.gameObject.CompareTag("Player") && isEnemybullet && collision.gameObject.layer == 11) {
 
-            collision.GetComponent<Damagable> ().TakeDamage (physicalDamage, plasmaDamage, fireDamage, iceDamage, electricDamage);
             ShowImpact (2);
-            Delete ();
+            DamageCall ();
+           
+           
         }
 
        else if(collision.gameObject.tag == "Enemy" && isEnemybullet) 
@@ -94,54 +97,55 @@ public class Weapon_Bullet : MonoBehaviour
            
             ShowImpact (1);
             Delete ();
+           
        }
 
        else if ( collision.gameObject.CompareTag("IgnoreBullets") && collision.gameObject.layer == LayerMask.NameToLayer ("Damagable")) 
        {
             ShowImpact (1);
             Delete ();
+
         }
 
 
        
        else if (collision.gameObject.layer == LayerMask.NameToLayer ("Damagable") && collision.gameObject.CompareTag("IgnorePlayerBullets") && isEnemybullet) //&& collision.gameObject.tag == "Enemy"
        {
-            collision.GetComponent<Damagable> ().TakeDamage (physicalDamage, plasmaDamage, fireDamage, iceDamage, electricDamage);
+            DamageCall ();
 
-            
 
             ShowImpact (1);
-            Delete ();
+            
        } 
        
        else if (collision.gameObject.layer == LayerMask.NameToLayer ("Damagable") && !collision.gameObject.CompareTag("IgnorePlayerBullets")) //&& collision.gameObject.tag == "Enemy"
           {
 
-           
-
-            collision.GetComponent<Damagable> ().TakeDamage (physicalDamage, plasmaDamage, fireDamage, iceDamage, electricDamage);
 
 
+            DamageCall ();
 
             ShowImpact (1);
-            Delete ();
+           
         }
 
         if (collision.gameObject.layer == LayerMask.NameToLayer ("IgnoreCollision")) {
             return;
         }
 
-       if(collision.gameObject.layer == LayerMask.NameToLayer("Obstacle")) 
-       {
+       if(collision.gameObject.layer == LayerMask.NameToLayer("Obstacle")) {
+
+
+            DamageCall ();
             ShowImpact (1);
-            Delete ();
+            
         }
 
        
     }
 
 
-    private void ShowImpact(int incase) 
+    protected void ShowImpact(int incase) 
     {
         GameObject effect;
 
@@ -168,6 +172,22 @@ public class Weapon_Bullet : MonoBehaviour
 
 
     }
+
+
+    protected virtual void DamageCall() 
+    {
+        DoDamage ();
+    }
+
+    protected virtual void DoDamage() 
+    { 
+        if(singleRef!=null)
+        singleRef.TakeDamage (physicalDamage, plasmaDamage, fireDamage, iceDamage, electricDamage);
+
+        Delete ();
+    }
+
+
 
     public virtual void Move () {
 

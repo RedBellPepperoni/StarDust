@@ -40,7 +40,7 @@ public class NPC_StaticBEhav : Interactable
 
         if (QuestGiverRef != null) {
 
-            Debug.LogError ("YEEETETETETTE");
+            
             switch (QuestGiverRef.GetQuestInfo ().currentState) {
 
 

@@ -66,7 +66,7 @@ public class EnemyRoomManager : MonoBehaviour
 
     public void BeginnexttWave() 
     {
-        Debug.LogWarning (currentWave);
+        
 
 
         if (currentWave <= Totalwaves) {

@@ -7,10 +7,26 @@ public class TriggerCall : MonoBehaviour
 {
     public UnityEvent Triggercall;
 
-        private void OnTriggerEnter (Collider other) 
-        {
+    public bool callOnce;
+    bool doOnce;
 
-        Triggercall.Invoke ();
+  
+    private void OnTriggerEnter2D (Collider2D collision)
+    {
+  
 
-        }
+           if(callOnce) 
+           { 
+             if(!doOnce) 
+             {
+                doOnce = true;
+                Triggercall.Invoke ();
+               
+             }
+           }
+
+           else
+           Triggercall.Invoke ();
+
+    }
 }

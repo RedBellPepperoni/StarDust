@@ -8,13 +8,12 @@ public class GeneratorInteractable : QuestInteractable
     
     public AudioSource audioRef;
     public SpriteRenderer Lever;
-    bool doOnce;
+    
 
-    private void Start () {
+    protected override void Start () {
 
-
-        if (DisplayUIRef != null)
-            DisplayAnim = DisplayUIRef.GetComponent<Animator> ();
+        base.Start();
+       
 
         anim.SetBool ("isOn", false);
         audioRef.Pause ();
@@ -33,7 +32,7 @@ public class GeneratorInteractable : QuestInteractable
             
             Lever.flipY = true;
 
-            doOnce = false;
+            doOnce = true;
 
         }
        

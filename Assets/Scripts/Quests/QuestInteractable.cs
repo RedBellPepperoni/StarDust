@@ -12,7 +12,7 @@ public class QuestInteractable : Interactable
 
     public UnityEvent ObjPickedCall;
 
-    bool doOnce = false;
+    protected bool doOnce = false;
 
     
 
@@ -22,7 +22,7 @@ public class QuestInteractable : Interactable
         
         
             ObjPickedCall.Invoke ();
-            doOnce = true;
+           
         
     }
 

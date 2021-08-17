@@ -32,10 +32,15 @@ public class Quest_RoomEnemies : QuestParent
 
         currentState = QuestProgress.Finished;
         Debug.LogWarning ("WAveFinished");
-        RoomRef.BeginnexttWave ();
+       
 
         giveReward ();
 
+    }
+
+    protected override void giveReward () {
+        base.giveReward ();
+        RoomRef.BeginnexttWave ();
     }
 
     void FillQuestFlow() 
@@ -43,7 +48,7 @@ public class Quest_RoomEnemies : QuestParent
         QuestFlow = new string[requiredAmount];
 
 
-        QuestFlow[0] = "Kill all the Enemies";
+       // QuestFlow[0] = "Kill all the Enemies";
         int i;
         for(i = 0; i <= requiredAmount - 1; i++) 
         {

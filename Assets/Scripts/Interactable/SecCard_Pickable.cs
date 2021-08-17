@@ -20,6 +20,8 @@ public class SecCard_Pickable : Interactable
 
 
         Gamemanager.instance.SetSecurityAccessDetail (securityLevel);
+
+        Delete ();
     }
 
     

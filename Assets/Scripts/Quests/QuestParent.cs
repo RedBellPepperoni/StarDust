@@ -8,7 +8,7 @@ public class QuestParent : MonoBehaviour
     public UnityEvent QuestStart;
     public UnityEvent QuestComplete;
 
-    protected bool isMainQuest;
+    [SerializeField]protected bool isMainQuest;
     public float questStartTimer = 1;
     public float questRewardTimer = 1;
 
@@ -114,7 +114,7 @@ public class QuestParent : MonoBehaviour
             QuestManager.instance.SetCurrentSideQuest (this);
         }
 
-        Debug.LogError ("Started");
+        
         
 
         QuestStart.Invoke ();
@@ -152,7 +152,7 @@ public class QuestParent : MonoBehaviour
     {
         Gamemanager.instance.Addcoins (coinReward);
         currentState = QuestProgress.Rewarded;
-        Debug.LogWarning ("QuestRewarded");
+       
 
         if(isMainQuest) 
         {

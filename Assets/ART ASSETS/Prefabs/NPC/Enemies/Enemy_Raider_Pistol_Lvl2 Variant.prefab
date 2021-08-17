@@ -262,12 +262,12 @@ PrefabInstance:
     - target: {fileID: 7389014319293403675, guid: 89dc3aeca794d1d40b71b76db5d68d46,
         type: 3}
       propertyPath: rateOfFire
-      value: 1.2
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 7389014319293403675, guid: 89dc3aeca794d1d40b71b76db5d68d46,
         type: 3}
       propertyPath: physicalDamage
-      value: 6
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 8103413731096540361, guid: 89dc3aeca794d1d40b71b76db5d68d46,
         type: 3}

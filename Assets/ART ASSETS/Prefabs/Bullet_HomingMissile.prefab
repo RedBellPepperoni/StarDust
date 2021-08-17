@@ -59,9 +59,11 @@ MonoBehaviour:
   BloodEffect: {fileID: 3912854181260219953, guid: 2dbf6aa459393d84d883df00dc1f7537,
     type: 3}
   energyImpactprefab: {fileID: 0}
-  explosiveImpactprefab: {fileID: 0}
+  explosiveImpactprefab: {fileID: 1170567192047786, guid: dfbdf2134f769dc4486867bd0989e1f4,
+    type: 3}
   target: {fileID: 0}
   rotateSpeed: 200
+  forcepw: 10
 --- !u!50 &7725457713258302236
 Rigidbody2D:
   serializedVersion: 4
