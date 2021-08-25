@@ -32,6 +32,7 @@ public class Damagable : MonoBehaviour
     public float Getmaxhealth() { return maxHealth; }
 
     public virtual void SetMaxHealth (float health) { maxHealth = health; }
+    public virtual void SetCurrenthealth(float health) { currentHealth = health; }
 
      void Awake()
     {

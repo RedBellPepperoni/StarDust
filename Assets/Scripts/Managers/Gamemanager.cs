@@ -12,9 +12,16 @@ public class Gamemanager : MonoBehaviour
     bool secAccesslvl2 = false;
     bool secAccesslvl3 = false;
 
+    public string currentLevelname;
 
-    [SerializeField] List<string> CurrentRelics ;
 
+    public InventoryObject WeaponInventory;
+    public InventoryObject CurrWeapon;
+    public List<GameObject> currWeapons = new List<GameObject> ();
+    int selectedweapon = 0;
+
+    [SerializeField] List<string> CurrentRelics;
+    [SerializeField] LevelDataBase LevelManager;
     
 
     public CinemachineBrain vcam;
@@ -37,23 +44,23 @@ public class Gamemanager : MonoBehaviour
     public CinemachineVirtualCamera VcamRef;
 
 
-    public GameObject[] WeaponsList;
-    int selectedweapon = 0;
+    
+   
+    public Transform weaponRoot;
 
     
     // private WeaponClass curWeaponClass;
     private UIManager uimanagerRef;
-    private PlayerWeaponAim_mouse playerAimRef;
-    private GameObject bulletPrefab;
+    
     Transform aimGunEndPointTrasform;
 
-    private WeaponParent weaponScriptRef;
+    public WeaponParent weaponScriptRef;
     public enum uiRefreshType{ Player, Weapon};
     
     float nextFire = 0;
 
     private GameObject currWeaponref;
-    [SerializeField] private GameObject WeaponRootRef;
+    
 
 
     private int coinAmount = 0;
@@ -62,12 +69,30 @@ public class Gamemanager : MonoBehaviour
     private int currentAmmoCount = 100;
 
 
+
+   
+    public void SetLevelInfo (LevelDataBase list) 
+    {
+        LevelManager = list;
+    }
+
+    public LevelDataBase GetLevelInfo () { return LevelManager; } 
+
+
    public int GetCurrentAmmo () {return currentAmmoCount; }
    public int GetmaxAmmo () {return totalAmmoCount; }
 
+    public void SetAmmo (int maxammo, int currAmmo) 
+    { 
+        totalAmmoCount = maxammo;
+        currentAmmoCount = currAmmo;
 
+        uimanagerRef.SetPlayerAmmoValues (currentAmmoCount, totalAmmoCount);
+        
+    }
 
-
+    public void RetrivePlayerUIValue() 
+    { setUIPlayervalues (Player_Damagable.instance.Getcurrhealth (), Player_Damagable.instance.Getmaxhealth ()); }
 
 
     private void Awake()
@@ -86,13 +111,16 @@ Debug. unityLogger. logEnabled = false;
         }
 
 
+
+
         uimanagerRef =  UIRef.GetComponent<UIManager>();
-       playerAimRef = playerAim.GetComponent <PlayerWeaponAim_mouse>();
+       
 
-
+        SetAmmo (100, 100);
 
         uimanagerRef.SetPlayerAmmoValues (currentAmmoCount, totalAmmoCount);
         uimanagerRef.SetCoinAmount (coinAmount);
+        uimanagerRef.SetAncientCoinAmt (ancientCoinamt);
 
 
     }
@@ -113,20 +141,23 @@ Debug. unityLogger. logEnabled = false;
 
     private void Start()
     {
-        initializeWeapon();
+       // initializeWeapon();
 
     }
-    public void SetWeaponReference()
-    {
+    public void SetWeaponReference () {
 
-        weaponScriptRef = currWeaponref.GetComponent<WeaponParent>();
-        uimanagerRef.SetcurrentWeaponref(currWeaponref);
+        weaponScriptRef = currWeaponref.GetComponent<WeaponParent> ();
+        uimanagerRef.SetcurrentWeaponref (currWeaponref);
 
         aimGunEndPointTrasform = weaponScriptRef.Endpoint;
 
-        bulletPrefab = weaponScriptRef.getBulletPrefab();
+        
+        weaponScriptRef.SetAnimRef ();
+        weaponScriptRef.SetAudioSourceRef ();
 
         Action_Manager.instance.SetAimRange (weaponScriptRef.GetAimRange());
+
+        
 
        
     }
@@ -144,19 +175,19 @@ Debug. unityLogger. logEnabled = false;
     public void WeaponSwitch() 
     {
 
-        if (selectedweapon < WeaponsList.Length-1) 
+        if (selectedweapon < currWeapons.Count-1) 
            { selectedweapon++; }
         else 
            { selectedweapon = 0; }
 
 
-        foreach(GameObject g in WeaponsList) 
+        foreach(GameObject g in currWeapons) 
         {
             g.SetActive (false);
         }
 
-        WeaponsList[selectedweapon].SetActive (true);
-        currWeaponref = WeaponsList[selectedweapon];
+        currWeapons[selectedweapon].SetActive (true);
+        currWeaponref = currWeapons[selectedweapon];
 
         SetWeaponReference ();
     }
@@ -166,13 +197,15 @@ Debug. unityLogger. logEnabled = false;
    
     public void Onshoot()
     {
-  
+               if(currWeapons.Count==0) 
+               {
+                 return;
+               }
        
-                if (currentAmmoCount > 0 && Time.time > nextFire)
+                if (currentAmmoCount > 0 && Time.time > nextFire && currentAmmoCount - weaponScriptRef.getWeaponBulletuse () >= 0)
                 {
 
-                       if (currentAmmoCount - weaponScriptRef.getWeaponBulletuse () >= 0) 
-                       {
+                      
                             weaponScriptRef.OnShoot ();
                             nextFire = Time.time + (weaponScriptRef.GetEffectiveFireRate ());
 
@@ -185,6 +218,8 @@ Debug. unityLogger. logEnabled = false;
                                   {
                      
                                        case WeaponParent.weaponType.Pistol:
+                                                                            Debug.LogWarning (weaponScriptRef.Endpoint);
+
                                                                             InstantiateBullet (aimGunEndPointTrasform.position, aimGunEndPointTrasform.rotation.eulerAngles);
                                                                             break;
 
@@ -210,7 +245,7 @@ Debug. unityLogger. logEnabled = false;
 
 
 
-                       }
+                       
 
                     
                 }
@@ -252,7 +287,7 @@ Debug. unityLogger. logEnabled = false;
 
        
             currentAmmoCount = currentAmmoCount - weaponScriptRef.getWeaponBulletuse ();
-
+        Debug.LogWarning (totalAmmoCount);
 
              uimanagerRef.SetPlayerAmmoValues (currentAmmoCount, totalAmmoCount);
     }
@@ -269,16 +304,28 @@ Debug. unityLogger. logEnabled = false;
     }
    
 
-    void initializeWeapon()
+    public void initializeWeapon()
     {
-        
-        currWeaponref = WeaponRootRef.transform.Find("WeaponRoot").GetChild(0).gameObject;
-       
+     
+         if(weaponRoot.transform.childCount>0)     
+         {
+            currWeaponref = weaponRoot.GetChild (0).gameObject;
+            if (currWeaponref) {
 
-        Debug.Log(currWeaponref);
-        
+                Debug.LogWarning (currWeaponref.GetComponent<WeaponParent>());
 
-        SetWeaponReference();
+                foreach (GameObject g in currWeapons) {
+                    g.SetActive (false);
+                }
+
+                currWeapons[0].SetActive (true);
+               
+
+
+                SetWeaponReference ();
+                Debug.Log (currWeaponref);
+            } else print ("no weapon Found");
+         }
     }
 
 
@@ -382,6 +429,11 @@ Debug. unityLogger. logEnabled = false;
         return coinAmount;
     }
 
+    public void SetCoinAmount(int _amount) 
+    {
+        coinAmount = _amount;
+        UIManager.instance.SetCoinAmount (coinAmount);
+    }
     public void Addcoins(int coins) 
     {
         coinAmount = coinAmount + coins;
@@ -396,6 +448,10 @@ Debug. unityLogger. logEnabled = false;
     
     }
 
+    public void SetAncientCoinAmount (int _amount) {
+        ancientCoinamt = _amount;
+        UIManager.instance.SetAncientCoinAmt (ancientCoinamt);
+    }
     public int GetAncientcoins() 
     {
         return ancientCoinamt;
@@ -442,6 +498,99 @@ Debug. unityLogger. logEnabled = false;
     public void AddRelic(string relic) 
     {
         CurrentRelics.Add (relic);
+    }
+
+    public void SetLevelComplete(string levelData) 
+    {  int index;
+
+       
+       
+
+        index = LevelManager.LevelData.FindIndex (x => x.levelName == levelData);
+
+        Debug.LogWarning ("LevelIndex = " + index);
+
+        LevelManager.LevelData[index].iscomplete = true;
+    }
+
+    public void AddWeapontoInventory(GroundItem _item) 
+    { 
+
+
+      if(_item) 
+      {
+            Item item = new Item (_item.item);
+
+            WeaponInventory.AddItem (item,1);
+
+            
+      }
+
+
+    }
+
+    private void OnApplicationQuit () 
+    {
+
+
+        WeaponInventory.Clear ();
+        CurrWeapon.Clear ();
+        
+    }
+
+
+    bool isWeaponSlotEmpty () { return CurrWeapon.Container.Items.Count< 3; }
+
+    public void PickWeapon(GroundItem weapon) 
+    {
+        if (isWeaponSlotEmpty ()) {
+
+
+            CurrWeapon.AddItem (new Item (weapon.item), 1);
+
+            Debug.LogWarning (weapon);
+
+            
+            
+            GameObject g = Instantiate (weapon.item.prefab, weaponRoot);
+
+            
+            currWeapons.Add (g);
+            initializeWeapon ();
+        } else
+            print ("Weapon Slot Full");
+    }
+
+    public void ClearCurrentWeapons() 
+    { 
+        for(int i = 0; i < weaponRoot.childCount; i++) 
+        {
+            Destroy (weaponRoot.GetChild (i).gameObject);
+        }
+        Gamemanager.instance.weaponScriptRef = null;
+        Gamemanager.instance.currWeaponref = null;
+        currWeapons.Clear ();
+    }
+
+
+
+    public void LoadCurrWeapons() 
+    {
+        ClearCurrentWeapons ();
+
+        if(CurrWeapon.Container!=null)
+        { 
+            foreach(InventorySlot weapon in CurrWeapon.Container.Items) 
+            {
+                GameObject g = Instantiate (CurrWeapon.database.GetItem[weapon.item.Id].prefab, weaponRoot);
+                currWeapons.Add (g);
+               
+            }
+        }
+
+        initializeWeapon ();
+
+
     }
 }
 

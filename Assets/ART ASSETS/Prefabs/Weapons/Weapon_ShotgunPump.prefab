@@ -158,6 +158,7 @@ GameObject:
   - component: {fileID: 4623426602150491621}
   - component: {fileID: 4623426602150491618}
   - component: {fileID: 3442637349223418375}
+  - component: {fileID: -8628476312307638636}
   m_Layer: 7
   m_Name: Weapon_ShotgunPump
   m_TagString: Untagged
@@ -216,7 +217,7 @@ MonoBehaviour:
   BulletPrefab: {fileID: 6221161495908124953, guid: 15a45906b1f23c944a34696443459cca,
     type: 3}
   currWeaponType: 2
-  Endpoint: {fileID: 0}
+  Endpoint: {fileID: 112424329377895635}
   source: {fileID: 3442637349223418375}
   AimRange: 13
   bulletSpeed: 40
@@ -241,10 +242,11 @@ AudioSource:
   m_GameObject: {fileID: 4623426602150491616}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: d18e27b95b624874c9ae033c9191da04,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: 5a81f97ec92702c4a9bae26e032643d1, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.791
+  m_Volume: 0.6
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -288,7 +290,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0.322
+      value: 0.75
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -328,6 +330,17 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!210 &-8628476312307638636
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4623426602150491616}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 5
 --- !u!1 &4623426602964120283
 GameObject:
   m_ObjectHideFlags: 0

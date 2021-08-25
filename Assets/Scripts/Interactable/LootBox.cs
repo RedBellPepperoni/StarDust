@@ -9,7 +9,7 @@ public class LootBox : Interactable
     DropItem Item = DropItem.nothing;
 
 
-
+    
     [SerializeField] int[] Weights;
     [SerializeField] GameObject[] Items;
 
@@ -33,9 +33,7 @@ public class LootBox : Interactable
 
     // float missionCardDrop;
 
-    private void Start () {
-        DisplayAnim = DisplayUIRef.GetComponent<Animator> ();
-    }
+    
 
 
     void setDropitem () 

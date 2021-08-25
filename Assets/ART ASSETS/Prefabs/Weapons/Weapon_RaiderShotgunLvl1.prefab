@@ -216,7 +216,7 @@ MonoBehaviour:
   BulletPrefab: {fileID: 6221161495908124953, guid: e87aae4792c6afa4ca299477fb818114,
     type: 3}
   currWeaponType: 2
-  Endpoint: {fileID: 0}
+  Endpoint: {fileID: 112424329377895635}
   source: {fileID: 2727777119132607837}
   AimRange: 13
   bulletSpeed: 10
@@ -244,7 +244,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 5a81f97ec92702c4a9bae26e032643d1, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.6
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -318,7 +318,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
+      value: 0.75
       inSlope: 0
       outSlope: 0
       tangentMode: 0

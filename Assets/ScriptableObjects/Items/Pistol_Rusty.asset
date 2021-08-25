@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07ea68ad13d6f904b88cf5860171801b, type: 3}
+  m_Name: Pistol_Rusty
+  m_EditorClassIdentifier: 
+  Id: 0
+  uiDisplay: {fileID: -490565129200663855, guid: b3b9da12d782e854e9d0d4f6fc8715b1,
+    type: 3}
+  type: 1
+  prefab: {fileID: 4080594546907436826, guid: cb7e326c14fae4b4a987670e684fe667, type: 3}
+  description: A Rusty pistol
+  buffs: []
+  Wtype: 0

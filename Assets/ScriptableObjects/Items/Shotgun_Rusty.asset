@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07ea68ad13d6f904b88cf5860171801b, type: 3}
+  m_Name: Shotgun_Rusty
+  m_EditorClassIdentifier: 
+  Id: 1
+  uiDisplay: {fileID: 1270869559963179201, guid: c71f92d57a31b1a4a9307ae39e291972,
+    type: 3}
+  type: 1
+  prefab: {fileID: 4623426602150491616, guid: 69bd570d1016eea46b8356e62a4fb3f0, type: 3}
+  description: A Rusty Shotgun
+  buffs: []
+  Wtype: 2

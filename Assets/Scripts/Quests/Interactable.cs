@@ -6,7 +6,7 @@ using UnityEngine;
 [RequireComponent (typeof (Collider2D))]
 public class Interactable : MonoBehaviour
 {
-
+    [SerializeField] GameObject outline;
     [SerializeField]protected GameObject DisplayUIRef;
     protected Animator DisplayAnim;
 
@@ -24,6 +24,10 @@ public class Interactable : MonoBehaviour
       
         if(DisplayUIRef!=null) 
         DisplayAnim =  DisplayUIRef.GetComponent<Animator> ();
+
+        if (outline) {
+            outline.SetActive (false);
+        }
     }
 
     protected virtual void OnTriggerEnter2D (Collider2D collision)     
@@ -122,6 +126,8 @@ public class Interactable : MonoBehaviour
     { }
 
 
+
+
     public void Delete () {
         Destroy (this.gameObject);
     }
@@ -135,6 +141,11 @@ public class Interactable : MonoBehaviour
       
             DisplayAnim.SetBool ("Open",true);
 
+        if(outline && !isPicked) 
+        {
+            outline.SetActive (true);
+        }
+
 
     }
 
@@ -142,5 +153,8 @@ public class Interactable : MonoBehaviour
     {
        // if (DisplayAnim.GetBool ("Open") == true)
             DisplayAnim.SetBool ("Open", false);
+        if (outline&&!isPicked) {
+            outline.SetActive (false);
+        }
     }
 }

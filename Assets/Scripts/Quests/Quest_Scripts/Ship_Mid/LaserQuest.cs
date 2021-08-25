@@ -40,7 +40,7 @@ public class LaserQuest : QuestParent
         Invoke ("NextDialogue", 11);
 
 
-        Invoke ("EndCinematic", 15);
+        Invoke ("EndCinematic", 13);
     }
 
     void NextDialogue () 

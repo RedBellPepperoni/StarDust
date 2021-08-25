@@ -7,8 +7,35 @@ public class MainMenu : MonoBehaviour
 {
     [SerializeField] int levelno = 1;
 
+<<<<<<< Updated upstream
+=======
+
+    private void Start () {
+        if (SaveManager.instance.CheckSavegame ()) {
+            SaveManager.instance.LoadGame ();
+        }
+
+
+    }
+
+       
+>>>>>>> Stashed changes
     public void Startgame() 
     {
-        SceneManager.LoadScene (levelno);
+
+        
+
+
+        if (SaveManager.instance.CheckSavegame ()) 
+        {
+            SaveManager.instance.LoadGame ();
+
+            
+
+            SceneManager.LoadScene (Gamemanager.instance.currentLevelname);
+        } 
+        
+        else { SceneManager.LoadScene (1); }
+       
     }
 }

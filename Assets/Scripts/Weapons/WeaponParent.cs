@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class WeaponParent : MonoBehaviour
 {
     [SerializeField] bool hasInfiniteAmmo = false;
@@ -14,8 +15,15 @@ public class WeaponParent : MonoBehaviour
     public Transform Endpoint;
 
     [SerializeField] AudioSource source;
+    public AudioClip FireSound;
 
     [SerializeField] float AimRange = 13f;
+
+
+    protected void Start () 
+    {
+       // weaponAnimator = gameObject.GetComponent<Animator> ();
+    }
 
     public float GetAimRange () {
         return AimRange;
@@ -48,12 +56,12 @@ public class WeaponParent : MonoBehaviour
 
     //  private int reserveBullets = 300;
     private int currentBullets = 10;
-    private bool isAnimated;
+    
     private bool weaponReloading = false;
 
 
 
-    private Animator weaponAnimator;
+    [SerializeField]private Animator weaponAnimator;
 
     [SerializeField] private bool isBurst;
     private bool charged;
@@ -103,23 +111,30 @@ public class WeaponParent : MonoBehaviour
     }
     public GameObject getBulletPrefab () { return BulletPrefab; } //Getter for accessing Bullet Prefab;
     public void Awake () {
-        weaponAnimator = GetComponent<Animator> ();
-        if (weaponAnimator == null)
-            isAnimated = false;// Checking for stupiddd null execptions
-
-        else isAnimated = true;
+      //  weaponAnimator = GetComponent<Animator> ();
+        
 
 
         currentBullets = magazineSize;
 
-
+       
 
 
 
 
     }
 
+    public void SetAnimRef() 
+    { weaponAnimator = gameObject.GetComponent<Animator> (); }
 
+    public void SetAudioSourceRef() 
+    {
+        source = gameObject.GetComponent<AudioSource> ();
+        source.clip = FireSound;
+
+        Debug.LogWarning (source);
+        Debug.LogWarning (source.clip);
+    }
     public void OnShoot () {
         switch (currWeaponType) {   //---------------PISTOL-------------------
             case weaponType.Pistol:
@@ -128,9 +143,15 @@ public class WeaponParent : MonoBehaviour
 
                 if (isBurst && charged) {
 
-                } else {
+                } 
+                else if(weaponAnimator!=null) {
+
+                    
+                   
                     weaponAnimator.SetTrigger ("Shoot");
                 }
+
+               
 
                 break;
 
@@ -157,7 +178,10 @@ public class WeaponParent : MonoBehaviour
 
     public void PlayAudio() 
     {
-        source.Play ();
+        if (source != null) {
+            Debug.LogWarning (source);
+            source.Play ();
+        }
     }
 
 }

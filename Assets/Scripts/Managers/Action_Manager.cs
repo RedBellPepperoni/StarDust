@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using Cinemachine;
 
 public class Action_Manager : MonoBehaviour
@@ -8,6 +9,8 @@ public class Action_Manager : MonoBehaviour
 
     public static Action_Manager instance;
 
+
+    private PlayerActionControls playerActionControls;
 
     Vector2 movement;
     //button related varables
@@ -56,12 +59,29 @@ public class Action_Manager : MonoBehaviour
 
 
 
+
+
+
+
+
     private void Awake () {
         if (instance == null) {
             //  DontDestroyOnLoad (gameObject);
             instance = this;
         }
+
+        playerActionControls = new PlayerActionControls ();
+
         initializeDependables ();
+    }
+
+
+    private void OnEnable () {
+        playerActionControls.Enable ();
+    }
+
+    private void OnDisable () {
+        playerActionControls.Disable ();
     }
 
     public void SetAimRange (float inAimRange) {
@@ -102,11 +122,9 @@ public class Action_Manager : MonoBehaviour
 
         }
 
-        if (AtkbtnisPressed) { handleShooting (); }
+        if (AtkbtnisPressed&&!UIManager.instance.isCinematic) { handleShooting (); }
 
-        if (Input.GetKey ("space")) { handleShooting (); }
 
-        if (Input.GetKeyDown ("e")) { UseAbility (); }
 
     }
 
@@ -186,7 +204,7 @@ public class Action_Manager : MonoBehaviour
         UIManager.instance.SetMultiBtnDisplay (btnState);
     }
 
-
+    
     private void HandleMovement () {
         // movement.x = Input.GetAxisRaw("Horizontal");
         // movement.y = Input.GetAxisRaw("Vertical");
@@ -195,11 +213,29 @@ public class Action_Manager : MonoBehaviour
         // { 
 
 
-        if (UIManager.instance.isCinematic == false)
-            movement = MovejoystickRef.Direction;
+        if (UIManager.instance.isCinematic == false) {
 
-        else
+
+            movement = playerActionControls.Player.Move.ReadValue<Vector2> ();
+            if (MovejoystickRef.Direction.magnitude > 0) { movement = MovejoystickRef.Direction; }
+
+            return;
+        } else
             movement = Vector2.zero;
+
+
+
+
+    
+
+
+        
+        
+
+
+
+
+
         /*
                 Vector3 aimLocalScale = Vector3.one;
                 if (movement.x < 0) {
