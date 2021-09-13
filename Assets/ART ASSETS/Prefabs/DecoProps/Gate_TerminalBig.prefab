@@ -309,9 +309,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15f2fcdea5da059478d0036763ceacbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  outline: {fileID: 0}
   DisplayUIRef: {fileID: 1965680283541462035}
+  interactabletType: 0
   pickableType: 0
   isPicked: 0
+  UnlockDoor:
+    m_PersistentCalls:
+      m_Calls: []
   lockUIRef: {fileID: 1965680283541462035}
   unlockUIRef: {fileID: 8489909055157853989}
   keyUIRef: {fileID: 3643037175167443180}
@@ -997,7 +1002,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1081,7 +1086,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1388,6 +1393,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2077758929698113124, guid: 76a87dd54ba9e4e45ae4d62f46196725,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
     - target: {fileID: 2077758929698113126, guid: 76a87dd54ba9e4e45ae4d62f46196725,
         type: 3}
       propertyPath: m_Name

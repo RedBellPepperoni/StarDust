@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using Cinemachine;
 
@@ -13,8 +14,8 @@ public class Gamemanager : MonoBehaviour
     bool secAccesslvl3 = false;
 
     public string currentLevelname;
-
-
+    
+    
     public InventoryObject WeaponInventory;
     public InventoryObject CurrWeapon;
     public List<GameObject> currWeapons = new List<GameObject> ();
@@ -157,9 +158,9 @@ Debug. unityLogger. logEnabled = false;
 
         Action_Manager.instance.SetAimRange (weaponScriptRef.GetAimRange());
 
-        
+        UIManager.instance.ShowWeaponIcon ();
 
-       
+
     }
 
     
@@ -174,22 +175,21 @@ Debug. unityLogger. logEnabled = false;
 
     public void WeaponSwitch() 
     {
-
-        if (selectedweapon < currWeapons.Count-1) 
-           { selectedweapon++; }
-        else 
-           { selectedweapon = 0; }
+        if (weaponScriptRef) {
+            if (selectedweapon < currWeapons.Count - 1) { selectedweapon++; } else { selectedweapon = 0; }
 
 
-        foreach(GameObject g in currWeapons) 
-        {
-            g.SetActive (false);
+            foreach (GameObject g in currWeapons) {
+                g.SetActive (false);
+            }
+
+            
+
+            currWeapons[selectedweapon].SetActive (true);
+            currWeaponref = currWeapons[selectedweapon];
+
+            SetWeaponReference ();
         }
-
-        currWeapons[selectedweapon].SetActive (true);
-        currWeaponref = currWeapons[selectedweapon];
-
-        SetWeaponReference ();
     }
 
 
@@ -218,7 +218,7 @@ Debug. unityLogger. logEnabled = false;
                                   {
                      
                                        case WeaponParent.weaponType.Pistol:
-                                                                            Debug.LogWarning (weaponScriptRef.Endpoint);
+                                                                           // Debug.LogWarning (weaponScriptRef.Endpoint);
 
                                                                             InstantiateBullet (aimGunEndPointTrasform.position, aimGunEndPointTrasform.rotation.eulerAngles);
                                                                             break;
@@ -354,7 +354,10 @@ Debug. unityLogger. logEnabled = false;
             carryObj.GetComponent<Interactable> ().isPicked = true;
             canCarryObj = false;
 
+            
+
             Action_Manager.instance.SetMultiButtonFunc (Action_Manager.MultibtnState.Drop);
+            Action_Manager.instance.HideWeaponhand ();
 
         }
 
@@ -371,14 +374,17 @@ Debug. unityLogger. logEnabled = false;
  
         {
 
-
+            PlayerController.instance.ShowPlayerhand ();
 
             carryObj.GetComponent<Interactable> ().Dropped ();
 
 
-            objpickTransform.GetChild (0).transform.position = PlayerController.instance.transform.position;
-            objpickTransform.GetChild (0).transform.parent = null;
             
+            objpickTransform.GetChild (0).transform.position = PlayerController.instance.transform.position;
+            
+            objpickTransform.GetChild (0).transform.parent = null;
+
+            carryObj.transform.localScale = new Vector3 (1, 1, 1);
 
            // GameObject obj = Instantiate (carryObj, PlayerController.instance.transform);
            // obj.transform.parent = null;
@@ -388,13 +394,13 @@ Debug. unityLogger. logEnabled = false;
 
             canCarryObj = true;
 
-            if (weaponScriptRef.getWeaponClass () == WeaponParent.weaponType.Melee) 
-            {
-                Action_Manager.instance.SetMultiButtonFunc (Action_Manager.MultibtnState.Meleeatck);
-            } 
-            else 
-            { Action_Manager.instance.SetMultiButtonFunc (Action_Manager.MultibtnState.Shoot); }
-
+           // if (weaponScriptRef.getWeaponClass () == WeaponParent.weaponType.Melee) 
+           // {
+              //  Action_Manager.instance.SetMultiButtonFunc (Action_Manager.MultibtnState.Meleeatck);
+          //  } 
+            //else 
+             Action_Manager.instance.SetMultiButtonFunc (Action_Manager.MultibtnState.Shoot);
+            Action_Manager.instance.ShowWeaponHand ();
         }
     }
 
@@ -460,15 +466,28 @@ Debug. unityLogger. logEnabled = false;
     public void Respawn() 
     {
 
+        if(coinAmount>=200) 
+        {
+            coinAmount = coinAmount - 200;
+            Player_Damagable.instance.Respawn ();
+            UIManager.instance.HideRespawnUI ();
+        }
 
-        Player_Damagable.instance.Respawn ();
-        UIManager.instance.HideRespawnUI ();
+        
+         
+        
     }
 
     public void RestartLevel() 
     {
-        SceneManager.LoadScene (SceneManager.GetActiveScene ().buildIndex);
+       
         Respawn ();
+        SaveManager.instance.LoadGame ();
+    }
+
+    public void Exit() 
+    {
+        Application.Quit ();
     }
 
     public void SetSecurityAccessDetail(int i) 
@@ -485,6 +504,8 @@ Debug. unityLogger. logEnabled = false;
             default: Debug.LogWarning ("SomethingisWrong with Security Access gamemanager ");
                 break;
       }
+
+        UIManager.instance.SetSecurityAccessDisplay (i);
     }
 
     public void ClearSecurityAccess () 

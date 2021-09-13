@@ -5,13 +5,13 @@ using UnityEngine;
 public class DoorJamQuest : QuestParent
 {
 
-    [SerializeField]DoorShieldTerminal TerminalRef;
+   
     [SerializeField] Terminal_GateUnlocker TerminalOpenRef;
 
 
     [SerializeField] Transform[] CameraLook;
 
-    [SerializeField] GameObject[] Markers;
+    
 
     int currentMarkerProgess = 0;
     public bool doorOpened;
@@ -40,7 +40,7 @@ public class DoorJamQuest : QuestParent
     }
 
     public override void PreStartQuest () {
-        TerminalRef.SetKey ();
+        
         ShowNextmarker (currentMarkerProgess);
 
 
@@ -93,24 +93,9 @@ public class DoorJamQuest : QuestParent
     }
 
 
-    void ShowNextmarker(int state) 
-    {
+    
 
-        if (state <= Markers.Length - 1) 
-        {
-            removeallmarkers ();
-
-            Markers[state].SetActive (true);
-        }
-    }
-
-   void removeallmarkers() 
-   {
-        foreach (GameObject g in Markers) {
-            g.SetActive (false);
-        }
-
-    }
+   
 
     void CheckProgressCount() 
     { 

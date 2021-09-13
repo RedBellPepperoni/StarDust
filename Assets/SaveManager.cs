@@ -161,7 +161,7 @@ public class SaveManager : MonoBehaviour
 
     }
 
-    void InventoriesLoad () 
+    public void InventoriesLoad () 
     {
 
         

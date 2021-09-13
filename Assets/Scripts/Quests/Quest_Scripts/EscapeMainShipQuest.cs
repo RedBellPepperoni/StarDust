@@ -21,9 +21,9 @@ public class EscapeMainShipQuest : QuestParent
 
         UIManager.instance.SetSecurityAccessDisplay (2);
 
-
+        UIManager.instance.HideCinematicUI ();
         setCameraback ();
-        Terminal.SetCanProgress ();
+
         UnlockTerminals.Invoke ();
     }
 

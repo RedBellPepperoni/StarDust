@@ -5,12 +5,42 @@ using UnityEngine.Events;
 
 public class TriggerCall : MonoBehaviour
 {
-    public UnityEvent Triggercall;
+    public UnityEvent TriggerEnter;
+    public UnityEvent TriggerExit;
 
-        private void OnTriggerEnter (Collider other) 
-        {
+    public bool callOnce;
+    bool enterOnce;
+    bool exitOnce;
 
-        Triggercall.Invoke ();
+  
+    private void OnTriggerEnter2D (Collider2D collision)
+    {
+  
 
-        }
+           if(callOnce) 
+           { 
+             if(!enterOnce) 
+             {
+                enterOnce = true;
+                TriggerEnter.Invoke ();
+               
+             }
+           }
+
+           else
+           TriggerEnter.Invoke ();
+
+    }
+
+    private void OnTriggerExit2D (Collider2D collision) 
+    {
+        if (callOnce) {
+            if (!exitOnce) {
+                exitOnce = true;
+                TriggerExit.Invoke ();
+
+            }
+        } else
+            TriggerExit.Invoke ();
+    }
 }

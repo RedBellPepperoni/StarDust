@@ -87,6 +87,7 @@ public class DialogueUIManager : MonoBehaviour
     public void DialogueStart () {
 
         UIManager.instance.ShowCinematicUI ();
+        Action_Manager.instance.PlayerMoveStop ();
 
         anim.SetTrigger ("Open");
 

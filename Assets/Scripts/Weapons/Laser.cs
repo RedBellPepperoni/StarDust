@@ -29,7 +29,7 @@ public class Laser : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         UpdateLaser ();
     }
@@ -68,7 +68,7 @@ public class Laser : MonoBehaviour
 
 
 
-            RaycastHit2D hit = Physics2D.Raycast (firepoint.position, heading, heading.magnitude, hitlayermask);
+            RaycastHit2D hit = Physics2D.Raycast (firepoint.position, heading, 100, hitlayermask);
 
 
 
@@ -76,11 +76,13 @@ public class Laser : MonoBehaviour
             if (hit.collider.gameObject.layer == LayerMask.NameToLayer ("Damagable") || hit.collider.gameObject.layer == LayerMask.NameToLayer ("Player")) {
                 line.SetPosition (1, hit.point);
                 TryHitDamage (hit.collider.gameObject);
-
+               
 
 
             } else if (hit.collider.gameObject.layer == LayerMask.NameToLayer ("Obstacle")) {
                 line.SetPosition (1, hit.point);
+
+               
 
 
             } else

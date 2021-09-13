@@ -367,6 +367,9 @@ MonoBehaviour:
   interactabletType: 0
   pickableType: 0
   isPicked: 0
+  OnPicked:
+    m_PersistentCalls:
+      m_Calls: []
   Weights: 28000000320000001400000005000000
   Items:
   - {fileID: 1389341869412507574, guid: 0b6686defb5025a498f5bc5a2d161c5d, type: 3}
@@ -431,7 +434,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 4e77dbfadb0271c47bdb817fc123ee3f, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.7
+  m_Volume: 0.6
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -440,7 +443,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 100
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -475,7 +478,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
+      value: 0.8
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -751,9 +754,29 @@ PrefabInstance:
         type: 2}
     - target: {fileID: 6197211751212710858, guid: 7b3cb4eeee7ee98429b1e4a158eef7a1,
         type: 3}
+      propertyPath: m_fontColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6197211751212710858, guid: 7b3cb4eeee7ee98429b1e4a158eef7a1,
+        type: 3}
+      propertyPath: m_fontColor.g
+      value: 0.6862745
+      objectReference: {fileID: 0}
+    - target: {fileID: 6197211751212710858, guid: 7b3cb4eeee7ee98429b1e4a158eef7a1,
+        type: 3}
+      propertyPath: m_fontColor.r
+      value: 0.9921569
+      objectReference: {fileID: 0}
+    - target: {fileID: 6197211751212710858, guid: 7b3cb4eeee7ee98429b1e4a158eef7a1,
+        type: 3}
       propertyPath: m_sharedMaterial
       value: 
       objectReference: {fileID: 2180264, guid: a876cd3320c7211428f7790daaa394f0, type: 2}
+    - target: {fileID: 6197211751212710858, guid: 7b3cb4eeee7ee98429b1e4a158eef7a1,
+        type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4278235133
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7b3cb4eeee7ee98429b1e4a158eef7a1, type: 3}
 --- !u!1 &6369835607538654987 stripped

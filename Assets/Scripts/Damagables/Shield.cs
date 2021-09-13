@@ -6,8 +6,7 @@ public class Shield : Damagable
 {
     [SerializeField] CircleCollider2D colliderRef;
 
-    bool canReshield = true;
-    float ReshieldTime = 0f;
+    
     [SerializeField]GameObject ShieldObj;
 
     public override void Die () {
@@ -18,38 +17,12 @@ public class Shield : Damagable
         }
 
 
-        if (canReshield) {
-            ShieldObj.SetActive (false);
-            colliderRef.enabled = false;
-            Invoke ("Reshield", ReshieldTime);
-        } else { Delete (); }
+        Delete (); 
 
     }
 
 
-    public void StopReshield() 
-    {
-        canReshield = false;
-    
-    }
-
-    void Reshield() 
-    { 
-       if(canReshield) {
-            currentHealth = maxHealth;
-            ShieldObj.SetActive (true);
-            colliderRef.enabled = true;
-            isDead = false;
-          
-       }
-    
-    }
-
-
-    public void SetReShieldtime(float intime) 
-    {
-        ReshieldTime = intime;
-    }
+ 
 
     public void SetStartValues() 
     {

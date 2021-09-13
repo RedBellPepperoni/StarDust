@@ -7,10 +7,7 @@ public class Ammo_Consumable : Interactable
 
     public int ammoRefillCount = 20;
 
-    private void Start () {
-
-    }
-
+    
 
 
     public override void ObjPicked () {

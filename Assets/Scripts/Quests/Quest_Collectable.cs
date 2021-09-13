@@ -5,6 +5,13 @@ using UnityEngine;
 public class Quest_Collectable : Interactable
 {
     public QuestParent QuestRef;
+    public GameObject Marker;
+
+    protected override void Start () {
+        base.Start ();
+
+        HideMarker ();
+    }
 
     public override void ObjPicked () {
 
@@ -39,6 +46,8 @@ public class Quest_Collectable : Interactable
                 }
 
             }
+
+            HideMarker ();
         }
 
 
@@ -50,13 +59,21 @@ public class Quest_Collectable : Interactable
     public override void Dropped () {
         base.Dropped ();
 
-        
 
+            ShowMarker ();
             isPicked = false;
             canBePicked = true;
             GetComponent<BoxCollider2D> ().enabled = true;
            
 
         
+    }
+
+    public void ShowMarker() 
+    {
+        Marker.SetActive (true);
+    }
+    public void HideMarker () {
+        Marker.SetActive (false);
     }
 }

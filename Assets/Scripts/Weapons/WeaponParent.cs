@@ -18,7 +18,7 @@ public class WeaponParent : MonoBehaviour
     public AudioClip FireSound;
 
     [SerializeField] float AimRange = 13f;
-
+    public Sprite WeaponIcon;
 
     protected void Start () 
     {
@@ -110,18 +110,11 @@ public class WeaponParent : MonoBehaviour
         return effecROF;
     }
     public GameObject getBulletPrefab () { return BulletPrefab; } //Getter for accessing Bullet Prefab;
-    public void Awake () {
+    public void Awake () 
+    {
       //  weaponAnimator = GetComponent<Animator> ();
-        
-
-
+     
         currentBullets = magazineSize;
-
-       
-
-
-
-
     }
 
     public void SetAnimRef() 
@@ -175,6 +168,12 @@ public class WeaponParent : MonoBehaviour
         PlayAudio ();
 
     }
+
+
+    
+
+
+
 
     public void PlayAudio() 
     {

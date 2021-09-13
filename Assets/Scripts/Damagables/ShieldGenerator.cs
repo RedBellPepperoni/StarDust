@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ShieldGenerator : Damagable
 {
-    [SerializeField] float timetoRespawn = 3f;
+   
     [SerializeField] float shieldHealth;
     [SerializeField] Shield shieldRef;
 
@@ -22,7 +22,7 @@ public class ShieldGenerator : Damagable
         base.Die ();
 
 
-        shieldRef.StopReshield ();
+        shieldRef.Die ();
 
         Invoke ("Delete",2);
 
@@ -41,7 +41,7 @@ public class ShieldGenerator : Damagable
         {
             shieldRef.SetMaxHealth (shieldHealth);
 
-            shieldRef.SetReShieldtime (timetoRespawn);
+            
             shieldRef.SetStartValues ();
         }
     }

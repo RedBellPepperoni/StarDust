@@ -12,6 +12,7 @@ TagManager:
   - IgnoreBullets
   - MiscItem
   - NPC
+  - AimHighlight
   layers:
   - Default
   - TransparentFX
@@ -27,7 +28,7 @@ TagManager:
   - Player
   - PostProcessing
   - Interactable
-  - 
+  - MiniMap
   - 
   - 
   - 

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class LootBox : Interactable
 {
@@ -8,7 +9,7 @@ public class LootBox : Interactable
     enum DropItem {coin,ammo,healthkit,nothing };
     DropItem Item = DropItem.nothing;
 
-
+    public UnityEvent OnPicked;
     
     [SerializeField] int[] Weights;
     [SerializeField] GameObject[] Items;
@@ -111,6 +112,7 @@ public class LootBox : Interactable
     public override void ObjPicked () {
         base.ObjPicked ();
 
+        OnPicked.Invoke ();
 
         LidOpen.SetActive (true);
         LidClose.SetActive (false);

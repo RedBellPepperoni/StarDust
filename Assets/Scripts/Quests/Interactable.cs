@@ -115,7 +115,7 @@ public class Interactable : MonoBehaviour
     public virtual void ObjPicked() 
     { 
     
-
+        ///Custom Call here ---
 
 
     
@@ -151,8 +151,10 @@ public class Interactable : MonoBehaviour
 
     protected void HideDisplayUI () 
     {
-       // if (DisplayAnim.GetBool ("Open") == true)
-            DisplayAnim.SetBool ("Open", false);
+       if (DisplayAnim.GetBool ("Open") == true)
+            DisplayAnim.SetBool ("Open",false);
+
+
         if (outline&&!isPicked) {
             outline.SetActive (false);
         }

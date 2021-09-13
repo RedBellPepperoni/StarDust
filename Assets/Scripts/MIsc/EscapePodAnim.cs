@@ -35,25 +35,8 @@ public class EscapePodAnim : MonoBehaviour
     {
         
 
-        StartCoroutine ("Move");
+        
     }
 
-    IEnumerator Move()
-    {
-        int i = 0;
-        float offset = 0f;
-
-        while (i < 50) 
-        {
-            i++;
-            offset = offset + i/10;
-            yield return new WaitForSeconds (0);
-
-           Pod.transform.position = new Vector3 (Pod.transform.position.x, Pod.transform.position.y - offset, Pod.transform.position.z);
-
-        }
-
-        Destroy (Pod);
-        Destroy (gameObject);
-    }
+    
 }

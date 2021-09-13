@@ -10,18 +10,22 @@ public class NPC_StaticBEhav : Interactable
     
     public UnityEvent DidnotInteract;
     public UnityEvent Interacted;
+    public UnityEvent startedTalk;
+    public bool startTalkbool = false;
+
+    public Color outLineColor;
 
     LayerMask Interactionlayer = 1 << 13;
 
     [SerializeField]protected Dialogue_manager NPCDialogueMan;
 
     [SerializeField]protected Animator NPCAnim;
-
-    bool popUp = false;
+    [SerializeField]protected  List<SpriteRenderer> OutlineList;
+    
   //  [SerializeField]protected bool isQuestGiver = false;
     [SerializeField]protected QuestGiver_Parent QuestGiverRef;
 
-    [SerializeField] Animator PopUpAnim;
+    
     [SerializeField] GameObject CharNameText;
     [SerializeField] TextMeshPro charname;
 
@@ -31,16 +35,29 @@ public class NPC_StaticBEhav : Interactable
         charname.text = NPCDialogueMan.charName;
     }
 
+    protected override void Start () {
+        base.Start ();
+
+        if(OutlineList.Count>0) 
+        { 
+           foreach(SpriteRenderer s in OutlineList) { s.enabled = false; }
+            ChangeOutlineColor (outLineColor);
+        }
+    }
+
     public override void ObjPicked () {
-        
+
         //  NPCDialogueMan.nextDialogue ();
+
+
+        EventTalkStart ();
 
         DisplayAnim.SetBool ("Open", false);
 
 
         if (QuestGiverRef != null) {
 
-            Debug.LogError ("YEEETETETETTE");
+            
             switch (QuestGiverRef.GetQuestInfo ().currentState) {
 
 
@@ -72,10 +89,7 @@ public class NPC_StaticBEhav : Interactable
 
                      if (NPCDialogueMan.Dialogref.reQuestSentences.Length > 0) 
                     {
-                        if (!popUp) {
-                            popUp = true;
-                            PopUpAnim.SetBool ("PopUp", true);
-                        }
+                        
 
                         NPCDialogueMan.nextDialogue ();
                     }
@@ -102,12 +116,7 @@ public class NPC_StaticBEhav : Interactable
         }
         else 
         {
-            if(!popUp) 
-            {
-                popUp = true;
-                PopUpAnim.SetBool ("PopUp", true);
-            }
-
+            
 
 
             if (NPCDialogueMan.Dialogref.reQuestSentences.Length > 0) 
@@ -134,7 +143,13 @@ public class NPC_StaticBEhav : Interactable
 
         base.OnTriggerEnter2D (collision);
 
-        if (collision.CompareTag ("Player")) { HideCharName (); }
+        if (collision.CompareTag ("Player")) 
+        {
+
+            ShowOutline ();
+            HideCharName (); 
+        
+        }
 
 
         
@@ -147,13 +162,9 @@ public class NPC_StaticBEhav : Interactable
         DialogueUIManager.instance.SetDialoguemanagerReference (null);
         NPCDialogueMan.clearDialogueText ();
 
+        HideOutline ();
 
-
-        if (popUp) {
-            popUp = false;
-            PopUpAnim.SetBool ("PopUp", false);
-
-        }
+       
 
         ShowCharname ();
     }
@@ -206,5 +217,29 @@ public class NPC_StaticBEhav : Interactable
 
         }
 
+    }
+
+    public void ShowOutline() 
+    {
+        foreach (SpriteRenderer s in OutlineList) { s.enabled = true; }
+    }
+
+    public void HideOutline() 
+    {
+        foreach (SpriteRenderer s in OutlineList) { s.enabled = false; }
+    }
+
+    public void ChangeOutlineColor(Color _color) 
+    {
+        foreach (SpriteRenderer s in OutlineList) { s.color = _color; }
+    }
+
+    void EventTalkStart() 
+    { 
+         if(!startTalkbool) 
+         { 
+            startedTalk.Invoke (); 
+            startTalkbool = true; 
+         }
     }
 }

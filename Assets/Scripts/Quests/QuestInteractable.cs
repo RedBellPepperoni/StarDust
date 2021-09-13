@@ -7,12 +7,12 @@ public class QuestInteractable : Interactable
 {
    
 
-    [SerializeField]bool CanProgress = false;
+    
 
 
     public UnityEvent ObjPickedCall;
 
-    bool doOnce = false;
+    protected bool doOnce = false;
 
     
 
@@ -22,17 +22,13 @@ public class QuestInteractable : Interactable
         
         
             ObjPickedCall.Invoke ();
-            doOnce = true;
+           
         
     }
 
     
 
 
-    public void SetCanProgress() 
-    {
-        CanProgress = true;
-        
-    }
+    
 
 }

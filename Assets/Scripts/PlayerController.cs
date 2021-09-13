@@ -56,6 +56,7 @@ public class PlayerController : MonoBehaviour
             instance = this;
         }
 
+        ShowPlayerhand ();
 
     }
 
@@ -149,7 +150,8 @@ public class PlayerController : MonoBehaviour
 
     public void HidePlayerhand () 
     {
-     //  Gunarm.SetActive (false);
+       Gunarm.SetActive (false);
+        Debug.LogError ("Me");
         
     }
 
@@ -183,9 +185,12 @@ public class PlayerController : MonoBehaviour
             UIManager.instance.AbilityProgress (UIcounter);
         }
 
-        abilityUsable = true;
-        
 
+
+        abilityUsable = true;
+        UIManager.instance.AbilityReady (abilityUsable);
+
+        StopCoroutine (nameof (RefreshAbility));
     }
 
     public void UseAbility() 
@@ -196,6 +201,7 @@ public class PlayerController : MonoBehaviour
             abilityUsable = false;
 
             UIManager.instance.AbilityProgress (0);
+            UIManager.instance.AbilityReady (abilityUsable);
             StartCoroutine ("RefreshAbility");
 
         }
@@ -205,11 +211,13 @@ public class PlayerController : MonoBehaviour
     public void Respawn() 
     {
         PlayerAnimator.SetBool ("isDead", false);
-        Action_Manager.instance.ShowWeaponHand ();
+
+        Invoke (nameof (Invokehand), 1);
 
     }
 
-   
+   void Invokehand()
+       { Action_Manager.instance.ShowWeaponHand(); }
 
 }
 

@@ -2079,7 +2079,7 @@ GameObject:
   - component: {fileID: -1311679352306139692}
   - component: {fileID: 8679684717107266974}
   m_Layer: 7
-  m_Name: Enemy_RaiderMelle
+  m_Name: Enemy_RaiderStandard
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

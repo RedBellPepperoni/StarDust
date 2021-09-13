@@ -48,14 +48,14 @@ public class InfoTerminal : MonoBehaviour
 
     void PopUpInfo() 
     {
-        textanim.SetBool ("PopUp", true);
+        
         Invoke ("Typetext", 1);
-        hasPopup = true;
+         hasPopup = true;
     }
 
     void PopDownInfo() 
     {
-        textanim.SetBool ("PopUp", false);
+        
         dialogue.text = "";
         hasPopup = false;
         MarkerRef.SetActive (true);

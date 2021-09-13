@@ -219,7 +219,9 @@ MonoBehaviour:
   currWeaponType: 2
   Endpoint: {fileID: 112424329377895635}
   source: {fileID: 3442637349223418375}
+  FireSound: {fileID: 8300000, guid: 5a81f97ec92702c4a9bae26e032643d1, type: 3}
   AimRange: 13
+  WeaponIcon: {fileID: 21300000, guid: 2f2f3ae06ce418847a11958979e651a2, type: 3}
   bulletSpeed: 40
   physicalDamage: 10
   plasmaDamage: 0
@@ -232,6 +234,7 @@ MonoBehaviour:
   bulletUse: 1
   shotSpreadangle: 30
   burstCount: 5
+  weaponAnimator: {fileID: 0}
   isBurst: 0
 --- !u!82 &3442637349223418375
 AudioSource:
@@ -254,7 +257,7 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
+  MinDistance: 50
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0
@@ -290,7 +293,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0.75
+      value: 0.8
       inSlope: 0
       outSlope: 0
       tangentMode: 0

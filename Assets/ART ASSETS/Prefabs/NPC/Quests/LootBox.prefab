@@ -452,6 +452,9 @@ MonoBehaviour:
   interactabletType: 0
   pickableType: 0
   isPicked: 0
+  OnPicked:
+    m_PersistentCalls:
+      m_Calls: []
   Weights: 32000000190000000f0000000a000000
   Items:
   - {fileID: 1389341869412507574, guid: 13d8be90e52bdaf458a660035ea4cd02, type: 3}
@@ -846,9 +849,29 @@ PrefabInstance:
         type: 2}
     - target: {fileID: 6197211751212710858, guid: 7b3cb4eeee7ee98429b1e4a158eef7a1,
         type: 3}
+      propertyPath: m_fontColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6197211751212710858, guid: 7b3cb4eeee7ee98429b1e4a158eef7a1,
+        type: 3}
+      propertyPath: m_fontColor.g
+      value: 0.81568635
+      objectReference: {fileID: 0}
+    - target: {fileID: 6197211751212710858, guid: 7b3cb4eeee7ee98429b1e4a158eef7a1,
+        type: 3}
+      propertyPath: m_fontColor.r
+      value: 0.9960785
+      objectReference: {fileID: 0}
+    - target: {fileID: 6197211751212710858, guid: 7b3cb4eeee7ee98429b1e4a158eef7a1,
+        type: 3}
       propertyPath: m_sharedMaterial
       value: 
       objectReference: {fileID: 2180264, guid: a876cd3320c7211428f7790daaa394f0, type: 2}
+    - target: {fileID: 6197211751212710858, guid: 7b3cb4eeee7ee98429b1e4a158eef7a1,
+        type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4278243582
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7b3cb4eeee7ee98429b1e4a158eef7a1, type: 3}
 --- !u!1 &3099437737045365865 stripped

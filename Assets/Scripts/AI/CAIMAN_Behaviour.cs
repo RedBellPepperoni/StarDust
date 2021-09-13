@@ -8,7 +8,7 @@ public class CAIMAN_Behaviour : AI_BehaviourParent
 
    
     float gndAtkCooldown = 13f;
-    float missileatkcooldown = 5f;
+    [SerializeField]float missileatkcooldown = 1f;
 
 
     bool inGndAtckRange = false;
@@ -254,7 +254,7 @@ public class CAIMAN_Behaviour : AI_BehaviourParent
                 // InstatiateBullet (endpointTransform);
 
                 GameObject bullet = Instantiate (Bullet, endpointTransform.position, endpointTransform.rotation);
-                nextFire = Time.time + 3f;
+                nextFire = Time.time + missileatkcooldown;
             }
 
            
@@ -347,8 +347,8 @@ public class CAIMAN_Behaviour : AI_BehaviourParent
         yield return new WaitForSeconds (gndAtkCooldown);
         
         canGndAtk = true;
-     //   if (inGndAtckRange)
-          //  GroundAttack ();
+        if (inGndAtckRange)
+            GroundAttack ();
     }
 
     private void OnTriggerEnter2D (Collider2D collision) {

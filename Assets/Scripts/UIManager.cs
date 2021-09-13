@@ -40,6 +40,9 @@ public class UIManager : MonoBehaviour
 
 
     [SerializeField] GameObject RespawnScreen;
+    public Text RespawnText;
+    public Color respawncolor;
+    public Color noCoinscolor;
 
     /// <summary>
     /// Weapon Ammo Variables
@@ -70,7 +73,16 @@ public class UIManager : MonoBehaviour
     /// </summary>
     [SerializeField] TextMeshProUGUI coinAmount;
     [SerializeField] TextMeshProUGUI ancientCoinAmount;
-    
+
+    /// <summary>
+    /// Ability Variables
+    /// </summary>
+    [SerializeField] Image abilityImage;
+    public Color abilityReadyColor;
+    public Color abilityDisabledColor;
+
+
+    public Image weaponIcon;
 
     public void SetcurrentWeaponref(GameObject weaponref) { currentWeaponRef = weaponref; }
 
@@ -86,6 +98,7 @@ public class UIManager : MonoBehaviour
         HideSecurityAccessDisplay ();
 
         HideCinematicUI ();
+        HideRespawnUI ();
 
         
     }
@@ -124,13 +137,23 @@ public class UIManager : MonoBehaviour
     
     }
 
+    public void AbilityReady(bool _ready) 
+    {
+        if (_ready) { abilityImage.color = abilityReadyColor; } else { abilityImage.color = abilityDisabledColor; }
+    }
+
     public void SetMultiBtnDisplay(Action_Manager.MultibtnState state) 
     {
-       
-
-        MultiBtnDisplay.sprite = MultibuttonSprites[(int)state];
+     
+       // MultiBtnDisplay.sprite = MultibuttonSprites[(int)state];
 
     }
+
+    public void ShowWeaponIcon() 
+    {
+        if (Gamemanager.instance.weaponScriptRef != null) { weaponIcon.sprite = Gamemanager.instance.weaponScriptRef.WeaponIcon; }
+    }
+
     // Setting UI values for total coins
     public void SetCoinAmount(int inAmount) 
     {
@@ -205,6 +228,18 @@ public class UIManager : MonoBehaviour
 
     public void ShowRespawnUI() 
     {
+
+        if(Gamemanager.instance.GetCoinAmount()>=200) 
+        {
+            RespawnText.color = respawncolor;
+            RespawnText.text = "RESPAWN";
+        }
+        else 
+        {
+            RespawnText.color = noCoinscolor;
+            RespawnText.text = "NOT ENOUGH COINS";
+        }
+
         RespawnScreen.SetActive (true);
 
 
@@ -266,10 +301,8 @@ public class UIManager : MonoBehaviour
         HideMovementInputButtons (true);
         HideOtherInputButtons (true);
         HideDisplayUI (true);
-
-
-
         HideCinematicDisplay (false);
+        isCinematic = true;
     
     }
 
@@ -280,6 +313,7 @@ public class UIManager : MonoBehaviour
         HideDisplayUI (false);
 
         HideCinematicDisplay (true);
+        isCinematic = false;
     }
 
     public void SetSecurityAccessDisplay(int i) 

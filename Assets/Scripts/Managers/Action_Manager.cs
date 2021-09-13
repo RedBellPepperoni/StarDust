@@ -16,7 +16,7 @@ public class Action_Manager : MonoBehaviour
     //button related varables
     [SerializeField] FloatingJoystick MovejoystickRef;
     bool AtkbtnisPressed = false;
-    public enum MultibtnState { Grab, Shoot, Meleeatck, Drop, Heal, Talk, Examine, Charge };
+    public enum MultibtnState { Grab, Shoot, Meleeatck, Drop, Heal, Talk, Examine, Charge, Idle };
  
     MultibtnState btnState = MultibtnState.Shoot;
 
@@ -131,6 +131,8 @@ public class Action_Manager : MonoBehaviour
     public void SetMultiButtonFunc(MultibtnState state) 
     {
         btnState = state;
+        //if(UIManager.instance.isCinematic) { btnState = MultibtnState.Talk; }
+
         SetMultiBtnState ();
     
     }
@@ -162,7 +164,16 @@ public class Action_Manager : MonoBehaviour
 
     public void MultibtnClick () {
 
-        if (btnState == MultibtnState.Grab||btnState == MultibtnState.Heal||btnState == MultibtnState.Examine||btnState== MultibtnState.Talk) {
+
+         if (btnState == MultibtnState.Idle) {
+            return;
+        }
+
+
+
+
+        if (btnState == MultibtnState.Grab||btnState == MultibtnState.Heal||btnState == MultibtnState.Examine||btnState== MultibtnState.Talk) 
+        {
             GameObject intObj = Gamemanager.instance.getInteObj ();
 
            
@@ -174,15 +185,20 @@ public class Action_Manager : MonoBehaviour
             }
 
 
-        } else if (btnState == MultibtnState.Drop) {
+        } 
+        else if (btnState == MultibtnState.Drop) 
+        {
             Gamemanager.instance.DropObj ();
         }
+
+        
     }
 
 
     private void FixedUpdate () 
     {
-        if (PlayerController.instance.GetPlayerState () != PlayerController.PlayerState.Dead) {  //moving the physics body using the movement speed
+        if (PlayerController.instance.GetPlayerState () != PlayerController.PlayerState.Dead) 
+        {  //moving the physics body using the movement speed
             PlayerScriptRef.MovePlayer (movement);
         }
 
@@ -213,52 +229,15 @@ public class Action_Manager : MonoBehaviour
         // { 
 
 
-        if (UIManager.instance.isCinematic == false) {
-
-
+        if (!UIManager.instance.isCinematic) 
+        {
             movement = playerActionControls.Player.Move.ReadValue<Vector2> ();
             if (MovejoystickRef.Direction.magnitude > 0) { movement = MovejoystickRef.Direction; }
 
             return;
         } else
-            movement = Vector2.zero;
-
-
-
-
-    
-
-
-        
-        
-
-
-
-
-
-        /*
-                Vector3 aimLocalScale = Vector3.one;
-                if (movement.x < 0) {
-                    flip (-1);
-
-                    aimLocalScale.y = -1f;
-
-
-                    aimTransform.position = AimRootRight.position;
-                } else if(movement.x > 0) {
-                    flip (1);
-                    aimLocalScale.y = 1f;
-
-                    aimTransform.position = AimRootLeft.position;
-                }
-                aimTransform.localScale = aimLocalScale;
-
-                */
-
-
-
-        // setZoom ();
-        // }
+            PlayerMoveStop ();
+   
     }
 
     public void PlayerMoveStop() 
@@ -266,7 +245,8 @@ public class Action_Manager : MonoBehaviour
         movement = Vector2.zero;
     }
 
-    public void setZoom () {
+    public void setZoom () 
+    {
 
         float zoomChange = 10f;
 
@@ -284,7 +264,8 @@ public class Action_Manager : MonoBehaviour
     }
 
 
-    public void flip (float horizontal) {
+    public void flip (float horizontal) 
+    {
         Vector3 playerScale = PlayerSprite.transform.localScale;
         if (horizontal < 0) {
 
@@ -295,8 +276,6 @@ public class Action_Manager : MonoBehaviour
         } else
             playerScale.x = 1;
         PlayerSprite.transform.localScale = playerScale;
-
-
     }
    
 
@@ -369,77 +348,80 @@ public class Action_Manager : MonoBehaviour
     }
 
 
-    public void handleShooting () {
-
-
+    public void handleShooting () 
+    {
 
         if (PlayerController.instance.GetPlayerState () != PlayerController.PlayerState.Dead)
             Manager.Onshoot ();
 
-
-
-
-
     }
 
-    private void OnDrawGizmos () {
-        Gizmos.DrawWireSphere (PlayerScriptRef.transform.position, aimRange);
-    }
+    //private void OnDrawGizmos () {
+    //    Gizmos.DrawWireSphere (PlayerScriptRef.transform.position, aimRange);
+    //}
 
-    public void HideWeaponhand () {
-        aimTransform.gameObject.SetActive (false);
-
-    }
+    
 
 
-
-
-
+    /// <summary>
+    /// funcion to collect enemy references in a radius around the player
+    /// </summary>
     void CheckNearbyEnemies () {
+
+        // clearing previous list
         if (enemyinRange.Count != 0)
             enemyinRange.Clear ();
 
+        //using phisics circle cast to gather all enemy references in a radius around the player
         Collider2D[] result = new Collider2D[10];
         Physics2D.OverlapCircleNonAlloc (PlayerScriptRef.transform.position, aimRange, result, layer);
 
 
-
-        foreach (Collider2D c in result) {
+        //adding valid enemy references to List
+        foreach (Collider2D c in result) 
+        {
             if (c != null && (c.tag == "Enemy" || c.tag == "Aimable")) {
                 enemyinRange.Add (c.gameObject);
-
-
-
             }
-
 
         }
 
 
-
+        // calling func to get the closest enemy
         ClosestEnemy ();
 
     }
 
 
-
+    /// <summary>
+    /// Function to get the closest enemy from the player
+    /// </summary>
     void ClosestEnemy () {
+
+        // Variable for storing the aimrange of selected Weapon
         float range = aimRange;
 
         enemyPos = Vector3.zero; ;
 
-        if (enemyinRange.Count != 0) {
+
+        //Checing if there are any enemies around
+        if (enemyinRange.Count != 0) 
+        {
+            
             foreach (GameObject enemyGameObject in enemyinRange) {
 
+               // collecting distance of each enemy in current radius
 
                 float dist = Vector2.Distance (enemyGameObject.transform.position, PlayerController.instance.transform.position);
 
-
+                //updating distance var to find out the closest enemy from the player
                 if (dist < range) {
                     range = dist;
                     closestEnemy = enemyGameObject;
                 }
             }
+
+            //checking if enemies are present, if yes aim at them else dont move  aim
 
             if (closestEnemy != null) {
                 enemyPos = closestEnemy.transform.position;
@@ -450,14 +432,6 @@ public class Action_Manager : MonoBehaviour
             lowergun = true;
         }
 
-
-
-
-
-
-
-
-
     }
 
 
@@ -466,6 +440,12 @@ public class Action_Manager : MonoBehaviour
         aimTransform.gameObject.SetActive (true);
         PlayerController.instance.HidePlayerhand ();
 
+    }
+
+    public void HideWeaponhand() 
+    {
+        aimTransform.gameObject.SetActive (false);
+        PlayerController.instance.ShowPlayerhand ();
     }
 
    

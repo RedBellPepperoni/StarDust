@@ -22,6 +22,7 @@ public class Gate_Controller : MonoBehaviour
 
     [SerializeField]SpriteRenderer LeftIndicator;
     [SerializeField]SpriteRenderer RightIndicator;
+    public GameObject LockedText;
 
 
     AudioSource source;
@@ -30,6 +31,8 @@ public class Gate_Controller : MonoBehaviour
 
         source = GetComponent<AudioSource> ();
 
+        LockedText.SetActive (false);
+        islocked = false;
 
     }
 
@@ -92,17 +95,23 @@ public class Gate_Controller : MonoBehaviour
 
     private void OnTriggerEnter2D (Collider2D collision) {
 
-       
 
-        if ((collision.CompareTag("Player")|| collision.CompareTag("Enemy") || collision.CompareTag ("NPC")) && !Open && PlayerDetection) 
+        
+
+        if (islocked) 
         {
-
-            
-           
-                OpenSesame ();
-          
+            Debug.LogWarning (islocked);
+            LockedText.SetActive (true);
            
         }
+
+        else if ((collision.CompareTag ("Player") || collision.CompareTag ("Enemy") || collision.CompareTag ("NPC")) && !Open && PlayerDetection) 
+        {
+
+            OpenSesame ();
+
+
+        } 
     }
 
     
@@ -119,6 +128,9 @@ public class Gate_Controller : MonoBehaviour
                
             
         }
+
+        if(LockedText.activeSelf)
+        LockedText.SetActive (false);
     }
 
 

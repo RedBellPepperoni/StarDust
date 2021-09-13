@@ -2219,7 +2219,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 755794785149379732}
   PlayerRef: {fileID: 0}
-  attackRange: 10
+  attackRange: 30
   aimTransform: {fileID: 755794785826865378}
   nextFire: 0
   targetRange: 100
@@ -4131,6 +4131,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Weapon_RaiderShotgunLvl1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4623426602150491618, guid: 8eb10b7373dd7974cb6d708eb99bc277,
+        type: 3}
+      propertyPath: rateOfFire
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4623426602150491618, guid: 8eb10b7373dd7974cb6d708eb99bc277,
+        type: 3}
+      propertyPath: physicalDamage
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4623426602150491619, guid: 8eb10b7373dd7974cb6d708eb99bc277,
         type: 3}

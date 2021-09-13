@@ -4,28 +4,48 @@ using UnityEngine;
 
 public class BlastBarrel : Damagable
 {
-    [SerializeField]Collider2D selfCollider;
+    [SerializeField] Collider2D selfCollider;
     [SerializeField] int forcepw = 30;
-    [SerializeField]AudioSource blstsound;
-    [SerializeField] AudioClip sound;
     
+    public GameObject outline;
+
+    private void Awake () {
+
+       
+        
+    }
+
 
     public override void Die () {
-        
+
+
+
+        onDeath.Invoke ();
 
         GetComponent<Animator> ().Play ("BarrelPreBlast");
         Invoke ("blast", 1);
     }
 
+    public void ShowOutline ()
+    {
+        outline.SetActive (true);
+    }
+
+    public void hideOutline() 
+    {
+        outline.SetActive (false);
+    }
+
     void blast() {
 
-
+        ShowOutline ();
         LayerMask mask = 1 << 11 | 1 << 6;
         selfCollider.enabled = false;
         Collider2D[] colliderarray = Physics2D.OverlapCircleAll (transform.position, 10f, mask);
 
 
-
+        
+        
 
         foreach (Collider2D c in colliderarray) {
 
@@ -47,7 +67,7 @@ public class BlastBarrel : Damagable
             }
 
 
-            blstsound.PlayOneShot (sound);
+           
 
 
         }

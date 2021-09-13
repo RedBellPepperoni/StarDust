@@ -3,19 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class GroundItem : MonoBehaviour
+public class GroundItem : Interactable
 {
     public UnityEvent Pick;
     public ItemObject item;
 
-    protected void OnTriggerEnter2D (Collider2D collision) 
-    {
-        if(collision.CompareTag("Player")) 
-        {
-            customFunc ();
-            Pick.Invoke ();
-            
-        }
+    public override void ObjPicked () {
+        base.ObjPicked ();
+
+        Pick.Invoke ();
+        customFunc ();
+        
     }
 
     protected virtual void customFunc() 

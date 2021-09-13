@@ -30,30 +30,27 @@ public class Terminal_GateUnlocker : Interactable
 
     [SerializeField] Gate_Controller[] GateRef;
 
-    protected void Start () {
-        DisplayAnim =  DisplayUIRef.GetComponent<Animator> ();
+    protected override void Start () {
+        base.Start ();
 
         if (isLocked) {
             Lock ();
 
-           
+
 
         } else Unlock ();
 
 
-        if(hasKey) 
-        {
+        if (hasKey) {
             SetKeyUI ();
         }
 
 
-        if(!hasPower) 
-        { ScreenRef.color = PowerOffColor; }
-
+        if (!hasPower) { ScreenRef.color = PowerOffColor; }
     }
 
 
-    
+
 
     protected override void OnTriggerEnter2D (Collider2D collision) {
         base.OnTriggerEnter2D (collision);
@@ -165,6 +162,10 @@ public class Terminal_GateUnlocker : Interactable
 
             isLocked = false;
             SetUlockUI ();
+
+            if (UnlockStayOpen) {
+                UnlockAndStayOpen ();
+            }
         }
         else 
         { }

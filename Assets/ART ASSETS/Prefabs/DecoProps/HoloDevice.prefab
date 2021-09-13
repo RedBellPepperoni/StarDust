@@ -94,6 +94,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2727953170520367517}
   - component: {fileID: 3321413116782985319}
+  - component: {fileID: 9055622153473179791}
+  - component: {fileID: 8856698038937712781}
   m_Layer: 0
   m_Name: HoloDevice
   m_TagString: Untagged
@@ -157,7 +159,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 4
   m_Sprite: {fileID: 3413028547441875473, guid: 98ec6d573745d5a469bf807fbdafe6fe,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -170,6 +172,33 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!210 &9055622153473179791
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2159442132880384543}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 4
+--- !u!70 &8856698038937712781
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2159442132880384543}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.0000022907614, y: -0.07343838}
+  m_Size: {x: 0.7869967, y: 0.512718}
+  m_Direction: 1
 --- !u!1 &7054519066907062143
 GameObject:
   m_ObjectHideFlags: 0
@@ -241,7 +270,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 4
+  m_SortingOrder: 5
   m_Sprite: {fileID: -4187956795466762081, guid: 98ec6d573745d5a469bf807fbdafe6fe,
     type: 3}
   m_Color: {r: 0.18396229, g: 0.7276612, b: 1, a: 1}

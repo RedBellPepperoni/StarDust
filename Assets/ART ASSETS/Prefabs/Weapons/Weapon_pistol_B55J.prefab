@@ -389,6 +389,7 @@ MonoBehaviour:
   source: {fileID: 955642835855155933}
   FireSound: {fileID: 8300000, guid: 70f46b8b9643d214dba2d7c4d60a9938, type: 3}
   AimRange: 20
+  WeaponIcon: {fileID: 21300000, guid: f900410f435bf8b43b6ed2578f593049, type: 3}
   bulletSpeed: 80
   physicalDamage: 20
   plasmaDamage: 0
@@ -427,7 +428,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 70f46b8b9643d214dba2d7c4d60a9938, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.405
+  m_Volume: 0.6
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -471,7 +472,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
+      value: 0.8
       inSlope: 0
       outSlope: 0
       tangentMode: 0

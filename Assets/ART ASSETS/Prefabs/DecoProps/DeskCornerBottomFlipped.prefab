@@ -22,6 +22,11 @@ PrefabInstance:
       propertyPath: m_FlipX
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7375615747421661422, guid: 1ee8277a94771994cb64d6987753f4a5,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
     - target: {fileID: 7375615747421661423, guid: 1ee8277a94771994cb64d6987753f4a5,
         type: 3}
       propertyPath: m_RootOrder

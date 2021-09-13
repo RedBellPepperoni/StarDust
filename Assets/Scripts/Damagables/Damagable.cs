@@ -1,9 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Damagable : MonoBehaviour
 {
+
+    public UnityEvent onDeath;
+
     [SerializeField]protected float maxHealth = 100;
     
     protected float currentHealth;
@@ -67,12 +71,17 @@ public class Damagable : MonoBehaviour
 
     public virtual void Die()
     {
+        onDeath.Invoke ();
+
 
         if (deathEffect != null) 
         {
             GameObject g = Instantiate (deathEffect, DeathEffectTransform);
             g.transform.parent = null;
         }
+
+
+
 
         Delete();
 

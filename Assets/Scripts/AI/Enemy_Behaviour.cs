@@ -227,12 +227,9 @@ public class Enemy_Behaviour : AI_BehaviourParent
 
     }
 
-    public void Shoot () {
+    public void Shoot () 
+    {
         RaycastHit2D hit;
-
-        
-
-        //  Vector3 rayDirection = PlayerController.instance.transform.position - endpointTransform.posi;
 
         if (Time.time > nextFire) {
             LayerMask layerMask = ~1 << 7 | ~1 << 6;

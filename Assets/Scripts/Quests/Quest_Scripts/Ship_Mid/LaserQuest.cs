@@ -7,6 +7,8 @@ public class LaserQuest : QuestParent
     [SerializeField] Transform CameraLookAt;
     [SerializeField] NPC_StaticBEhav NPCRef;
 
+    [SerializeField] Transform LeverCameraloc;
+
     bool isPassed = false;
 
 
@@ -39,8 +41,8 @@ public class LaserQuest : QuestParent
         Invoke ("NextDialogue", 6);
         Invoke ("NextDialogue", 11);
 
-
-        Invoke ("EndCinematic", 13);
+        Invoke (nameof (setcameratoLever), 12);
+        Invoke ("EndCinematic", 14);
     }
 
     void NextDialogue () 
@@ -48,9 +50,16 @@ public class LaserQuest : QuestParent
         NPCRef.ObjPicked ();
     }
 
-    void EndCinematic () 
+
+    
+    void setcameratoLever() 
     {
-        setCameraback ();
-        UIManager.instance.HideCinematicUI ();
+        SetCameratarget (LeverCameraloc, 10);
+    }
+
+    protected override void EndCinematic () 
+    {
+        base.EndCinematic ();
+        
     }
 }
